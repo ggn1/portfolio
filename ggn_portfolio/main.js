@@ -3,17 +3,6 @@ import './style.css'
 import * as THREE from 'three';
 import {GLTFLoader} from 'three/examples/jsm/loaders/GLTFLoader.js'
 
-const load_assets = (loader) => {
-  /** Loads all objects on screen. */
-   loader.load('assets/character.gltf', (gltf) => {
-    console.log(gltf);
-   }, (xhr) => {
-    console.log(xhr.loaded/xhr.total * 100, "% loaded");
-   }, (error) => {
-    console.log("oops! an error occurred");
-   });
-}
-
 const init = () => {
   /** Initializes scene parameters. */
 
@@ -45,10 +34,47 @@ const init = () => {
 
   // Set up asset loader.
   const gltf_loader = new GLTFLoader();
-  load_assets(gltf_loader);
+
+  // Load objects.
+
+  // 1. Load character.
+  // Render objects on screen.
+  const load_asset = ({loader, path}) => {
+    loader.load(path, (gltf) => {
+      let root = gltf.scene;
+      // console.log(gltf);
+      scene.add(root);
+      root.scale.set(5, 5, 5);
+      root.rotation.set(0, 3.1, 0);
+      root.position.set(0, -10, 0);
+      return root;
+    }, (xhr) => {
+      // console.log(xhr.loaded/xhr.total * 100, "% loaded");
+    }, (error) => {
+      console.log("oops! an error occurred");
+    });
+  }
+
+  // HERE: Make promise.
+  const character = load_asset({loader: gltf_loader, path: 'assets/character.gltf'});
+  const heart = load_asset({loader: gltf_loader, path: 'assets/heart.gltf'});
+  const phone = load_asset({loader: gltf_loader, path: 'assets/phone.gltf'});
+  const gear_big = load_asset({loader: gltf_loader, path: 'assets/gear_big.gltf'});
+  const gear_medium = load_asset({loader: gltf_loader, path: 'assets/gear_medium.gltf'});
+  const gear_small = load_asset({loader: gltf_loader, path: 'assets/gear_small.gltf'});
+  
+  // Add lighting.
+  const light = new THREE.DirectionalLight(0xffffff, 1.2);
+  light.position.set(1,0,1);
+  scene.add(light);
 
   // Render objects on screen.
-  renderer.render(scene, camera);
+  const animate = () => {
+    requestAnimationFrame(animate);
+    renderer.render(scene, camera);
+  }
+
+  animate();
 }
 
 window.onload = init;
