@@ -30,42 +30,94 @@ const init = () => {
   });
   renderer.setPixelRatio(window.devicePixelRatio);
   renderer.setSize(window.innerWidth, window.innerHeight);
-  renderer.setClearColor(0x000000, 0.5);
+  renderer.setClearColor(0x000000, 0.9);
 
-  // Set up asset loader.
+  // Set up asset gltf_loader.
   const gltf_loader = new GLTFLoader();
 
   // Load objects.
 
-  // 1. Load character.
-  // Render objects on screen.
-  const load_asset = ({loader, path}) => {
-    loader.load(path, (gltf) => {
-      let root = gltf.scene;
-      // console.log(gltf);
-      scene.add(root);
-      root.scale.set(5, 5, 5);
-      root.rotation.set(0, 3.1, 0);
-      root.position.set(0, -10, 0);
-      return root;
-    }, (xhr) => {
-      // console.log(xhr.loaded/xhr.total * 100, "% loaded");
-    }, (error) => {
-      console.log("oops! an error occurred");
-    });
-  }
+  // Object 1. Load character.
+  gltf_loader.load('assets/character.gltf', (gltf) => {
+    let root = gltf.scene;
+    scene.add(root);
+    root.scale.set(5, 5, 5);
+    root.rotation.set(0, 3.1, 0);
+    root.position.set(0, -10, 0);
+  }, (xhr) => {
+    console.log("character:", xhr.loaded/xhr.total * 100, "% loaded");
+  }, (error) => {
+    console.log("oops! error occurred in loading character");
+  });
 
-  // HERE: Make promise.
-  const character = load_asset({loader: gltf_loader, path: 'assets/character.gltf'});
-  const heart = load_asset({loader: gltf_loader, path: 'assets/heart.gltf'});
-  const phone = load_asset({loader: gltf_loader, path: 'assets/phone.gltf'});
-  const gear_big = load_asset({loader: gltf_loader, path: 'assets/gear_big.gltf'});
-  const gear_medium = load_asset({loader: gltf_loader, path: 'assets/gear_medium.gltf'});
-  const gear_small = load_asset({loader: gltf_loader, path: 'assets/gear_small.gltf'});
+  // Object 2. Load heart.
+  gltf_loader.load('assets/heart.gltf', (gltf) => {
+    let root = gltf.scene;
+    scene.add(root);
+    root.scale.set(5, 5, 5);
+    root.rotation.set(0, 3.1, 0);
+    root.position.set(0, -10, 0);
+  }, (xhr) => {
+    console.log("heart:", xhr.loaded/xhr.total * 100, "% loaded");
+  }, (error) => {
+    console.log("oops! error occurred in loading heart");
+  });
+
+  // Object 3. Load phone.
+  gltf_loader.load('assets/phone.gltf', (gltf) => {
+    let root = gltf.scene;
+    scene.add(root);
+    root.scale.set(5, 5, 5);
+    root.rotation.set(0, 3.1, 0);
+    root.position.set(0, -10, 0);
+  }, (xhr) => {
+    console.log("phone:", xhr.loaded/xhr.total * 100, "% loaded");
+  }, (error) => {
+    console.log("oops! error occurred in loading phone");
+  });
+
+  // Object 4. Load gear_big.
+  gltf_loader.load('assets/gear_big.gltf', (gltf) => {
+    let root = gltf.scene;
+    scene.add(root);
+    root.scale.set(5, 5, 5);
+    root.rotation.set(0, 3.1, 0);
+    root.position.set(0, -10, 0);
+  }, (xhr) => {
+    console.log("gear_big:", xhr.loaded/xhr.total * 100, "% loaded");
+  }, (error) => {
+    console.log("oops! error occurred in loading gear_big");
+  });
+
+  // Object 5. Load gear_medium.
+  gltf_loader.load('assets/gear_medium.gltf', (gltf) => {
+    let root = gltf.scene;
+    scene.add(root);
+    root.scale.set(5, 5, 5);
+    root.rotation.set(0, 3.1, 0);
+    root.position.set(0, -10, 0);
+  }, (xhr) => {
+    console.log("gear_medium:", xhr.loaded/xhr.total * 100, "% loaded");
+  }, (error) => {
+    console.log("oops! error occurred in loading gear_medium");
+  });
+
+  // Object 6. Load gear_small.
+  gltf_loader.load('assets/gear_small.gltf', (gltf) => {
+    let root = gltf.scene;
+    scene.add(root);
+    root.scale.set(5, 5, 5);
+    root.rotation.set(0, 3.1, 0);
+    root.position.set(0, -10, 0);
+  }, (xhr) => {
+    console.log("gear_small:", xhr.loaded/xhr.total * 100, "% loaded");
+  }, (error) => {
+    console.log("oops! error occurred in loading gear_small");
+  });
   
   // Add lighting.
-  const light = new THREE.DirectionalLight(0xffffff, 1.2);
-  light.position.set(1,0,1);
+  const light = new THREE.DirectionalLight(0xffffff, 1.1);
+  light.position.set(0,0,1); // length, height, depth
   scene.add(light);
 
   // Render objects on screen.
