@@ -3,8 +3,19 @@ import './style.css'
 import * as THREE from 'three';
 import {GLTFLoader} from 'three/examples/jsm/loaders/GLTFLoader.js'
 
+const load_assets = (loader) => {
+  /** Loads all objects on screen. */
+   loader.load('assets/character.gltf', (gltf) => {
+    console.log(gltf);
+   }, (xhr) => {
+    console.log(xhr.loaded/xhr.total * 100, "% loaded");
+   }, (error) => {
+    console.log("oops! an error occurred");
+   });
+}
+
 const init = () => {
-  // Initializes scene parameters.
+  /** Initializes scene parameters. */
 
   // To view objects using three.js, 
   // 3 entities are required. 
@@ -33,8 +44,8 @@ const init = () => {
   renderer.setClearColor(0x000000, 0.5);
 
   // Set up asset loader.
-  const asset_loader = new GLTFLoader();
-  console.log(asset_loader);
+  const gltf_loader = new GLTFLoader();
+  load_assets(gltf_loader);
 
   // Render objects on screen.
   renderer.render(scene, camera);
