@@ -30,7 +30,7 @@ const init = () => {
   });
   renderer.setPixelRatio(window.devicePixelRatio);
   renderer.setSize(window.innerWidth, window.innerHeight);
-  renderer.setClearColor(0x000000, 0.9);
+  // renderer.setClearColor(0x000000, 0.9);
 
   // Set up asset gltf_loader.
   const gltf_loader = new GLTFLoader();
@@ -122,7 +122,7 @@ const init = () => {
   });
   
   // Add lighting.
-  const light = new THREE.DirectionalLight(0xffffff, 1.1);
+  const light = new THREE.DirectionalLight(0xffffff, 0.8);
   light.position.set(0,0,1); // length, height, depth
   scene.add(light);
 
@@ -130,19 +130,21 @@ const init = () => {
   let float_val;
   const animate = () => {
     requestAnimationFrame(animate);
-    // console.log(model_character.position.y)
+
+    // float character
     if (model_character.position.y >= -10) float_val = -0.002;
     else if (model_character.position.y <= -10.4) float_val = 0.002;
     model_character.position.y += float_val;
 
+    // rotate heart
     model_heart.rotation.y += 0.01;
 
+    // rotate phone
     model_phone.rotation.y -= 0.01;
 
+    // rotate gears
     model_gear_small.rotation.z += 0.02;
-
     model_gear_medium.rotation.z -= 0.01;
-
     model_gear_big.rotation.z += 0.005;
 
     renderer.render(scene, camera);
