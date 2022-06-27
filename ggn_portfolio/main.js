@@ -1,9 +1,8 @@
 import './style.css' 
 
 import * as THREE from 'three';
-import { GLTFLoader } from 'three/examples/jsm/loaders/GLTFLoader.js'
-
 import { load_models } from './load_models';
+import { create_controls } from './controls';
 
 /** Initializes scene parameters. */
 
@@ -22,7 +21,7 @@ const camera = new THREE.PerspectiveCamera(
   window.innerWidth/window.innerHeight, // aspect ratio
   0.1, 1000 // view frustum
 );
-camera.position.set(0,2,5);
+camera.position.set(0,5,15);
 
 // Set up renderer.
 const renderer = new THREE.WebGLRenderer({
@@ -32,6 +31,7 @@ const renderer = new THREE.WebGLRenderer({
 renderer.setPixelRatio(window.devicePixelRatio);
 renderer.setSize(window.innerWidth, window.innerHeight);
 // renderer.setClearColor(0x000000, 0.9);
+
 window.onresize = () => {
   renderer.setSize(window.innerWidth, window.innerHeight);
   camera.aspect = window.innerWidth/window.innerHeight;
@@ -43,6 +43,11 @@ const light = new THREE.DirectionalLight(0xffffff, 0.8);
 light.position.set(0,0,1); // length, height, depth
 scene.add(light);
 
+// Orbit Control
+const controls = create_controls({
+  "camera":camera, "canvas":renderer.domElement
+});
+
 async function init() {
   const { human, heart, phone, gears } = await load_models();
 
@@ -53,6 +58,8 @@ async function init() {
   scene.add(gears.medium);
   scene.add(gears.small);
 
+  // set_controls_target({"controls": controls, "target_obj": human})
+
   animate();
 }
 
@@ -62,23 +69,7 @@ init();
 // let float_val;
 const animate = () => {
   requestAnimationFrame(animate);
-
-//   // float character
-//   if (model_character.position.y >= -10) float_val = -0.002;
-//   else if (model_character.position.y <= -10.4) float_val = 0.002;
-//   model_character.position.y += float_val;
-
-//   // rotate heart
-//   model_heart.rotation.y += 0.01;
-
-//   // rotate phone
-//   model_phone.rotation.y -= 0.01;
-
-//   // rotate gears
-//   model_gear_small.rotation.z += 0.02;
-//   model_gear_medium.rotation.z -= 0.01;
-//   model_gear_big.rotation.z += 0.005;
-
+  controls.update();
   renderer.render(scene, camera);
 }
 
