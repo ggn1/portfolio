@@ -1,8 +1,9 @@
 import './style.css' 
 
 import * as THREE from 'three';
-import { load_models } from './load_models';
+import { load_models, spin } from './load_models';
 import { create_controls } from './controls';
+import { pick } from './object_picking';
 
 /** Initializes scene parameters. */
 
@@ -48,7 +49,6 @@ const controls = create_controls({
   "camera":camera, "canvas":renderer.domElement
 });
 
-
 async function init() {
   const { human, heart, phone, gears } = await load_models();
 
@@ -62,7 +62,6 @@ async function init() {
   // set_controls_target({"controls": controls, "target_obj": human})
 
   animate();
-  spin();
 }
 
 init();
@@ -73,25 +72,11 @@ init();
 const animate = () => {
   requestAnimationFrame(animate);
   controls.update();
+  spin();
+  pick();
   renderer.render(scene, camera);
 }
 
-let float_val = 0.005; // float up by default
-const get_float_val = (obj) => {
-  if (
-    obj.position.y >= 0.2 ||
-    obj.position.y <= -0.02
-  ) float_val *= -1;
-  return float_val;
-}
-
-const spin = () => {
-  requestAnimationFrame(spin);
-  scene.getObjectByName("Heart").rotateY(0.01);
-  scene.getObjectByName("Phone").rotateZ(-0.01);
-  scene.getObjectByName("GearBig").rotateZ(0.005);
-  scene.getObjectByName("GearMedium").rotateZ(-0.015);
-  scene.getObjectByName("GearSmall").rotateZ(-0.025);  
-}
+export { scene, camera, renderer };
 
 
