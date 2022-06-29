@@ -14,13 +14,15 @@ window.addEventListener( 'pointermove', on_pointer_move );
 
 // for object picking
 const raycaster = new THREE.Raycaster();
-let picked_object = null;
+
+let picked = undefined;
+const highlight_color = new THREE.Color(0xdcfc88);
 
 const pick = () => {
 	// restore the color if there is a picked object
-	if (picked_object) {
-		toggle_spin_state(picked_object.name);
-		picked_object = undefined;
+	if (picked) {
+		toggle_spin_state(picked.name);
+		picked = undefined;
 	}
 
 	// cast a ray through the frustum
@@ -31,8 +33,16 @@ const pick = () => {
 
 	if (intersected_objects.length) {
 		// pick the first object. It's the closest one
-		picked_object = intersected_objects[0].object;
-		toggle_spin_state(picked_object.name);
+		picked = intersected_objects[0].object;
+
+		if (
+			picked.name.includes("Heart") || 
+			picked.name.includes("Phone") || 
+			picked.name.includes("Gear")
+		) {	
+			toggle_spin_state(picked.name);
+		}
+		// console.log(picked.object.material)
 	}
 }
 

@@ -1,27 +1,8 @@
+import * as THREE from 'three';
 import { GLTFLoader } from 'three/examples/jsm/loaders/GLTFLoader.js'
 import { scene } from './main';
 
 const loader = new GLTFLoader();
-let spin_state = {"heart":true, "phone":true, "gears":true}
-
-const spin = () => {
-
-  if (spin_state.heart == true) scene.getObjectByName("Heart").rotateY(0.01);
-  else scene.getObjectByName("Heart").rotation.set(0, 0, 0);
-
-  if (spin_state.phone == true) scene.getObjectByName("Phone").rotateZ(0.01);
-  else scene.getObjectByName("Phone").rotation.set(0, 0, 0);
-
-  if (spin_state.gears == true) {
-    scene.getObjectByName("GearBig").rotateZ(0.005);
-    scene.getObjectByName("GearMedium").rotateZ(-0.015);
-    scene.getObjectByName("GearSmall").rotateZ(-0.025);
-  } else {
-    scene.getObjectByName("GearBig").rotation.set(0, 0, 0);
-    scene.getObjectByName("GearMedium").rotation.set(0, 0, 0);
-    scene.getObjectByName("GearSmall").rotation.set(0, 0, 0);
-  } 
-}
 
 const set_up_model = (model_data) => {
     const model = model_data.scene;
@@ -61,6 +42,64 @@ async function load_models() {
     gears.small.position.set(-1.45, 4, -0.7);
 
     return { human, heart, phone, gears};
+}
+
+let spin_state = {"heart":true, "phone":true, "gears":true}
+const grey = new THREE.Color(0x757575);
+const red = new THREE.Color(0xff1111)
+const blue = new THREE.Color(0x1111ff);
+const green = new THREE.Color(0x11ff11);
+
+const spin = () => {
+
+  if (spin_state.heart == true) {
+    let heart = scene.getObjectByName("Heart");
+    heart.rotateY(0.01);
+    heart.scale.set(1,1,1);
+  }
+  else {
+    let heart = scene.getObjectByName("Heart");
+    heart.rotation.set(0,0,0);
+    heart.scale.set(1.5,1.5,1.5);
+  };
+
+  if (spin_state.phone == true) {
+    let phone = scene.getObjectByName("Phone");
+    phone.rotateZ(0.01);
+    phone.scale.set(1,1,1);
+  }
+  else {
+    let phone = scene.getObjectByName("Phone");
+    phone.rotation.set(0,0,0);
+    phone.scale.set(1.5,1.5,1.5);
+  }
+
+  if (spin_state.gears == true) {
+    let gears = {
+        "big": scene.getObjectByName("GearBig"),
+        "medium": scene.getObjectByName("GearMedium"),
+        "small": scene.getObjectByName("GearSmall")
+    };
+    gears.big.rotateZ(0.005);
+    gears.big.material.color = grey;
+    gears.medium.rotateZ(-0.015);
+    gears.medium.material.color = grey;
+    gears.small.rotateZ(-0.025);
+    gears.small.material.color = grey;
+
+  } else {
+    let gears = {
+        "big":scene.getObjectByName("GearBig"),
+        "medium":scene.getObjectByName("GearMedium"),
+        "small":scene.getObjectByName("GearSmall")
+    };
+    gears.big.rotation.set(0,0,0);
+    gears.big.material.color = blue;
+    gears.medium.rotation.set(0,0,0);
+    gears.medium.material.color = green;
+    gears.small.rotation.set(0,0,0);
+    gears.small.material.color = red;
+  } 
 }
 
 const toggle_spin_state = (obj_name) => {
