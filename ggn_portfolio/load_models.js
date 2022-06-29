@@ -44,6 +44,7 @@ async function load_models() {
     return { human, heart, phone, gears};
 }
 
+let cur_obj = null;
 let spin_state = {"heart":true, "phone":true, "gears":true}
 const grey = new THREE.Color(0x757575);
 const red = new THREE.Color(0xff1111)
@@ -51,61 +52,71 @@ const blue = new THREE.Color(0x1111ff);
 const green = new THREE.Color(0x11ff11);
 
 const spin = () => {
-
-  if (spin_state.heart == true) {
-    let heart = scene.getObjectByName("Heart");
-    heart.rotateY(0.01);
-    heart.scale.set(1,1,1);
-  }
-  else {
-    let heart = scene.getObjectByName("Heart");
-    heart.rotation.set(0,0,0);
-    heart.scale.set(1.5,1.5,1.5);
-  };
-
-  if (spin_state.phone == true) {
-    let phone = scene.getObjectByName("Phone");
-    phone.rotateZ(0.01);
-    phone.scale.set(1,1,1);
-  }
-  else {
-    let phone = scene.getObjectByName("Phone");
-    phone.rotation.set(0,0,0);
-    phone.scale.set(1.5,1.5,1.5);
-  }
-
-  if (spin_state.gears == true) {
-    let gears = {
-        "big": scene.getObjectByName("GearBig"),
-        "medium": scene.getObjectByName("GearMedium"),
-        "small": scene.getObjectByName("GearSmall")
+    if (spin_state.heart == true) {
+        let heart = scene.getObjectByName("Heart");
+        heart.rotateY(0.01);
+        heart.scale.set(1,1,1);
+    }
+    else {
+        let heart = scene.getObjectByName("Heart");
+        heart.rotation.set(0,0,0);
+        heart.scale.set(1.5,1.5,1.5);
     };
-    gears.big.rotateZ(0.005);
-    gears.big.material.color = grey;
-    gears.medium.rotateZ(-0.015);
-    gears.medium.material.color = grey;
-    gears.small.rotateZ(-0.025);
-    gears.small.material.color = grey;
 
-  } else {
-    let gears = {
-        "big":scene.getObjectByName("GearBig"),
-        "medium":scene.getObjectByName("GearMedium"),
-        "small":scene.getObjectByName("GearSmall")
-    };
-    gears.big.rotation.set(0,0,0);
-    gears.big.material.color = blue;
-    gears.medium.rotation.set(0,0,0);
-    gears.medium.material.color = green;
-    gears.small.rotation.set(0,0,0);
-    gears.small.material.color = red;
-  } 
+    if (spin_state.phone == true) {
+        let phone = scene.getObjectByName("Phone");
+        phone.rotateZ(0.01);
+        phone.scale.set(1,1,1);
+    }
+    else {
+        let phone = scene.getObjectByName("Phone");
+        phone.rotation.set(0,0,0);
+        phone.scale.set(1.5,1.5,1.5);
+    }
+
+    if (spin_state.gears == true) {
+        let gears = {
+            "big": scene.getObjectByName("GearBig"),
+            "medium": scene.getObjectByName("GearMedium"),
+            "small": scene.getObjectByName("GearSmall")
+        };
+        gears.big.rotateZ(0.005);
+        gears.big.material.color = grey;
+        gears.medium.rotateZ(-0.015);
+        gears.medium.material.color = grey;
+        gears.small.rotateZ(-0.025);
+        gears.small.material.color = grey;
+
+    } else {
+        let gears = {
+            "big":scene.getObjectByName("GearBig"),
+            "medium":scene.getObjectByName("GearMedium"),
+            "small":scene.getObjectByName("GearSmall")
+        };
+        gears.big.rotation.set(0,0,0);
+        gears.big.material.color = blue;
+        gears.medium.rotation.set(0,0,0);
+        gears.medium.material.color = green;
+        gears.small.rotation.set(0,0,0);
+        gears.small.material.color = red;
+    } 
 }
 
 const toggle_spin_state = (obj_name) => {
-    if (obj_name.includes("Heart")) spin_state.heart = !spin_state.heart;
-    else if (obj_name.includes("Phone")) spin_state.phone = !spin_state.phone;
-    else if (obj_name.includes("Gear")) spin_state.gears = !spin_state.gears;
+    if (obj_name.includes("Heart")) {
+        cur_obj = "heart";
+        spin_state.heart = !spin_state.heart;
+    }
+    else if (obj_name.includes("Phone")) {
+        cur_obj = "phone";
+        spin_state.phone = !spin_state.phone;
+    }
+    else if (obj_name.includes("Gear")) {
+        cur_obj = "gears";
+        spin_state.gears = !spin_state.gears;
+    } else {
+        cur_obj = undefined;
+    }
 };
 
-export { load_models, spin , toggle_spin_state };
+export { load_models, spin , toggle_spin_state, cur_obj };

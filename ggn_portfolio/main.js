@@ -2,7 +2,7 @@ import './style.css'
 
 import * as THREE from 'three';
 import { load_models, spin } from './load_models';
-import { create_controls } from './controls';
+import { create_controls } from './orbit_controls';
 import { pick } from './object_picking';
 
 /** Initializes scene parameters. */
@@ -18,11 +18,11 @@ const scene = new THREE.Scene();
 
 // Set up camera.
 const camera = new THREE.PerspectiveCamera(
-  75, // field of view
+  55, // field of view
   window.innerWidth/window.innerHeight, // aspect ratio
   0.1, 1000 // view frustum
 );
-camera.position.set(0,5,15);
+camera.position.set(0,5,20);
 
 // Set up renderer.
 const renderer = new THREE.WebGLRenderer({
@@ -40,9 +40,15 @@ window.onresize = () => {
 };
 
 // Add lighting.
-const light = new THREE.DirectionalLight(0xffffff, 0.8);
-light.position.set(0,0,1); // length, height, depth
-scene.add(light);
+const key_light = new THREE.PointLight( 0xffffff, 2, 100) // color, intensity, decay
+const back_light = new THREE.PointLight( 0xffaaaa, 3, 100 ) // color, intensity, decay
+const fill_light = new THREE.PointLight( 0x888fff, 1.9, 100 ) // color, intensity, decay
+key_light.position.set(9, 5, 10); // length, height, depth
+back_light.position.set(0, 0, -20); // length, height, depth
+back_light.position.set(-3, 5, -5); // length, height, depth
+scene.add(key_light);
+scene.add(back_light);
+scene.add(fill_light);
 
 // Orbit Control
 const controls = create_controls({

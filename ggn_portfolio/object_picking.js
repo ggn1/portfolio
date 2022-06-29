@@ -1,6 +1,6 @@
 import * as THREE from 'three';
 import { scene, camera } from "./main";
-import { toggle_spin_state } from './load_models';
+import { toggle_spin_state, cur_obj } from './load_models';
 
 // keep track of pointer
 const pointer = new THREE.Vector2();
@@ -10,7 +10,12 @@ const on_pointer_move = (e) => {
 	pointer.x = ( e.clientX / window.innerWidth ) * 2 - 1;
 	pointer.y = - ( e.clientY / window.innerHeight ) * 2 + 1;
 }
+const on_mouse_click = () => {
+	console.log("clicked:", cur_obj);
+}
+
 window.addEventListener( 'pointermove', on_pointer_move );
+window.addEventListener( 'mousedown', on_mouse_click );
 
 // for object picking
 const raycaster = new THREE.Raycaster();
@@ -34,16 +39,8 @@ const pick = () => {
 	if (intersected_objects.length) {
 		// pick the first object. It's the closest one
 		picked = intersected_objects[0].object;
-
-		if (
-			picked.name.includes("Heart") || 
-			picked.name.includes("Phone") || 
-			picked.name.includes("Gear")
-		) {	
-			toggle_spin_state(picked.name);
-		}
-		// console.log(picked.object.material)
 	}
+	toggle_spin_state(picked?picked.name:"None");
 }
 
 export { pick };
