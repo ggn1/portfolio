@@ -19,8 +19,8 @@ let picked_object = null;
 const pick = () => {
 	// restore the color if there is a picked object
 	if (picked_object) {
-	toggle_spin_state(picked_object.name);
-	picked_object = undefined;
+		toggle_spin_state(picked_object.name);
+		picked_object = undefined;
 	}
 
 	// cast a ray through the frustum
