@@ -32,9 +32,10 @@ canvas {
 
 .hidden {
   opacity: 0;
-  transition: opacity 0.3s;
+  transition: opacity 1s;
 }
 
 .visible {
   opacity: 1;
+  transition: opacity 1s;
 }

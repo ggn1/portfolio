@@ -2,8 +2,6 @@ import * as THREE from 'three';
 import { scene, camera } from "./main";
 import { hover_obj, cur_obj } from './load_models';
 
-let option_elem = null;
-
 // keep track of pointer
 const pointer = new THREE.Vector2();
 const on_pointer_move = (e) => {
@@ -13,18 +11,7 @@ const on_pointer_move = (e) => {
 	pointer.y = - ( e.clientY / window.innerHeight ) * 2 + 1;
 }
 const on_mouse_click = () => {
-	if (option_elem == null) option_elem = document.getElementById("option");
 	console.log("clicked:", cur_obj);
-	if (cur_obj == "heart") {
-		option_elem.textContent = "About Me";
-		option_elem.className = "visible";
-	} else if (cur_obj == "gears") {
-		option_elem.textContent = "Projects";
-		option_elem.className = "visible";
-	} else if (cur_obj == "phone") {
-		option_elem.textContent = "Contact";
-		option_elem.className = "visible";
-	} else { option_elem.className = "hidden"; }
 }
 
 window.addEventListener( 'pointermove', on_pointer_move );
@@ -34,7 +21,6 @@ window.addEventListener( 'mousedown', on_mouse_click );
 const raycaster = new THREE.Raycaster();
 
 let picked = undefined;
-const highlight_color = new THREE.Color(0xdcfc88);
 
 const pick = () => {
 	// restore the color if there is a picked object

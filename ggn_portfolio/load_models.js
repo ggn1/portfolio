@@ -102,30 +102,35 @@ const spin = () => {
     } 
 }
 
-const set_option = ({ text, class_name }) => {
+let cur_option = {text:"", class_name:"hidden"};
+const set_option = () => {
     let option_elem = document.getElementById("option");
-    option_elem.textContent = text;
-    option_elem.className = class_name;
+    option_elem.textContent = cur_option.text;
+    option_elem.className = cur_option.class_name;
 }
 
 const hover_obj = (obj_name) => {
     if (obj_name.includes("Heart")) {
         cur_obj = "heart";
-        set_option({text:"About Me", class_name:"visible"});
+        cur_option = {text:"About Me", class_name:"visible"};
+        set_option();
         spin_state.heart = !spin_state.heart;
     }
     else if (obj_name.includes("Phone")) {
         cur_obj = "phone";
-        set_option({text:"Contact", class_name:"visible"});
+        cur_option = {text:"Contact", class_name:"visible"};
+        set_option();
         spin_state.phone = !spin_state.phone;
     }
     else if (obj_name.includes("Gear")) {
         cur_obj = "gears";
-        set_option({text:"Projects", class_name:"visible"});
+        cur_option = {text:"Projects", class_name:"visible"};
+        set_option();
         spin_state.gears = !spin_state.gears;
     } else {
         cur_obj = undefined;
-        set_option({text:"", class_name:"hidden"});
+        cur_option.class_name = "hidden";
+        set_option();
     }
 };
 
