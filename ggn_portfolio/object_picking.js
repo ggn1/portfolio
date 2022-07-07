@@ -10,8 +10,13 @@ const on_pointer_move = (e) => {
 	pointer.x = ( e.clientX / window.innerWidth ) * 2 - 1;
 	pointer.y = - ( e.clientY / window.innerHeight ) * 2 + 1;
 }
+
+const root_url = "http://localhost:3000";
 const on_mouse_click = () => {
 	console.log("clicked:", cur_obj);
+	if(cur_obj == "phone") document.location.href = root_url+"\\contact.html";
+	if(cur_obj == "heart") document.location.href = root_url+"\\aboutme.html";
+	if(cur_obj == "gears") document.location.href = root_url+"\\projects.html";
 }
 
 window.addEventListener( 'pointermove', on_pointer_move );
