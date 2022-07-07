@@ -47,9 +47,9 @@ async function load_models() {
 let cur_obj = null;
 let spin_state = {"heart":true, "phone":true, "gears":true}
 const grey = new THREE.Color(0x757575);
-const red = new THREE.Color(0xff1111)
-const blue = new THREE.Color(0x1111ff);
-const green = new THREE.Color(0x11ff11);
+const red = new THREE.Color(0xff0000)
+const blue = new THREE.Color(0x0000ff);
+const green = new THREE.Color(0x00ff00);
 
 const spin = () => {
     if (spin_state.heart == true) {

@@ -16,22 +16,29 @@ import { pick } from './object_picking';
 // Set up scene.
 const scene = new THREE.Scene();
 
+// Add background image.
+// const tex_loader = new THREE.TextureLoader();
+// tex_loader.load(
+//   './assets/bg.png' , 
+//   function(texture){ scene.background = texture; }
+// );
+
 // Set up camera.
 const camera = new THREE.PerspectiveCamera(
-  55, // field of view
+  42, // field of view
   window.innerWidth/window.innerHeight, // aspect ratio
   0.1, 1000 // view frustum
 );
-camera.position.set(0,5,20);
+camera.position.set(0, 5, 30);
 
 // Set up renderer.
 const renderer = new THREE.WebGLRenderer({
-  canvas: document.querySelector("#bg"),
+  canvas: document.querySelector("canvas"),
   antialias: true
 });
 renderer.setPixelRatio(window.devicePixelRatio);
 renderer.setSize(window.innerWidth, window.innerHeight);
-// renderer.setClearColor(0x000000, 0.9);
+// renderer.setClearColor(0x000000, 1);
 
 window.onresize = () => {
   renderer.setSize(window.innerWidth, window.innerHeight);
@@ -41,11 +48,11 @@ window.onresize = () => {
 
 // Add lighting.
 const key_light = new THREE.PointLight( 0xffffff, 2, 100) // color, intensity, decay
-const back_light = new THREE.PointLight( 0xffaaaa, 3, 100 ) // color, intensity, decay
-const fill_light = new THREE.PointLight( 0x888fff, 1.9, 100 ) // color, intensity, decay
-key_light.position.set(9, 5, 10); // length, height, depth
-back_light.position.set(0, 0, -20); // length, height, depth
-back_light.position.set(-3, 5, -5); // length, height, depth
+const back_light = new THREE.PointLight( 0xffaaff, 3, 100 ) // color, intensity, decay
+const fill_light = new THREE.PointLight( 0x0000ff, 1.5, 100 ) // color, intensity, decay
+key_light.position.set(3, 3, 5); // length, height, depth
+back_light.position.set(-5, 4, -20); // length, height, depth
+fill_light.position.set(-3, 2, 5); // length, height, depth
 scene.add(key_light);
 scene.add(back_light);
 scene.add(fill_light);
@@ -64,8 +71,6 @@ async function init() {
   scene.add(gears.big);
   scene.add(gears.medium);
   scene.add(gears.small);
-
-  // set_controls_target({"controls": controls, "target_obj": human})
 
   animate();
 }
