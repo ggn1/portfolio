@@ -29,3 +29,12 @@ canvas {
 #header { top: 4%; }
 
 #footer { bottom: 14%; }
+
+.hidden {
+  opacity: 0;
+  transition: opacity 0.3s;
+}
+
+.visible {
+  opacity: 1;
+}

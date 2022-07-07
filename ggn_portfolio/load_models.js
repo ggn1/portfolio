@@ -102,21 +102,31 @@ const spin = () => {
     } 
 }
 
-const toggle_spin_state = (obj_name) => {
+const set_option = ({ text, class_name }) => {
+    let option_elem = document.getElementById("option");
+    option_elem.textContent = text;
+    option_elem.className = class_name;
+}
+
+const hover_obj = (obj_name) => {
     if (obj_name.includes("Heart")) {
         cur_obj = "heart";
+        set_option({text:"About Me", class_name:"visible"});
         spin_state.heart = !spin_state.heart;
     }
     else if (obj_name.includes("Phone")) {
         cur_obj = "phone";
+        set_option({text:"Contact", class_name:"visible"});
         spin_state.phone = !spin_state.phone;
     }
     else if (obj_name.includes("Gear")) {
         cur_obj = "gears";
+        set_option({text:"Projects", class_name:"visible"});
         spin_state.gears = !spin_state.gears;
     } else {
         cur_obj = undefined;
+        set_option({text:"", class_name:"hidden"});
     }
 };
 
-export { load_models, spin , toggle_spin_state, cur_obj };
+export { load_models, spin , hover_obj, cur_obj };
