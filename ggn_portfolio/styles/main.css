@@ -13,12 +13,12 @@
   overflow: hidden;
 }
 
-canvas {
-  /* position: fixed; */
-  /* display: block; */
-  /* top: 0;
-  left: 0; */
-}
+/* canvas {
+  position: fixed;
+  display: block;
+  top: 0;
+  left: 0;
+} */
 
 #header, #footer {
   width: 100%;

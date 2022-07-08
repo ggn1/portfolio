@@ -1,9 +1,9 @@
-import './style.css' 
+import './styles/main.css' 
 
 import * as THREE from 'three';
-import { load_models, spin } from './load_models';
-import { create_controls } from './orbit_controls';
-import { pick } from './object_picking';
+import { load_models, spin } from './js_modules/load_models';
+import { create_controls } from './js_modules/orbit_controls';
+import { pick } from './js_modules/object_picking';
 
 /** Initializes scene parameters. */
 

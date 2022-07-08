@@ -1,5 +1,5 @@
 import * as THREE from 'three';
-import { scene, camera } from "./main";
+import { scene, camera } from "../main";
 import { hover_obj, cur_obj } from './load_models';
 
 // keep track of pointer

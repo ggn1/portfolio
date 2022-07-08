@@ -1,6 +1,6 @@
 import * as THREE from 'three';
 import { GLTFLoader } from 'three/examples/jsm/loaders/GLTFLoader.js'
-import { scene } from './main';
+import { scene } from '../main';
 
 const loader = new GLTFLoader();
 
@@ -15,12 +15,12 @@ async function load_models() {
         human_data, heart_data, phone_data, 
         gear_big_data, gear_medium_data, gear_small_data
     ] = await Promise.all([
-        loader.loadAsync('./assets/human.glb'),
-        loader.loadAsync('./assets/heart.glb'),
-        loader.loadAsync('./assets/phone.glb'),
-        loader.loadAsync('./assets/gear_big.glb'),
-        loader.loadAsync('./assets/gear_medium.glb'),
-        loader.loadAsync('./assets/gear_small.glb')
+        loader.loadAsync('../assets/human.glb'),
+        loader.loadAsync('../assets/heart.glb'),
+        loader.loadAsync('../assets/phone.glb'),
+        loader.loadAsync('../assets/gear_big.glb'),
+        loader.loadAsync('../assets/gear_medium.glb'),
+        loader.loadAsync('../assets/gear_small.glb')
     ]);
 
     const human = set_up_model(human_data);
