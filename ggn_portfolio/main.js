@@ -7,35 +7,15 @@ import { pick } from './js_modules/object_picking';
 
 /** Initializes scene parameters. */
 
-// To view objects using three.js, 
-// 3 entities are required. 
-// 1. Scene
-// 2. Camera
-// 3. Renderer
-
 // Set up scene.
 const scene = new THREE.Scene();
 
-// Add background image.
-// const tex_loader = new THREE.TextureLoader();
-// tex_loader.load(
-//   './assets/bg.png' , 
-//   function(texture){ scene.background = texture; }
-// );
-
 // Set up camera.
-const camera = new THREE.PerspectiveCamera(
-  42, // field of view
-  window.innerWidth/window.innerHeight, // aspect ratio
-  0.1, 1000 // view frustum
-);
-camera.position.set(0, 5, 30);
+const camera = new THREE.PerspectiveCamera(42,window.innerWidth/window.innerHeight,0.1,1000);
+camera.position.set(0,5,30);
 
 // Set up renderer.
-const renderer = new THREE.WebGLRenderer({
-  canvas: document.querySelector("canvas"),
-  antialias: true
-});
+const renderer = new THREE.WebGLRenderer({canvas: document.querySelector("canvas"),antialias: true});
 renderer.setPixelRatio(window.devicePixelRatio);
 renderer.setSize(window.innerWidth, window.innerHeight);
 // renderer.setClearColor(0x000000, 1);
@@ -58,35 +38,31 @@ scene.add(back_light);
 scene.add(fill_light);
 
 // Orbit Control
-const controls = create_controls({
-  "camera":camera, "canvas":renderer.domElement
-});
+const controls = create_controls({"camera":camera, "canvas":renderer.domElement});
 
+// Render objects on screen.
+const animate = () => {
+  spin();
+  pick();
+  requestAnimationFrame(animate);
+  controls.update();
+  renderer.render(scene, camera);
+}
+
+// Initialize Scene
 async function init() {
+  /** Loads models and adds them to scene. 
+   *  Starts animation loop. */
   const { human, heart, phone, gears } = await load_models();
-
   scene.add(human);
   scene.add(heart);
   scene.add(phone);
   scene.add(gears.big);
   scene.add(gears.medium);
   scene.add(gears.small);
-
   animate();
 }
-
 init();
-
-// Render objects on screen.
-// let float_val;
-
-const animate = () => {
-  requestAnimationFrame(animate);
-  controls.update();
-  spin();
-  pick();
-  renderer.render(scene, camera);
-}
 
 export { scene, camera, renderer };
 
