@@ -1,5 +1,4 @@
 import React from 'react'
-import "../src/index.css"
 export default function Header() {
   return (
     <div className="code" style={{padding:'1%', color:"white", position: 'fixed'}}>
