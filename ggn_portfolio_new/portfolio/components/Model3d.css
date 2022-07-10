@@ -1,6 +1,6 @@
 .canvas {
     background-color: var(--dark);
-    color: var(--light);
+    color: gray;
     text-align: center;
     font-size: 100px;
     padding: 10%;

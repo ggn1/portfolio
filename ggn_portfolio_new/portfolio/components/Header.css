@@ -36,20 +36,17 @@ img:hover {
     transition: filter 3s, transform 1s;
 }
 
-.highlight {
-    filter: hue-rotate(90deg);;
+p {
+    color: gray;
 }
 
 span {
-    color: var(--green);
+    color: var(--light);
+    font-weight: bold;
 }
 
 @media only screen and (max-width: 800px) {
-    .nav_bar {
-        display: block;
-    }
-
-    ul {
-        padding: 5%;
-    }
+    .nav_bar { display: block; }
+    ul { padding: 5%; }
+    img { width: 60px; }
 }
