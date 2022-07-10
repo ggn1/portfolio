@@ -1,11 +1,19 @@
+:root {
+  --orange: #ffc107;
+  --blue: #269cf9;
+  --green: #a9ff73;
+  --red: #f44336;
+  --dark: #0e0e0e;
+  --light: #dedede;
+}
+
 * {
   margin: 0;
-  padding: 5px;
+  padding: 0;
   font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen', 'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue', sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
-  background-color: black;
-  color: white;
+  /* overflow: hidden; */
 }
 
 .code {

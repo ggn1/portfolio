@@ -1,0 +1,7 @@
+.canvas {
+    background-color: var(--dark);
+    color: var(--light);
+    text-align: center;
+    font-size: 100px;
+    padding: 10%;
+}
