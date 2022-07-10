@@ -15,9 +15,10 @@ const camera = new THREE.PerspectiveCamera(42,window.innerWidth/window.innerHeig
 camera.position.set(0,5,30);
 
 // Set up renderer.
-const renderer = new THREE.WebGLRenderer({canvas: document.querySelector("canvas"),antialias: true});
+const renderer = new THREE.WebGLRenderer({canvas,antialias: true});
 renderer.setPixelRatio(window.devicePixelRatio);
 renderer.setSize(window.innerWidth, window.innerHeight);
+document.body.appendChild(renderer.domElement);
 // renderer.setClearColor(0x000000, 1);
 
 window.onresize = () => {
