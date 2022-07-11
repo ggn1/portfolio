@@ -5,6 +5,10 @@ import { OrbitControls } from "three/examples/jsm/controls/OrbitControls"
 import { GLTFLoader } from 'three/examples/jsm/loaders/GLTFLoader'
 
 let canvas, scene, camera, renderer, loader, lights, controls, objects;
+const gray = new THREE.Color(0x757575);
+const red = new THREE.Color(0xff0000)
+const blue = new THREE.Color(0x0000ff);
+const green = new THREE.Color(0x00ff00);
 
 export default function Threejs() {
   // const [objects, setObjects] = useState({});
@@ -81,8 +85,56 @@ export default function Threejs() {
     camera.updateProjectionMatrix();
   };
 
+  const spin = () => {
+    let heart = scene.getObjectByName("Heart");
+    let phone = scene.getObjectByName("Phone");
+    let gear_big = scene.getObjectByName("GearBig");
+    let gear_medium = scene.getObjectByName("GearMedium");
+    let gear_small = scene.getObjectByName("GearSmall");
+
+    if (objects.heart.spin) {
+      heart.rotateY(0.01);
+      heart.scale.set(1,1,1);
+    } else {
+      heart.rotation.set(0,0,0);
+      heart.scale.set(1.5,1.5,1.5);
+    }
+
+    if (objects.phone.spin) {
+      phone.rotateZ(0.01);
+      phone.scale.set(1,1,1);
+    } else {
+      phone.rotation.set(0,0,0);
+      phone.scale.set(1.5,1.5,1.5);
+    }
+
+    if (objects.gear_big.spin == true) {
+        gear_big.rotateZ(0.005);
+        gear_big.material.color = gray;
+    } else {
+        gear_big.rotation.set(0,0,0);
+        gear_big.material.color = blue;
+    }
+
+    if (objects.gear_medium.spin == true) {
+      gear_medium.rotateZ(-0.015);
+      gear_medium.material.color = gray;
+    } else {
+      gear_medium.rotation.set(0,0,0);
+      gear_medium.material.color = green;
+    }
+
+    if (objects.gear_small.spin == true) {
+      gear_small.rotateZ(-0.025);
+      gear_small.material.color = gray;
+    } else {
+      gear_small.rotation.set(0,0,0);
+      gear_small.material.color = red;
+    }
+  }
+
   const animate = () => {
-    // spin();
+    spin();
     // pick();
     controls.update();
     renderer.render(scene, camera);
