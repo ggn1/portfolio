@@ -49,6 +49,6 @@ span {
 
 @media only screen and (max-width: 800px) {
     .nav_bar { display: block; }
-    ul { padding: 5%; }
-    img { width: 60px; }
+    ul { padding: 2%; }
+    img { width: 42px; }
 }

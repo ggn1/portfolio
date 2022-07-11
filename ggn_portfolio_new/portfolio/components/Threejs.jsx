@@ -4,10 +4,10 @@ import * as THREE from 'three';
 import { OrbitControls } from "three/examples/jsm/controls/OrbitControls"
 import { GLTFLoader } from 'three/examples/jsm/loaders/GLTFLoader'
 
-let canvas, scene, camera, renderer, loader, lights, controls;
+let canvas, scene, camera, renderer, loader, lights, controls, objects;
 
 export default function Threejs() {
-  const [objects, setObjects] = useState({});
+  // const [objects, setObjects] = useState({});
 
   const add_lights = () => {
     // lights
@@ -34,6 +34,7 @@ export default function Threejs() {
     
     let set_up_model = (model_data) => {
       const model = model_data.scene;
+      model.position.set(0, -0.4, 0); // position objects slightly lower
       model.rotation.set(0, 3.14, 0); // rotate z axis by 180 degrees
       return model;
     }
@@ -50,29 +51,28 @@ export default function Threejs() {
         loader.loadAsync('../assets/gear_small.glb')
     ]);
 
-    let loaded_models = {};
-    loaded_models.human = {model: set_up_model(human_data)};
+    objects = {};
+    objects.human = {model: set_up_model(human_data)};
 
-    loaded_models.heart = {model:set_up_model(heart_data), spin:true};
-    loaded_models.heart.model.position.set(1.3, 3.1, 0.3);
+    objects.heart = {model:set_up_model(heart_data), spin:true};
+    objects.heart.model.position.set(1.3, 2.9, 0.3);
 
-    loaded_models.phone = {model:set_up_model(phone_data), spin:true};
-    loaded_models.phone.model.position.set(-1.3, 3.1, 0.3);
+    objects.phone = {model:set_up_model(phone_data), spin:true};
+    objects.phone.model.position.set(-1.3, 3, 0.3);
 
-    loaded_models.gear_big = {model:set_up_model(gear_big_data), spin:true};
-    loaded_models.gear_big.model.position.set(0, 3.2, -0.5);
+    objects.gear_big = {model:set_up_model(gear_big_data), spin:true};
+    objects.gear_big.model.position.set(0, 3, -0.5);
 
-    loaded_models.gear_medium = {model:set_up_model(gear_medium_data), spin:true};
-    loaded_models.gear_medium.model.position.set(1.5, 4, -0.7);
+    objects.gear_medium = {model:set_up_model(gear_medium_data), spin:true};
+    objects.gear_medium.model.position.set(1.5, 3.9, -0.7);
 
-    loaded_models.gear_small = {model:set_up_model(gear_small_data), spin:true};
-    loaded_models.gear_small.model.position.set(-1.45, 4, -0.7);
+    objects.gear_small = {model:set_up_model(gear_small_data), spin:true};
+    objects.gear_small.model.position.set(-1.45, 3.9, -0.7);
 
     // add objects to scene
-    Object.values(loaded_models).forEach((obj) => { scene.add(obj.model); });
+    Object.values(objects).forEach((obj) => { scene.add(obj.model); });
 
-    setObjects(loaded_models);
-    // animate();
+    animate();
   }
 
   window.onresize = () => {
@@ -113,11 +113,7 @@ export default function Threejs() {
     loader = new GLTFLoader();
     load_models();
 
-    //render on screen
-    animate();
-
-    // console.log(objects);
-  }, []);
+  }, [window]);
 
   return (
     <div>
