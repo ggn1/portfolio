@@ -12,30 +12,14 @@
 }
 
 ul {
-    list-style-type: none;
+    
 }
 
 li {
     display: inline;
     padding: 10px;
     vertical-align: middle;
-}
-
-li > a {
-    text-decoration: none;
-}
-
-img {
-    width: 32px;
-    filter: none;
-    transition: filter 1s;
-    transition: filter 0.5 transform 0.5s;
-}
-
-img:hover {
-    filter: hue-rotate(360deg);
-    transform: rotate(360deg);
-    transition: filter 3s, transform 1s;
+    float: left;
 }
 
 p {
@@ -48,7 +32,12 @@ span {
 }
 
 @media only screen and (max-width: 800px) {
-    .nav_bar { display: block; }
-    ul { padding: 2%; }
-    img { width: 42px; }
+    .nav_bar { 
+        display: block;
+    }
+    ul { 
+        display: flex;
+        justify-content: center;
+        padding: 2%;
+    }
 }

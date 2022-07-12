@@ -9,6 +9,7 @@ const gray = new THREE.Color(0x757575);
 const red = new THREE.Color(0xff0000)
 const blue = new THREE.Color(0x0000ff);
 const green = new THREE.Color(0x00ff00);
+const root_url = "http://localhost:3000";
 
 const add_lights = () => {
   // lights
@@ -129,13 +130,84 @@ const spin = () => {
   }
 }
 
+// keep track of pointer
+const pointer = new THREE.Vector2();
+const on_pointer_move = (e) => {
+	// calculate pointer position in normalized device coordinates
+	// (-1 to +1) for both components
+	pointer.x = (e.clientX/window.innerWidth)*2-1;
+	pointer.y = -(e.clientY/window.innerHeight)*2+1;
+}
+window.addEventListener('pointermove', on_pointer_move);
+
+let selected_option;
+const hover_obj = (obj_name) => {
+  if (obj_name.includes("Heart")) {
+      objects.heart.spin = !objects.heart.spin;
+      selected_option = "about_button";
+  } else if (obj_name.includes("Phone")) {
+      objects.phone.spin = !objects.phone.spin;
+      selected_option = "contact_button";
+  }
+  else if (obj_name.includes("Gear")) {
+      objects.gear_big.spin = !objects.gear_big.spin;
+      objects.gear_medium.spin = !objects.gear_medium.spin;
+      objects.gear_small.spin = !objects.gear_small.spin;
+      selected_option = "projects_button";
+  } else {
+      selected_option = undefined;
+  }
+
+  if (selected_option) {
+    document.getElementById(selected_option).className = "highlight";
+  } else { 
+    document.getElementById("home_button").className = "no_highlight";
+    document.getElementById("about_button").className = "no_highlight";
+    document.getElementById("contact_button").className = "no_highlight";
+    document.getElementById("projects_button").className = "no_highlight";
+  }
+};
+
+// for object picking
+const raycaster = new THREE.Raycaster();
+let picked = undefined;
+const pick = () => {
+	// restore to original state if there is a picked object
+	if (picked) {
+		hover_obj(picked.name);
+		picked = undefined;
+	}
+
+	// cast a ray through the frustum
+	raycaster.setFromCamera(pointer, camera);
+
+	// get the list of objects the ray intersected
+	const intersected_objects = raycaster.intersectObjects(scene.children);
+
+	if (intersected_objects.length) {
+		// pick the first object. It's the closest one
+		picked = intersected_objects[0].object;
+	}
+
+	hover_obj(picked?picked.name:"None");
+}
+
+// render objects to screen
 const animate = () => {
-  // pick();
+  // console.log(objects);
   controls.update();
   renderer.render(scene, camera);
   requestAnimationFrame(animate);
   spin();
+  pick();
 }
+
+const on_mouse_click = () => {
+  if (picked) {
+    console.log("clicked:", selected_option);
+  }
+}
+window.addEventListener('mousedown', on_mouse_click);
 
 export default function Threejs() {
   useEffect(() => {
