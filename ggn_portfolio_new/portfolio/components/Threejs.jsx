@@ -76,56 +76,64 @@ const load_models = async () => {
   animate();
 }
 
+let ui_objects;
 const spin = () => {
-  let heart = scene.getObjectByName("Heart");
-  let phone = scene.getObjectByName("Phone");
-  let gear_big = scene.getObjectByName("GearBig");
-  let gear_medium = scene.getObjectByName("GearMedium");
-  let gear_small = scene.getObjectByName("GearSmall");
-
+  if (!ui_objects) {
+    ui_objects = {
+      heart: scene.getObjectByName("Heart"),
+      phone: scene.getObjectByName("Phone"),
+      gear_big: scene.getObjectByName("GearBig"),
+      gear_medium: scene.getObjectByName("GearMedium"),
+      gear_small: scene.getObjectByName("GearSmall")
+    };
+  }
+  
   if (objects.heart.spin) {
-    heart.rotateY(0.01);
-    heart.scale.set(1,1,1);
+    ui_objects.heart.rotateY(0.01);
+    ui_objects.heart.scale.set(1,1,1);
   } else {
-    heart.rotation.set(0,0,0);
-    heart.scale.set(1.5,1.5,1.5);
+    ui_objects.heart.rotation.set(0,0,0);
+    ui_objects.heart.scale.set(1.5,1.5,1.5);
   }
 
   if (objects.phone.spin) {
-    phone.rotateZ(0.01);
-    phone.scale.set(1,1,1);
+    ui_objects.phone.rotateZ(0.01);
+    ui_objects.phone.scale.set(1,1,1);
   } else {
-    phone.rotation.set(0,0,0);
-    phone.scale.set(1.5,1.5,1.5);
+    ui_objects.phone.rotation.set(0,0,0);
+    ui_objects.phone.scale.set(1.5,1.5,1.5);
   }
 
   if (objects.gear_big.spin == true) {
-    gear_big.rotateZ(0.005);
-    gear_big.material.color = gray;
+    ui_objects.gear_big.rotateZ(0.005);
+    ui_objects.gear_big.material.color = gray;
   } else {
-    gear_big.rotation.set(0,0,0);
-    gear_big.material.color = blue;
+    ui_objects.gear_big.rotation.set(0,0,0);
+    ui_objects.gear_big.material.color = blue;
   }
 
   if (objects.gear_medium.spin == true) {
-    gear_medium.rotateZ(-0.015);
-    gear_medium.material.color = gray;
+    ui_objects.gear_medium.rotateZ(-0.015);
+    ui_objects.gear_medium.material.color = gray;
   } else {
-    gear_medium.rotation.set(0,0,0);
-    gear_medium.material.color = green;
+    ui_objects.gear_medium.rotation.set(0,0,0);
+    ui_objects.gear_medium.material.color = green;
   }
 
   if (objects.gear_small.spin == true) {
-    gear_small.rotateZ(-0.025);
-    gear_small.material.color = gray;
+    ui_objects.gear_small.rotateZ(-0.025);
+    ui_objects.gear_small.material.color = gray;
   } else {
-    gear_small.rotation.set(0,0,0);
-    gear_small.material.color = red;
+    ui_objects.gear_small.rotation.set(0,0,0);
+    ui_objects.gear_small.material.color = red;
   }
 }
 
-// keep track of pointer
+// for object picking
+const raycaster = new THREE.Raycaster();
 const pointer = new THREE.Vector2();
+let selected_option, picked_objects;
+
 const on_pointer_move = (e) => {
 	// calculate pointer position in normalized device coordinates
 	// (-1 to +1) for both components
@@ -134,74 +142,47 @@ const on_pointer_move = (e) => {
 }
 window.addEventListener('pointermove', on_pointer_move);
 
-let selected_option;
-const hover_obj = (obj_name) => {
-  if (obj_name.includes("Heart")) {
-      objects.heart.spin = !objects.heart.spin;
+const handle_hover = (intersected) => {
+  if (intersected && intersected.object.name.includes("Heart")) {
+    if (selected_option != "about_button") {
       selected_option = "about_button";
-  } else if (obj_name.includes("Phone")) {
-      objects.phone.spin = !objects.phone.spin;
-      selected_option = "contact_button";
-  }
-  else if (obj_name.includes("Gear")) {
-      objects.gear_big.spin = !objects.gear_big.spin;
-      objects.gear_medium.spin = !objects.gear_medium.spin;
-      objects.gear_small.spin = !objects.gear_small.spin;
+      picked_objects = ["heart"];
+      picked_objects.forEach(o => objects[o].spin = false);
+    }
+  } else if (intersected && intersected.object.name.includes("Gear")) {
+    if (selected_option != "projects_button") {
       selected_option = "projects_button";
+      picked_objects = ["gear_big", "gear_medium", "gear_small"];
+      picked_objects.forEach(o => objects[o].spin = false);
+    }
+  } else if (intersected && intersected.object.name.includes("Phone")) {
+    if (selected_option != "contact_button") {
+      picked_objects = ["phone"];
+      selected_option = "contact_button";
+    }
   } else {
-      selected_option = undefined;
+    if (picked_objects) picked_objects.forEach(o => objects[o].spin = true);
+    if (selected_option) document.getElementById(selected_option).className = "no_highlight";
+    selected_option = undefined;
+    picked_objects = undefined;
   }
-
-  if (selected_option) {
-    document.getElementById(selected_option).className = "highlight";
-  } else { 
-    document.getElementById("home_button").className = "no_highlight";
-    document.getElementById("about_button").className = "no_highlight";
-    document.getElementById("contact_button").className = "no_highlight";
-    document.getElementById("projects_button").className = "no_highlight";
-  }
+  if (picked_objects) picked_objects.forEach(o => objects[o].spin = false);
+  if (selected_option) document.getElementById(selected_option).className = "highlight";
 };
 
-// for object picking
-const raycaster = new THREE.Raycaster();
-let picked = undefined;
 const pick = () => {
-	// restore to original state if there is a picked object
-	if (picked) {
-		hover_obj(picked.name);
-		picked = undefined;
-	}
-
-	// cast a ray through the frustum
-	raycaster.setFromCamera(pointer, camera);
-
-	// get the list of objects the ray intersected
-	const intersected_objects = raycaster.intersectObjects(scene.children);
-
-	if (intersected_objects.length) {
-		// pick the first object. It's the closest one
-		picked = intersected_objects[0].object;
-	}
-
-	hover_obj(picked?picked.name:"None");
+  raycaster.setFromCamera(pointer, camera);
+  handle_hover(raycaster.intersectObjects(scene.children)[0]);
 }
 
 // render objects to screen
 const animate = () => {
-  // console.log(objects);
   controls.update();
   renderer.render(scene, camera);
-  requestAnimationFrame(animate);
   spin();
   pick();
+  requestAnimationFrame(animate);
 }
-
-const on_mouse_click = () => {
-  // if (picked) {
-  //   console.log("clicked:", selected_option);
-  // }
-}
-window.addEventListener('mousedown', on_mouse_click);
 
 window.onresize = () => {
   renderer.setSize(window.innerWidth, window.innerHeight-0.5);

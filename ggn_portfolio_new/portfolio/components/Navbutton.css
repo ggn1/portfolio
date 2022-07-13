@@ -13,15 +13,14 @@ img:hover {
 
 .no_highlight {
     font-size: 12px;
-    color: gray;
     background-color: none;
     transition: color 1s, background-color 1s;
 }
 
 .highlight {
     font-size: 12px;
-    color: var(--light);
-    background-color: var(--blue);
+    color: var(--dark);
+    background-color: var(--light);
     transition: color 1s, background-color 1s;
 }
 
