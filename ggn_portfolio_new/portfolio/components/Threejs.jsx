@@ -202,7 +202,7 @@ export default function Threejs() {
     renderer = new THREE.WebGLRenderer({canvas, antialias: true});
     renderer.setSize(window.innerWidth, window.innerHeight-0.5);
     renderer.setPixelRatio(window.devicePixelRatio);
-    document.body.appendChild(renderer.domElement);
+    document.getElementById("canvas_div").appendChild(renderer.domElement);
   
     // lights
     add_lights();
@@ -213,11 +213,9 @@ export default function Threejs() {
     // load objects
     loader = new GLTFLoader();
     load_models();
-  }, []);
+  }, [window]);
 
   return (
-    <div>
-      <canvas id="threejs_canvas"></canvas>
-    </div>
+    <canvas id="threejs_canvas"></canvas>
   )
 }

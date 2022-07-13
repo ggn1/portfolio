@@ -3,6 +3,8 @@ import Threejs from '../components/Threejs'
 
 export default function Home() {
   return (
-    <Threejs />
+    <div id="canvas_div">
+      <Threejs />
+    </div>
   )
 }
