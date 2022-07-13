@@ -1,5 +1,5 @@
-import React from 'react'
-import './Navbutton.css'
+import React from 'react';
+import './Navbutton.css';
 
 export default function Navbutton({source, text, id}) {
     return (
