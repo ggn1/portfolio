@@ -139,7 +139,6 @@ export default function Threejs() {
       pointer.x = (e.clientX/window.innerWidth)*2-1;
       pointer.y = -(e.clientY/window.innerHeight)*2+1;
     }
-    window.addEventListener('pointermove', on_pointer_move);
 
     const handle_hover = (intersected) => {
       if (intersected && intersected.object.name.includes("Heart")) {
@@ -175,19 +174,28 @@ export default function Threejs() {
     }
 
     // render objects to screen
+    let frame_request;
     const animate = () => {
       controls.update();
       renderer.render(scene, camera);
       spin();
       pick();
-      requestAnimationFrame(animate);
+      frame_request = requestAnimationFrame(animate);
     }
 
-    window.onresize = () => {
+    const on_window_resize = () => {
       renderer.setSize(window.innerWidth, window.innerHeight-0.5);
       camera.aspect = window.innerWidth/window.innerHeight;
       camera.updateProjectionMatrix();
-    };
+    }
+
+    const on_model_click = () => {
+      selected_option && document.getElementById(selected_option.replace("button", "link")).click();
+    }
+
+    window.addEventListener('resize', on_window_resize);
+    window.addEventListener('pointermove', on_pointer_move);
+    window.addEventListener('mousedown', on_model_click);
 
     // canvas
     const canvas = document.getElementById("threejs_canvas");
@@ -210,6 +218,13 @@ export default function Threejs() {
     // load objects
     const loader = new GLTFLoader();
     load_models();
+
+    return () => {
+      cancelAnimationFrame(frame_request);
+      window.removeEventListener('resize', on_window_resize);
+      window.removeEventListener('pointermove', on_pointer_move);
+      window.removeEventListener('mousedown', on_model_click);
+    }
   });
 
   return (
