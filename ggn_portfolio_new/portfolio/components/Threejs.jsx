@@ -76,12 +76,6 @@ const load_models = async () => {
   animate();
 }
 
-window.onresize = () => {
-  renderer.setSize(window.innerWidth, window.innerHeight);
-  camera.aspect = window.innerWidth/window.innerHeight;
-  camera.updateProjectionMatrix();
-};
-
 const spin = () => {
   let heart = scene.getObjectByName("Heart");
   let phone = scene.getObjectByName("Phone");
@@ -203,11 +197,17 @@ const animate = () => {
 }
 
 const on_mouse_click = () => {
-  if (picked) {
-    console.log("clicked:", selected_option);
-  }
+  // if (picked) {
+  //   console.log("clicked:", selected_option);
+  // }
 }
 window.addEventListener('mousedown', on_mouse_click);
+
+window.onresize = () => {
+  renderer.setSize(window.innerWidth, window.innerHeight-0.5);
+  camera.aspect = window.innerWidth/window.innerHeight;
+  camera.updateProjectionMatrix();
+};
 
 export default function Threejs() {
   useEffect(() => {
@@ -217,10 +217,9 @@ export default function Threejs() {
     // scene, camera, renderer
     scene = new THREE.Scene();
     camera = new THREE.PerspectiveCamera(42, window.innerWidth/window.innerHeight, 0.1, 1000);
-    camera.position.set(0, 5, 30);
-    camera.aspect = window.innerWidth/window.innerHeight;
+    camera.position.set(0, 5, 23);
     renderer = new THREE.WebGLRenderer({canvas, antialias: true});
-    renderer.setSize(window.innerWidth, window.innerHeight);
+    renderer.setSize(window.innerWidth, window.innerHeight-0.5);
     renderer.setPixelRatio(window.devicePixelRatio);
     document.body.appendChild(renderer.domElement);
   
