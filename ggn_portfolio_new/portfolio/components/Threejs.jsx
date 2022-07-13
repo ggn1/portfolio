@@ -210,11 +210,6 @@ export default function Threejs() {
     // load objects
     const loader = new GLTFLoader();
     load_models();
-
-    return () => {
-      console.log(objects);
-    }
-
   });
 
   return (
