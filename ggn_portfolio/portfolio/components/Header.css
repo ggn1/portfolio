@@ -4,7 +4,6 @@
     justify-content: space-between;
     text-align: center;
     padding: 2%;
-    color: var(--light);
     font-size: 23px;
 }
 
@@ -12,10 +11,22 @@
     position: absolute;
     background-color: rgba(0, 0, 0, 0);
     z-index: 2;
+    color: var(--light);
+    /* transition: background-color 1s, color 1s; */
+}
+
+.overlay a {
+    color: var(--light);
 }
 
 .no_overlay { 
-    background-color: var(--dark);
+    background-color: var(--light);
+    color: var(--dark);
+    transition: background-color 1s, color 1s;
+}
+
+.no_overlay a {
+    color: var(--dark);
 }
 
 li {
@@ -23,10 +34,6 @@ li {
     padding: 10px;
     vertical-align: middle;
     float: left;
-}
-
-p {
-    color: var(--light);
 }
 
 span {

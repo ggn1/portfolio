@@ -1,0 +1,53 @@
+form {
+    display: flex;
+    justify-content: center;
+}
+
+form p { 
+    color: var(--dark);
+    font-size: 23px;
+    display: flex;
+    justify-content: space-between;
+    width: 82.5%;
+    margin-left: 8.8%;
+}
+
+form > div {
+    text-align: center;
+    padding: 2%;
+    width: 60%;
+    height: 100%;
+    border-radius: 10px;
+    box-shadow: 2px 2px 2px 3px rgba(0, 0, 0, 0.2);
+}
+
+form input {
+    width: 80%;
+    height: 30px;
+    margin-top: 3%;
+    border-radius: 5px;
+    border-width: 1px; 
+    padding: 1%;
+}
+
+form #submit {
+    width: 82.5%;
+    font-weight: 600;
+    height: 40px;
+    border-radius: 5px;
+    background-color: rgba(0, 0, 0, 0.2);
+    color: var(--dark);
+    margin-bottom: 3%;
+    border: none;
+    transition: background-color 1s, color 1s;
+}
+
+form #submit:hover {
+    background-color: var(--blue);
+    color: var(--light);
+    transition: background-color 0.5s, color 0.5s;
+}
+
+@media only screen and (max-width: 800px) {
+    form > div { width: 80%; }
+}

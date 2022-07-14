@@ -1,6 +1,5 @@
 import React, { useEffect } from 'react'
-import Button from '../components/Button'
-import "./Contact.css"
+import ContactForm from '../components/ContactForm';
 
 export default function Contact() {
 
@@ -10,9 +9,8 @@ export default function Contact() {
   })
 
   return (
-    <div className="contacts">
-      <Button img_src="../assets/gmail.png"/>
-      <Button img_src="../assets/linkedin.png" on_click={() => window.open('//www.linkedin.com/in/gayathrigirishnair')} />
+    <div>
+      <ContactForm />
     </div>
   )
 }
