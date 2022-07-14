@@ -1,5 +1,4 @@
 #nav_bar {
-    position: absolute;
     width: 96%;
     display: flex;
     justify-content: space-between;
@@ -7,8 +6,16 @@
     padding: 2%;
     color: var(--light);
     font-size: 23px;
-    z-index: 2;
+}
+
+.overlay {
+    position: absolute;
     background-color: rgba(0, 0, 0, 0);
+    z-index: 2;
+}
+
+.no_overlay { 
+    background-color: var(--dark);
 }
 
 li {
@@ -19,17 +26,17 @@ li {
 }
 
 p {
-    color: gray;
+    color: var(--light);
 }
 
 span {
-    color: var(--blue);
     font-weight: bold;
 }
 
 @media only screen and (max-width: 800px) {
     #nav_bar { 
         display: block;
+        font-size: 20px;
     }
     ul { 
         display: flex;
