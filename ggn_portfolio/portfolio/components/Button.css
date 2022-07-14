@@ -1,0 +1,11 @@
+img {
+    filter: none;
+    transition: filter 1s;
+    transition: filter 0.5 transform 0.5s;
+}
+
+img:hover {
+    filter: hue-rotate(360deg);
+    transform: rotate(360deg);
+    transition: filter 3s, transform 1s;
+}

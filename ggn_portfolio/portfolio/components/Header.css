@@ -11,10 +11,6 @@
     background-color: rgba(0, 0, 0, 0);
 }
 
-ul {
-    
-}
-
 li {
     display: inline;
     padding: 10px;
@@ -27,7 +23,7 @@ p {
 }
 
 span {
-    color: var(--light);
+    color: var(--blue);
     font-weight: bold;
 }
 
