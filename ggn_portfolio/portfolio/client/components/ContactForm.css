@@ -1,9 +1,9 @@
-form {
+#form {
     display: flex;
     justify-content: center;
 }
 
-form p { 
+#form p { 
     color: var(--dark);
     font-size: 23px;
     display: flex;
@@ -12,7 +12,7 @@ form p {
     margin-left: 8.8%;
 }
 
-form > div {
+#form > div {
     text-align: center;
     padding: 2%;
     width: 60%;
@@ -21,7 +21,7 @@ form > div {
     box-shadow: 2px 2px 2px 3px rgba(0, 0, 0, 0.2);
 }
 
-form input {
+#form input {
     width: 80%;
     height: 30px;
     margin-top: 3%;
@@ -30,7 +30,7 @@ form input {
     padding: 1%;
 }
 
-form #submit {
+#form #submit {
     width: 82.5%;
     font-weight: 600;
     height: 40px;
@@ -42,12 +42,26 @@ form #submit {
     transition: background-color 1s, color 1s;
 }
 
-form #submit:hover {
+#form #submit:hover {
     background-color: var(--blue);
     color: var(--light);
     transition: background-color 0.5s, color 0.5s;
 }
 
+#char_count {
+    width: 82.5%;
+    margin-left: 8.8%;
+    font-size: 12px;
+    color: gray;
+    text-align: right;
+}
+
+.invalid:focus {
+    outline: none;
+    border: 1px solid var(--red);
+    color: var(--red);
+}
+
 @media only screen and (max-width: 800px) {
-    form > div { width: 80%; }
+    #form > div { width: 80%; }
 }
