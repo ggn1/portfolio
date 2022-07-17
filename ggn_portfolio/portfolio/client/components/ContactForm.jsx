@@ -1,10 +1,11 @@
 import React, { useState, useRef } from 'react'
 import './ContactForm.css'
 import Button from "./Button"
+import Axios from "axios"
 
 export default function ContactForm() {
   const message_char_limit = 500;
-  const valid_input = new RegExp('[a-z0-9.,!?@ ]', "ig");
+  const valid_input = new RegExp('[a-z0-9.,!?@_ ]', "ig");
 
   const [message_chars, set_message_chars] = useState(0);
   
@@ -12,69 +13,75 @@ export default function ContactForm() {
   const input_email = useRef();
   const input_message = useRef();
 
-  let form_validity = {name:0, email:0, message:0};
+  let form_validity = {name:false, email:false, message:false};
 
-  const sanity_check = (text) => {
-    if (text) {
-      if(!text.match(valid_input) || text.match(valid_input).length != text.length) return false;
-      else return true;
-    } else return false;
-  }
-
-  const on_message_change = () => {
-    let is_valid = sanity_check(input_message.current.value);
-    set_message_chars(input_message.current.value.length);
-    if ((message_chars >= message_char_limit-1) || !is_valid) {
-      input_message.current.className = "invalid";
-      form_validity.message = 0;
-    }
-    else {
-      input_message.current.className = "";
-      form_validity.message = 1;
-    }
-  }
-
-  const on_email_change = () => {
-    let is_valid = sanity_check(input_email.current.value);
-    if (!is_valid || !input_email.current.value.includes("@")) {
-      input_email.current.className = "invalid";
-      form_validity.email = 0;
-    }
-    else {
-      input_email.current.className = "";
-      form_validity.email = 1;
+  const sanity_check = (text, field) => {
+    if(text && text.match(valid_input) && (text.match(valid_input).length == text.length)) {
+      if (field == "email" && !text.includes("@")) return false;
+      if (field == "message") {
+        set_message_chars(text.length);
+        return (text.length <= message_char_limit);
+      }
+      return true;
+    } else {
+      set_message_chars(0);
+      return false;
     }
   }
 
   const on_name_change = () => {
-    let is_valid = sanity_check(input_name.current.value);
-    if (!is_valid) {
-      input_name.current.className = "invalid";
-      form_validity.name = 0;
-    }
-    else {
+    if(sanity_check(input_name.current.value, "name")) {
+      form_validity.name = true;
       input_name.current.className = "";
-      form_validity.name = 1;
+    } else {
+      form_validity.name = false;
+      input_name.current.className = "invalid";
+    }
+  }
+  
+  const on_email_change = () => {
+    if(sanity_check(input_email.current.value, "email")) {
+      form_validity.email = true;
+      input_email.current.className = "";
+    } else {
+      form_validity.email = false;
+      input_email.current.className = "invalid";
+    }
+  }
+
+  const on_message_change = () => {
+    if(sanity_check(input_message.current.value, "message")) {
+      form_validity.message = true;
+      input_message.current.className = "";
+    } else {
+      form_validity.message = false;
+      input_message.current.className = "invalid";
     }
   }
 
   const on_submit = () => {
-    on_message_change();
-    on_email_change();
-    on_name_change();
-    if (Object.values(form_validity).every((num) => num == 1)) {
+    on_name_change("name"); 
+    on_email_change("email"); 
+    on_message_change("message");
+
+    if (form_validity.name && form_validity.email && form_validity.message) {
+      Axios.post("http://localhost:3001/api/insert", {
+        name:input_name.current.value,
+        email: input_email.current.value,
+        message: input_message.current.value
+      }).then((response) => {
+        console.log(response);
+      }).catch((error) => {
+        console.log(error);
+      });
       alert("submitted!");
-      window.open("//localhost:3001"
-        // + "?" + input_name.current.value
-        // + "&" + input_email.current.value
-        // + "&" + input_message.current.value
-      );
     } else {
-      alert("empty/invalid fields");
+      alert("empty or invalid fields :(");
     };
-    form_validity.name = 0;
-    form_validity.email = 0;
-    form_validity.message = 0;
+
+    input_name.current.value = "";
+    input_email.current.value = "";
+    input_message.current.value = "";
   }
 
   return (
@@ -85,8 +92,8 @@ export default function ContactForm() {
               <Button img_src={"../assets/linkedin.png"} on_click={() => window.open("//www.linkedin.com/in/gayathrigirishnair")}/>
           </p>
           <input type="text" id="name" name="name" placeholder='Full Name *' onChange={on_name_change} ref={input_name}/><br />
-          <input type="text" id="email" name="email" placeholder='Your Email ID *' onChange={on_email_change} ref={input_email}/><br />
-          <input type="text" id="message" name="message" placeholder='Your Message *' onChange={on_message_change} ref={input_message}/><br />
+          <input type="text" id="email" name="email" placeholder='Email ID *' onChange={on_email_change} ref={input_email}/><br />
+          <input type="text" id="message" name="message" placeholder='Message *' onChange={on_message_change} ref={input_message}/><br />
           <div id="char_count">({ (message_char_limit - message_chars) >= 0 ? message_char_limit - message_chars : 0 } characters left)</div>
           <input type="submit" id="submit" value="Submit" onClick={on_submit}/>
         </div>
