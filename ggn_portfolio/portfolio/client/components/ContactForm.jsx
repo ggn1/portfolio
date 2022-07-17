@@ -74,7 +74,7 @@ export default function ContactForm() {
       }).catch((error) => {
         console.log(error);
       });
-      alert("submitted!");
+      alert("Thanks for reaching out! I'll get back to you asap.");
     } else {
       alert("empty or invalid fields :(");
     };
