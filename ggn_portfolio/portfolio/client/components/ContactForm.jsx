@@ -5,7 +5,7 @@ import Axios from "axios"
 
 export default function ContactForm() {
   const message_char_limit = 500;
-  const valid_input = new RegExp('[a-z0-9.,!?@_ ]', "ig");
+  const valid_input = new RegExp('[a-z0-9.,!?\'\"@_ ]', "ig");
 
   const [message_chars, set_message_chars] = useState(0);
   
@@ -74,14 +74,14 @@ export default function ContactForm() {
       }).catch((error) => {
         console.log(error);
       });
+      input_name.current.value = "";
+      input_email.current.value = "";
+      input_message.current.value = "";
+      set_message_chars(0);
       alert("Thanks for reaching out! I'll get back to you asap.");
     } else {
       alert("empty or invalid fields :(");
     };
-
-    input_name.current.value = "";
-    input_email.current.value = "";
-    input_message.current.value = "";
   }
 
   return (

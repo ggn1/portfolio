@@ -6,6 +6,8 @@ export default function Projects() {
     return () => document.getElementById("nav_bar").className = "overlay";
   });
   return (
-    <div>Projects</div>
+    <div>
+      Projects
+    </div>
   )
 }
