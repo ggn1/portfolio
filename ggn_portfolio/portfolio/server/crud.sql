@@ -19,10 +19,6 @@ INSERT INTO contacts (name, email, message) VALUES (
 	"hey! mail me. you got a selected for a job at pixar!"
 );
 
-TRUNCATE TABLE contacts;
-
-SELECT * FROM contacts;
-
 -- PROJECTS
 
 -- DROP TABLE projects; 
@@ -31,7 +27,8 @@ SELECT * FROM contacts;
 -- 	id INT NOT NULL AUTO_INCREMENT PRIMARY KEY,
 --     title VARCHAR(256) NOT NULL,
 --     brief VARCHAR(320) NOT NULL,
---     skills VARCHAR (320) NOT NULL
+--     skills VARCHAR(320) NOT NULL,
+--     thumbnail_embed_link VARCHAR(256) NOT NULL
 -- ) ENGINE=InnoDB;
 
 INSERT INTO projects (title, brief, skills) VALUES (
@@ -82,7 +79,8 @@ INSERT INTO files (title, embed_link, priority, project_id) VALUES (
 
 SELECT id FROM projects WHERE (title = "Tennis Racquet Data Dashboard");
 
-SELECT * FROM videos;
+SELECT * FROM projects;
+TRUNCATE TABLE contacts;
 
 -- DELETE FROM files WHERE id=11;
 

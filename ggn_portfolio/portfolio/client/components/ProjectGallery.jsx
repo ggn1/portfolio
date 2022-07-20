@@ -1,5 +1,7 @@
 import React, { useEffect, useState } from 'react'
 import Axios from "axios"
+import ProjectCard from './ProjectCard';
+import "./ProjectGallery.css"
 
 export default function ProjectGallary() {
 
@@ -11,15 +13,16 @@ export default function ProjectGallary() {
         let selection = [];
         Axios.get(url).then(response => {
             response.data.map(project => {
-                selection.push(<p key={project.id}>{project.title}</p>);
+                selection.push(<ProjectCard key={project.id} project={project} color={
+                    (project.id % 2) == 0 ? "#3329f8" : "#333333"
+                } />);
             });
             set_projects(selection);
         }).catch(error => console.error("ERROR:", error));
-
     }, []);
 
     return (
-    <div>
+    <div id="gallery">
         {projects}
     </div>
     )

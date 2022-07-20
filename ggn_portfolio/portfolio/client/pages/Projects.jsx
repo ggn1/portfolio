@@ -1,5 +1,5 @@
 import React, { useEffect } from 'react'
-import ProjectGallary from '../components/ProjectGallary';
+import ProjectGallery from '../components/ProjectGallery';
 
 export default function Projects() {
   useEffect(() => {
@@ -8,7 +8,7 @@ export default function Projects() {
   });
   return (
     <div>
-      <ProjectGallary />
+      <ProjectGallery />
     </div>
   )
 }

@@ -1,10 +1,10 @@
 #nav_bar {
-    width: 96%;
+    width: 100%;
     display: flex;
-    justify-content: space-between;
-    text-align: center;
+    justify-content: space-around;
     padding: 2%;
     font-size: 23px;
+    text-align: center;
 }
 
 .overlay {
@@ -29,14 +29,14 @@
     color: var(--dark);
 }
 
-li {
+#nav_bar li {
     display: inline;
     padding: 10px;
     vertical-align: middle;
     float: left;
 }
 
-span {
+#nav_bar span {
     font-weight: bold;
 }
 
@@ -45,9 +45,9 @@ span {
         display: block;
         font-size: 20px;
     }
-    ul { 
+    #nav_bar ul { 
         display: flex;
         justify-content: center;
-        padding: 2%;
+        padding: 2% 0;
     }
 }
