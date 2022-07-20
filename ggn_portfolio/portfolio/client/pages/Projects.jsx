@@ -1,4 +1,5 @@
 import React, { useEffect } from 'react'
+import ProjectGallary from '../components/ProjectGallary';
 
 export default function Projects() {
   useEffect(() => {
@@ -7,7 +8,7 @@ export default function Projects() {
   });
   return (
     <div>
-      Projects
+      <ProjectGallary />
     </div>
   )
 }

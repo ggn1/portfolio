@@ -22,7 +22,20 @@ app.post("/api/insert", (req, res) => {
         if (err) console.log("ERROR:", err);
         else console.log("SUCCESS:", result);
     });
-})
+});
+
+app.get("/api/projects", (req, res) => {
+    let sql_select = "SELECT * FROM projects";
+
+    if (req.query.id) sql_select += (" WHERE id = " + req.query.id);
+
+    sql_select += ";";
+
+    db.query(sql_select, (err, result) => {
+        if (err) console.log("SELECT ERROR:", err);
+        else res.send(result);
+    });
+});
 
 app.listen(3001, () => {
     console.log("running on port 3001");
