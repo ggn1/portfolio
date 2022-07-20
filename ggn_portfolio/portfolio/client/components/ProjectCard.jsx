@@ -11,6 +11,6 @@ export default function ProjectCard({project, color}) {
             <Button img_src="../assets/spanner.png"></Button>
             <Button img_src="../assets/eye.png"></Button>
         </div>
-    </div>  
+    </div>
   )
 }

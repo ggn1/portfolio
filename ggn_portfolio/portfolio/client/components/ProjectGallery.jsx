@@ -2,10 +2,10 @@ import React, { useEffect, useState } from 'react'
 import Axios from "axios"
 import ProjectCard from './ProjectCard';
 import "./ProjectGallery.css"
+import Button from './Button';
 
 export default function ProjectGallary() {
 
-    // const [id, set_id] = useState(0);
     const [projects, set_projects] = useState([]);
 
     useEffect(() => {
@@ -22,8 +22,8 @@ export default function ProjectGallary() {
     }, []);
 
     return (
-    <div id="gallery">
-        {projects}
-    </div>
-    )
+        <div id="gallery">
+            {projects}
+        </div>
+    );
 }
