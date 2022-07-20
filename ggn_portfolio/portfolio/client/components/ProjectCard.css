@@ -6,11 +6,6 @@
     width: 200px;
 }
 
-.project_card div {
-    display: flex;
-    justify-content: center;
-}
-
 .project_card img {
     margin: 10px 20px 0px;
 }
