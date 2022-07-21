@@ -2,12 +2,15 @@ import React, { useState, useRef } from 'react'
 import './ContactForm.css'
 import Button from "./Button"
 import Axios from "axios"
+import Popup from "./Popup"
 
 export default function ContactForm() {
   const message_char_limit = 500;
   const valid_input = new RegExp('[a-z0-9.,!?\'\"@_ ]', "ig");
 
   const [message_chars, set_message_chars] = useState(0);
+  const [success_popup, set_success_popup] = useState(false);
+  const [fail_popup, set_fail_popup] = useState(false);
   
   const input_name = useRef();
   const input_email = useRef();
@@ -78,25 +81,31 @@ export default function ContactForm() {
       input_email.current.value = "";
       input_message.current.value = "";
       set_message_chars(0);
-      alert("Thanks for reaching out! I'll get back to you asap.");
+      set_success_popup(true);
+      set_fail_popup(false);
     } else {
-      alert("empty or invalid fields :(");
+      set_success_popup(false);
+      set_fail_popup(true);
     };
   }
 
   return (
-    <div id="form">
-        <div>
-          <p>
-              Contact Me!
-              <Button img_src={"../assets/linkedin.png"} on_click={() => window.open("//www.linkedin.com/in/gayathrigirishnair")}/>
-          </p>
-          <input type="text" id="name" name="name" placeholder='Full Name *' onChange={on_name_change} ref={input_name}/><br />
-          <input type="text" id="email" name="email" placeholder='Email ID *' onChange={on_email_change} ref={input_email}/><br />
-          <input type="text" id="message" name="message" placeholder='Message *' onChange={on_message_change} ref={input_message}/><br />
-          <div id="char_count">({ (message_char_limit - message_chars) >= 0 ? message_char_limit - message_chars : 0 } characters left)</div>
-          <input type="submit" id="submit" value="Submit" onClick={on_submit}/>
-        </div>
-    </div>
+    <>
+      <div id="form">
+          <div class="form_body">
+            <p>
+                Contact Me!
+                <Button img_src={"../assets/linkedin.png"} on_click={() => window.open("//www.linkedin.com/in/gayathrigirishnair")}/>
+            </p>
+            <input type="text" id="name" name="name" placeholder='Full Name *' onChange={on_name_change} ref={input_name}/><br />
+            <input type="text" id="email" name="email" placeholder='Email ID *' onChange={on_email_change} ref={input_email}/><br />
+            <input type="text" id="message" name="message" placeholder='Message *' onChange={on_message_change} ref={input_message}/><br />
+            <div id="char_count">({ (message_char_limit - message_chars) >= 0 ? message_char_limit - message_chars : 0 } characters left)</div>
+            <input type="submit" id="submit" value="Submit" onClick={on_submit}/>
+          </div>
+          { success_popup ? <Popup title="Thank you for reaching out!" body="I'll get back to you asap." handle_close={() => set_success_popup(false)}/> : null }
+          { fail_popup ? <Popup title="Empty or invalid fields." body="Please try again." handle_close={() => set_fail_popup(false)}/> : null }
+      </div>
+    </>
   )
 }
