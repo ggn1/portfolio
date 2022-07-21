@@ -13,9 +13,7 @@ export default function ProjectGallary() {
         let selection = [];
         Axios.get(url).then(response => {
             response.data.map(project => {
-                selection.push(<ProjectCard key={project.id} project={project} color={
-                    (project.id % 2) == 0 ? "#3329f8" : "#333333"
-                } />);
+                selection.push(<ProjectCard key={project.id} project={project}/>);
             });
             set_projects(selection);
         }).catch(error => console.error("ERROR:", error));

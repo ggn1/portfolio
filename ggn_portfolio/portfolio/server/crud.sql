@@ -28,7 +28,7 @@ INSERT INTO contacts (name, email, message) VALUES (
 --     title VARCHAR(256) NOT NULL,
 --     brief VARCHAR(320) NOT NULL,
 --     skills VARCHAR(320) NOT NULL,
---     thumbnail_embed_link VARCHAR(256) NOT NULL
+--     thumbnail VARCHAR(256) NOT NULL
 -- ) ENGINE=InnoDB;
 
 INSERT INTO projects (title, brief, skills) VALUES (
@@ -36,6 +36,10 @@ INSERT INTO projects (title, brief, skills) VALUES (
 	"Interactive data dashboard displaying 'tennis racquet specifications' data and data story discovered using the same.",
     "HTML5, CSS3, JavaScript, D3.js, Python, Jupyter Notebook, Pandas, NumPy, Matplotlib, Scikit-Learn"
 );
+
+UPDATE projects
+SET thumbnail="https://drive.google.com/uc?export=view&id=1aRbL_7WnQXEz4OcTei-hn4ksahMsuGRw" 
+WHERE id=2;
 
 -- VIDEOS
 
@@ -79,7 +83,7 @@ INSERT INTO files (title, embed_link, priority, project_id) VALUES (
 
 SELECT id FROM projects WHERE (title = "Tennis Racquet Data Dashboard");
 
-SELECT * FROM projects;
+SELECT * FROM contacts;
 TRUNCATE TABLE contacts;
 
 -- DELETE FROM files WHERE id=11;
