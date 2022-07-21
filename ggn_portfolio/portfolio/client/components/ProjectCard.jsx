@@ -4,7 +4,7 @@ import "./Button"
 import Button from './Button'
 import Popup from './Popup';
 
-export default function ProjectCard({project}) {
+export default function ProjectCard({project, handle_project_select}) {
 
   const [popup, set_popup] = useState(false);
 
@@ -18,7 +18,7 @@ export default function ProjectCard({project}) {
           <h5>{project.title}</h5>
           <span>
               <Button img_src="../assets/spanner.png" on_click={show_popup}></Button>
-              <Button img_src="../assets/eye.png"></Button>
+              <Button img_src="../assets/eye.png" on_click={() => handle_project_select(project.id)}></Button>
           </span>
         </div>
     </div>
