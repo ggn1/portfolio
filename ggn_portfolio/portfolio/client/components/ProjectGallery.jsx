@@ -2,7 +2,8 @@ import React, { useEffect, useState } from 'react'
 import Axios from "axios"
 import ProjectCard from './ProjectCard';
 import "./ProjectGallery.css"
-import Button from './Button';
+import ProjectDetails from './ProjectDetails';
+
 
 export default function ProjectGallary() {
 
@@ -11,6 +12,7 @@ export default function ProjectGallary() {
     const [project, set_project] = useState(null);
 
     useEffect(() => {
+        // get all project briefs
         let url = window.location.href.replace("3000","3001");
         if (project_id == 0) {
             url += "/get";
@@ -21,10 +23,13 @@ export default function ProjectGallary() {
                 });
                 set_projects(selection);
             }).catch(error => console.error("ERROR:", error));
+        
+        // get selected project details
         } else {
             url += "/get?id=" + project_id;
             Axios.get(url).then(response => {
-                console.log("SUCCESS:", response);
+                // console.log("SUCCESS:", response);
+                set_project(<ProjectDetails project={response.data[0]} handle_back2gallery={() => set_project_id(0)}/>)
             }).catch(error => console.error("ERROR:", error));
         }
     }, [project_id]);

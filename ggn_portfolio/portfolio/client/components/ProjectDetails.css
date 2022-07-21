@@ -1,0 +1,8 @@
+#project_details {
+    width: 80%;
+}
+
+.project_details_header {
+    display: flex;
+    justify-content: space-between;
+}
