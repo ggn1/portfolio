@@ -68,12 +68,12 @@ export default function ContactForm() {
     on_message_change("message");
 
     if (form_validity.name && form_validity.email && form_validity.message) {
-      Axios.post("http://localhost:3001/api/insert", {
+      Axios.post(window.location.href.replace("3000","3001")+"/put", {
         name:input_name.current.value,
         email: input_email.current.value,
         message: input_message.current.value
       }).then((response) => {
-        console.log(response);
+        // console.log(response);
       }).catch((error) => {
         console.log(error);
       });
@@ -92,7 +92,7 @@ export default function ContactForm() {
   return (
     <>
       <div id="form">
-          <div class="form_body">
+          <div className="form_body">
             <p>
                 Contact Me!
                 <Button img_src={"../assets/linkedin.png"} on_click={() => window.open("//www.linkedin.com/in/gayathrigirishnair")}/>

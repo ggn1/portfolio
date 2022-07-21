@@ -15,7 +15,7 @@ app.use(cors());
 app.use(express.json());
 app.use(body_parser.urlencoded({ extended:true }));
 
-app.post("/api/insert", (req, res) => {
+app.post("/contact/put", (req, res) => {
     const [name, email, message] = [req.body.name, req.body.email, req.body.message]; 
     const sql_insert = "INSERT INTO contacts (name, email, message) VALUES (?,?,?);";
     db.query(sql_insert, [name, email, message], (err, result) => {
@@ -24,7 +24,7 @@ app.post("/api/insert", (req, res) => {
     });
 });
 
-app.get("/api/projects", (req, res) => {
+app.get("/projects/get", (req, res) => {
     let sql_select = "SELECT * FROM projects";
 
     if (req.query.id) sql_select += (" WHERE id = " + req.query.id);

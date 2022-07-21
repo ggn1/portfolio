@@ -7,9 +7,10 @@ import Button from './Button';
 export default function ProjectGallary() {
 
     const [projects, set_projects] = useState([]);
+    const [selected_project, set_selected_project] = useState(0);
 
     useEffect(() => {
-        let url = "http://localhost:3001/api/projects";
+        let url = window.location.href.replace("3000","3001") + "/get";
         let selection = [];
         Axios.get(url).then(response => {
             response.data.map(project => {
@@ -18,6 +19,12 @@ export default function ProjectGallary() {
             set_projects(selection);
         }).catch(error => console.error("ERROR:", error));
     }, []);
+
+    useEffect(() => {
+        if (selected_project > 0) {
+
+        }
+    }, [selected_project]);
 
     return (
         <div id="gallery">
