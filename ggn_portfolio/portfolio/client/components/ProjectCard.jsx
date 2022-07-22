@@ -13,13 +13,14 @@ export default function ProjectCard({project, handle_project_select}) {
 
   return (
     <>
-      <div className='project_card' style={{ "backgroundImage": "url("+project.thumbnail+")" }}>
+      <div className='project_card' onClick={() => handle_project_select(project.id)} style={{ "backgroundImage": "url("+project.thumbnail+")" }}>
         <div className='card_body'>
           <h5>{project.title}</h5>
-          <span>
+          <div>
               <Button img_src="../assets/spanner.png" on_click={show_popup}></Button>
-              <Button img_src="../assets/eye.png" on_click={() => handle_project_select(project.id)}></Button>
-          </span>
+              <Button img_src="../assets/github.png" on_click={() => window.open(project.github)}></Button>
+              {/* <Button img_src="../assets/eye.png" ></Button> */}
+          </div>
         </div>
     </div>
     { popup ? <Popup title="Skills Applied" body={project.skills} handle_close={close_popup}/> : null }

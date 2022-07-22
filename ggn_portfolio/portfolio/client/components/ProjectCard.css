@@ -2,9 +2,15 @@
     padding: 25px;
     border-radius: 20px;
     text-align: center;
-    box-shadow: 2px 2px 2px 3px rgba(0, 0, 0, 0.2);
+    box-shadow: 2px 2px 2px 3px rgba(0, 0, 0, 0.5);
     width: 230px;
     background-color: black;
+    transition: scale 0.5s;
+}
+
+.project_card:hover {
+    scale: 1.04;
+    transition: scale 0.5s;
 }
 
 .card_body {
@@ -14,8 +20,13 @@
     color: var(--light);
 }
 
-.project_card img {
+/* .project_card img {
     margin: 10px 20px 0px;
+} */
+
+.card_body > div {
+    display: flex;
+    justify-content: space-evenly;
 }
 
 @media only screen and (max-width: 800px) {

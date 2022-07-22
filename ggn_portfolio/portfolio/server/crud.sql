@@ -28,7 +28,8 @@ INSERT INTO contacts (name, email, message) VALUES (
 --     title VARCHAR(256) NOT NULL,
 --     brief VARCHAR(320) NOT NULL,
 --     skills VARCHAR(320) NOT NULL,
---     thumbnail VARCHAR(256) NOT NULL
+--     thumbnail VARCHAR(256) NOT NULL,
+--     github VARCHAR(128) NOT NULL
 -- ) ENGINE=InnoDB;
 
 INSERT INTO projects (title, brief, skills) VALUES (
@@ -38,37 +39,28 @@ INSERT INTO projects (title, brief, skills) VALUES (
 );
 
 UPDATE projects
-SET thumbnail="https://drive.google.com/uc?export=view&id=1aRbL_7WnQXEz4OcTei-hn4ksahMsuGRw" 
+SET github="https://github.com/ggn1/Tennis-Racquet-Data-Dashboard" 
 WHERE id=2;
-
--- VIDEOS
-
--- DROP TABLE videos; 
-
--- CREATE TABLE videos(
--- 	id INT NOT NULL AUTO_INCREMENT PRIMARY KEY,
---     embed_link VARCHAR(320) NOT NULL,
---     project_id INT NOT NULL,
---     FOREIGN KEY (project_id) REFERENCES projects(id)
--- ) ENGINE=InnoDB;
-
-INSERT INTO videos (embed_link, project_id) VALUES (
-	"https://drive.google.com/file/d/1b5blCrQjf_OCuuxIX12lCSqADsn00DHI/preview",
-    2
-);
 
 -- FILES
 
 -- DROP TABLE files; 
 
--- CREATE TABLE files(
--- 	id INT NOT NULL AUTO_INCREMENT PRIMARY KEY,
---     title VARCHAR(256) NOT NULL,
---     embed_link VARCHAR(320) NOT NULL UNIQUE,
---     priority INT NOT NULL,
---     project_id INT NOT NULL,
---     FOREIGN KEY (project_id) REFERENCES projects(id)
--- ) ENGINE=InnoDB;
+CREATE TABLE files(
+	id INT NOT NULL AUTO_INCREMENT PRIMARY KEY,
+    src VARCHAR(256),
+    embed_link VARCHAR(256),
+    priority INT NOT NULL,
+    project_id INT NOT NULL,
+    FOREIGN KEY (project_id) REFERENCES projects(id)
+) ENGINE=InnoDB;
+
+INSERT INTO files (title, embed_link, priority, project_id) VALUES (
+	"index.js",
+	"https://drive.google.com/file/d/11IYWTOyp_8ukgSZRVxHYFh7wHXz2wzmk/preview",
+    6, -- priority
+    2  -- project_id
+);
 
 INSERT INTO files (title, embed_link, priority, project_id) VALUES (
 	"index.js",
@@ -83,7 +75,7 @@ INSERT INTO files (title, embed_link, priority, project_id) VALUES (
 
 SELECT id FROM projects WHERE (title = "Tennis Racquet Data Dashboard");
 
-SELECT * FROM contacts;
+SELECT thumbnail FROM projects;
 TRUNCATE TABLE contacts;
 
 -- DELETE FROM files WHERE id=11;
