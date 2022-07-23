@@ -6,3 +6,20 @@
     display: flex;
     justify-content: space-between;
 }
+
+.project_details_files {
+    width: 80%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
+
+.project_details_files img, .project_details_files iframe {
+    border-radius: 10px;
+    margin-top: 50px;
+    box-shadow: 2px 2px 2px 3px rgba(0, 0, 0, 0.5);
+}
+
+.project_details_files {
+    margin-bottom: 50px;
+}

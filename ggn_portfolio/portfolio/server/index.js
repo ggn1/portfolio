@@ -25,16 +25,27 @@ app.post("/contact/put", (req, res) => {
 });
 
 app.get("/projects/get", (req, res) => {
-    let sql_select = "SELECT * FROM projects";
-
-    if (req.query.id) sql_select += (" WHERE id = " + req.query.id);
-
-    sql_select += ";";
-
-    db.query(sql_select, (err, result) => {
-        if (err) console.log("SELECT ERROR:", err);
-        else res.send(result);
-    });
+    let q;
+    if (req.query.id) {
+        let result;
+        q = "SELECT * FROM projects WHERE id = " + req.query.id + ";";
+        db.query(q, (err1, res1) => {
+            if (err1) console.log("SELECT ERROR1:", err1);
+            else result = res1[0];
+            q = "SELECT * FROM files WHERE project_id = " + req.query.id + ";";
+            db.query(q, (err2, res2) => {
+                if (err2) console.log("SELECT ERROR2:", err2);
+                else result.files = res2;
+                res.send(result);
+            });
+        });
+    } else {
+        q = "SELECT * FROM projects;";
+        db.query(q, (err1, res1) => {
+            if (err1) console.log("SELECT ERROR:", err1);
+            else res.send(res1);
+        });
+    }
 });
 
 app.listen(3001, () => {

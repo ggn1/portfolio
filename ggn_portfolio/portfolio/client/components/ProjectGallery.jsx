@@ -29,7 +29,7 @@ export default function ProjectGallary() {
             url += "/get?id=" + project_id;
             Axios.get(url).then(response => {
                 // console.log("SUCCESS:", response);
-                set_project(<ProjectDetails project={response.data[0]} handle_back2gallery={() => set_project_id(0)}/>)
+                set_project(<ProjectDetails project={response.data} handle_back2gallery={() => set_project_id(0)}/>)
             }).catch(error => console.error("ERROR:", error));
         }
     }, [project_id]);
