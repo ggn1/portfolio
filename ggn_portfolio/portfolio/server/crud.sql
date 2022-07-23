@@ -32,7 +32,7 @@ INSERT INTO contacts (name, email, message) VALUES (
 --     github VARCHAR(128) NOT NULL
 -- ) ENGINE=InnoDB;
 
-INSERT INTO projects (title, brief, skills) VALUES (
+INSERT INTO projects (title, brief, skills, thumbnail, github) VALUES (
 	"Tennis Racquet Data Dashboard",
 	"Interactive data dashboard displaying 'tennis racquet specifications' data and data story discovered using the same.",
     "HTML5, CSS3, JavaScript, D3.js, Python, Jupyter Notebook, Pandas, NumPy, Matplotlib, Scikit-Learn"
@@ -55,17 +55,15 @@ CREATE TABLE files(
     FOREIGN KEY (project_id) REFERENCES projects(id)
 ) ENGINE=InnoDB;
 
-INSERT INTO files (title, embed_link, priority, project_id) VALUES (
-	"index.js",
-	"https://drive.google.com/file/d/11IYWTOyp_8ukgSZRVxHYFh7wHXz2wzmk/preview",
+INSERT INTO files (src, priority, project_id) VALUES (
+	"https://drive.google.com/uc?export=view&id=17D2MO732T_zgc5SJ_wVlHvrWWY3BLqD5",
     6, -- priority
     2  -- project_id
 );
 
-INSERT INTO files (title, embed_link, priority, project_id) VALUES (
-	"index.js",
-	"https://drive.google.com/file/d/11IYWTOyp_8ukgSZRVxHYFh7wHXz2wzmk/preview",
-    6, -- priority
+INSERT INTO files (embed_link, priority, project_id) VALUES (
+	"https://drive.google.com/file/d/1b5blCrQjf_OCuuxIX12lCSqADsn00DHI/preview",
+    3, -- priority
     2  -- project_id
 );
 
@@ -73,7 +71,7 @@ INSERT INTO files (title, embed_link, priority, project_id) VALUES (
 
 -- SELECTION
 
-SELECT id FROM projects WHERE (title = "Tennis Racquet Data Dashboard");
+SELECT src FROM projects WHERE (title = "Tennis Racquet Data Dashboard");
 
 SELECT thumbnail FROM projects;
 TRUNCATE TABLE contacts;
