@@ -5,27 +5,14 @@ import Tag from './Tag'
 
 export default function ProjectDetails({project, handle_back2gallery}) {
 
-  const [files, set_files] = useState();
-  const [skills, set_skills] = useState();
+  const files = [];
+  project.files.sort((a, b) => (a.priority > b.priority ? 1 : -1)).forEach(file => {
+    if (file.src) files.push(<img src={file.src} width="100%"/>);
+    else if (file.embed_link) files.push(<iframe src={file.embed_link} autoplay="true"/>);
+  });
 
-  useEffect(() => {
-    // sort files by priority from 1 upwards 
-    let arr1 = [];
-    project.files.sort((a, b) => (a.priority > b.priority ? 1 : -1)).forEach(file => {
-      if (file.src) {
-        arr1.push(<img src={file.src} width="100%"/>);
-      } else if (file.embed_link) {
-        arr1.push(<iframe src={file.embed_link} autoplay="true"/>);
-      }
-    })
-    set_files(arr1);
-
-    let arr2 = [];
-    project.skills.split(",").forEach(skill => {
-      arr2.push(<Tag text={skill} />);
-    });
-    set_skills(arr2);
-  }, []);
+  const skills = [];
+  project.skills.split(",").forEach(skill => { skills.push(<Tag text={skill} />); });
 
   return (
     <div id="project_details">
@@ -35,7 +22,9 @@ export default function ProjectDetails({project, handle_back2gallery}) {
         </div>
         <div>{project.brief}</div>
         <div className='project_details_skills'>{skills?skills:null}</div>
-        <div className='project_details_files'>{files?files:null}</div>
+        <div style = {{ "display": "flex", "justify-content": "center", "width": "100%"}}>
+          <div className='project_details_files'>{files?files:null}</div>
+        </div>
     </div>
   )
 }
