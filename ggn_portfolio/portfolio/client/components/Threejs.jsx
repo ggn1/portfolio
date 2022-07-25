@@ -207,6 +207,7 @@ export default function Threejs() {
     const renderer = new THREE.WebGLRenderer({canvas, antialias: true});
     renderer.setSize(window.innerWidth, window.innerHeight-0.5);
     renderer.setPixelRatio(window.devicePixelRatio);
+    scene.background = new THREE.Color(0x10101a)
     document.getElementById("canvas_div").appendChild(renderer.domElement);
   
     // lights
