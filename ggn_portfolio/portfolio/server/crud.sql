@@ -64,16 +64,14 @@ INSERT INTO files (src, priority, project_id) VALUES (
 INSERT INTO files (embed_link, priority, project_id) VALUES (
 	"https://drive.google.com/file/d/1b5blCrQjf_OCuuxIX12lCSqADsn00DHI/preview",
     3, -- priority
-    2  -- project_id
+    1  -- project_id
 );
 
--- ALTER TABLE files AUTO_INCREMENT=8; 
-
--- SELECTION
+UPDATE files SET embed_link="https://www.youtube.com/embed/1uOyuh92Yeo" WHERE id=8;
 
 SELECT src FROM projects WHERE (title = "Tennis Racquet Data Dashboard");
 
-SELECT thumbnail FROM projects;
+SELECT * FROM files;
 TRUNCATE TABLE contacts;
 
 -- DELETE FROM files WHERE id=11;

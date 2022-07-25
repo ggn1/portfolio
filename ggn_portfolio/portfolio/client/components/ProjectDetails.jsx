@@ -8,11 +8,13 @@ export default function ProjectDetails({project, handle_back2gallery}) {
   const files = [];
   project.files.sort((a, b) => (a.priority > b.priority ? 1 : -1)).forEach(file => {
     if (file.src) files.push(<img src={file.src} width="100%"/>);
-    else if (file.embed_link) files.push(<iframe src={file.embed_link} autoplay="true"/>);
+    else if (file.embed_link) files.push(
+      <iframe width="560" height="315" src={file.embed_link} title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+    );
   });
 
   const skills = [];
-  project.skills.split(",").forEach(skill => { skills.push(<Tag text={skill} />); });
+  project.skills.split(",").forEach(skill => { skills.push(<Tag key={skill} text={skill} />); });
 
   return (
     <div id="project_details">
