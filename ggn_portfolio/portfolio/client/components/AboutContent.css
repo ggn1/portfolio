@@ -1,14 +1,51 @@
 .container {
     width: 90%;
-    /* border: 2px solid red; */
 }
 
 #about_salutation {
     text-align: center;
+    margin-top: 50px;
+}
+
+#about_overview {
+    display: flex;
+    justify-content: center;
+}
+
+#about_overview > div{
+    width: 80%;
+    border-radius: 20px;
+    border: 2px solid black;
+    padding: 50px;
 }
 
 #about_gallary {
+    margin-top: 0px;
+    margin-bottom: 150px;
     display: flex;
-    box-sizing: border-box;
+    flex-direction: column;
     justify-content: center;
+    align-items: center;
+}
+
+#about_gallary > div {
+    width: 80%;
+    margin-top: 70px;
+}
+
+#about_buttons {
+    display: flex;
+    justify-content: center;
+    margin-bottom: 100px;
+}
+
+#about_buttons img{
+    margin: 23px;
+    scale: 1.5;
+}
+
+@media only screen and (max-width: 800px) {
+    #about_gallary {
+        margin: 8% 0%;
+    }
 }
