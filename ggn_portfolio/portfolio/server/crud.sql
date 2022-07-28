@@ -39,21 +39,21 @@ INSERT INTO projects (title, brief, skills, thumbnail, github) VALUES (
 );
 
 UPDATE projects
-SET github="https://github.com/ggn1/Tennis-Racquet-Data-Dashboard" 
-WHERE id=2;
+SET thumbnail="https://i.postimg.cc/wM93sdYH/thumbnail.png" 
+WHERE id=1;
 
 -- FILES
 
 -- DROP TABLE files; 
 
-CREATE TABLE files(
-	id INT NOT NULL AUTO_INCREMENT PRIMARY KEY,
-    src VARCHAR(256),
-    embed_link VARCHAR(256),
-    priority INT NOT NULL,
-    project_id INT NOT NULL,
-    FOREIGN KEY (project_id) REFERENCES projects(id)
-) ENGINE=InnoDB;
+-- CREATE TABLE files(
+-- 	id INT NOT NULL AUTO_INCREMENT PRIMARY KEY,
+--     src VARCHAR(256),
+--     embed_link VARCHAR(256),
+--     priority INT NOT NULL,
+--     project_id INT NOT NULL,
+--     FOREIGN KEY (project_id) REFERENCES projects(id)
+-- ) ENGINE=InnoDB;
 
 INSERT INTO files (src, priority, project_id) VALUES (
 	"https://drive.google.com/uc?export=view&id=17D2MO732T_zgc5SJ_wVlHvrWWY3BLqD5",
@@ -67,7 +67,7 @@ INSERT INTO files (embed_link, priority, project_id) VALUES (
     1  -- project_id
 );
 
-UPDATE files SET embed_link="https://www.youtube.com/embed/1uOyuh92Yeo" WHERE id=8;
+UPDATE files SET src="https://drive.google.com/file/d/1_ry0-iPjZ68usMAOTnIAuPR-MUETxnnh/preview" WHERE (project_id = 2 AND priority = 6);
 
 SELECT src FROM projects WHERE (title = "Tennis Racquet Data Dashboard");
 
