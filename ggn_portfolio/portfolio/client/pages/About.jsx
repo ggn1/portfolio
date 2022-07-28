@@ -1,4 +1,5 @@
 import React, { useEffect } from 'react'
+import AboutContent from "../components/AboutContent"
 
 export default function About() {
   useEffect(() => {
@@ -7,6 +8,6 @@ export default function About() {
   });
 
   return (
-    <div>About</div>
+      <AboutContent />
   )
 }

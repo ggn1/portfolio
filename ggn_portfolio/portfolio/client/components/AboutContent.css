@@ -1,0 +1,14 @@
+.container {
+    width: 90%;
+    /* border: 2px solid red; */
+}
+
+#about_salutation {
+    text-align: center;
+}
+
+#about_gallary {
+    display: flex;
+    box-sizing: border-box;
+    justify-content: center;
+}
