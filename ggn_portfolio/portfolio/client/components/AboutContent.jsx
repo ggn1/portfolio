@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { useEffect } from 'react'
 import "./AboutContent.css"
 import AboutCard from './AboutCard'
 import Tag from "./Tag"
@@ -138,10 +138,12 @@ export default function AboutContent() {
     const interests_details = <div style={{textAlign:"left"}}>
         <Tag text="Acting" />
         <Tag text="Dance" />
-        <Tag text="Art and Crafts" />
+        <Tag text="Animal Care" />
+        <Tag text="Art and Craft" />
         <Tag text="Filmmaking" />
         <Tag text="Video Editing" />
         <Tag text="Digital Art" />
+        <Tag text="Cooking" />
         <Tag text="Reading" />
         <Tag text="Watching TV / Movies" />
         <Tag text="Animation" />
@@ -151,27 +153,29 @@ export default function AboutContent() {
     </div>
 
     return (
-        <div className='container'>
-            <div id='about_salutation'>
-                <h1>Hi! I'm Gayathri!</h1>
-                <p className='typewriter'><b>Since</b> Feb 2000. <b>Until</b> you've forgotten me.</p>
-                <div id="about_buttons">
-                    <Button img_src={"../assets/linkedin.png"} on_click={() => window.open("//www.linkedin.com/in/gayathrigirishnair")}/>
-                    <Button img_src={"../assets/instagram.png"} on_click={() => window.open("https://www.instagram.com/gayathri_girish_nair/")}/>
-                    <Button img_src={"../assets/download.png"} on_click={() => console.log("cv downloaded")}/>
+        <>
+            <div className='container'>
+                <div id='about_salutation'>
+                    <h1>Hi! I'm Gayathri!</h1>
+                    <p className='typewriter'><b>Since</b> Feb 2000. <b>Until</b> you've forgotten me.</p>
+                    <div id="about_buttons">
+                        <Button img_src={"../assets/linkedin.png"} on_click={() => window.open("//www.linkedin.com/in/gayathrigirishnair")}/>
+                        <Button img_src={"../assets/instagram.png"} on_click={() => window.open("https://www.instagram.com/gayathri_girish_nair/")}/>
+                        <a href="../assets/ggn_cv.pdf" download="cv_gayathri_girish_nair"><Button img_src={"../assets/download.png"}/></a>
+                    </div>
+                </div>
+                <div id="about_overview">
+                    <div>I am a BSc. Honours Computer Science recent graduate (graduated on 05/07/2022) from Heriot-Watt University where, over the last 4 years, I've had a blast in acquiring lot's of technical / non-technical know-how that I'm now, more than ever, excited to apply to the work front for <i>your</i> benefit and that of society at large!</div>
+                </div>
+                <div id="about_gallary">
+                    <AboutCard title="Education" content={education_details} color="#383278"/>
+                    <AboutCard title="Languages" content={language_details} color="#4C57A6"/>
+                    <AboutCard title="Hard Skills" content={hard_skill_details} color="#6087B8"/>
+                    <AboutCard title="Soft Skills" content={soft_skill_details} color="#6DA9A3"/>
+                    <AboutCard title="Hobbies and Interests" content={interests_details} color="#4B8A8F"/>
+                    <AboutCard title="Recognitions" content={recognition_details} color="#3C6979"/>
                 </div>
             </div>
-            <div id="about_overview">
-                <div>I am a BSc. Honours Computer Science recent graduate (graduated on 05/07/2022) from Heriot-Watt University where, over the last 4 years, I've had a blast in acquiring lot's of technical / non-technical know-how that I'm now, more than ever, excited to apply to the work front for <i>your</i> benefit and that of society at large!</div>
-            </div>
-            <div id="about_gallary">
-                <AboutCard title="Education" content={education_details} color="#2ea557"/>
-                <AboutCard title="Languages" content={language_details} color="#b5652e"/>
-                <AboutCard title="Hard Skills" content={hard_skill_details} color="#b52e3e"/>
-                <AboutCard title="Soft Skills" content={soft_skill_details} color="#b52eb1"/>
-                <AboutCard title="Hobbies and Interests" content={interests_details} color="#5e2eb5"/>
-                <AboutCard title="Recognitions" content={recognition_details} color="#372eb5"/>
-            </div>
-        </div>
+        </>
     )
 }
