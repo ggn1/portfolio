@@ -13,7 +13,7 @@ export default function Home() {
   return (
     <div id="canvas_div">
       <Threejs />
-      <Parallax event="mouseover" bg_image="../assets/pixel_explode_bg.png" images_div={bg_images}/>
+      <Parallax event="mouseover" images_div={bg_images}/>
     </div>
   )
 }

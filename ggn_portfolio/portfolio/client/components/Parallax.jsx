@@ -1,7 +1,7 @@
 import React, { useEffect } from 'react'
 import "./Parallax.css"
 
-export default function Parallax({ bg_image, images_div, event }) {
+export default function Parallax({ images_div, event }) {
 
     const parallax_on_mousemove = (e) => {
         const layers = Array.from(document.getElementsByClassName('layer'));
