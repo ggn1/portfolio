@@ -2,7 +2,7 @@
     padding: 25px;
     border-radius: 20px;
     text-align: center;
-    box-shadow: 2px 2px 2px 3px rgba(0, 0, 0, 0.5);
+    box-shadow: 2px 2px 2px 3px rgba(0, 0, 0, 0.2);
     width: 230px;
     background-color: black;
     transition: scale 0.5s;
@@ -14,9 +14,10 @@
 }
 
 .card_body {
-    border-radius: 10px;
+    border-radius: 20px;
     padding: 10px;
-    background-color: rgba(0, 0, 0, 0.8);
+    background-color: rgba(0, 0, 0, 0.6);
+    backdrop-filter: blur(2px);
     color: var(--light);
 }
 
