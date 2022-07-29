@@ -14,7 +14,6 @@ export default function Threejs() {
     const green = new THREE.Color(0x00ff00);
 
     const add_lights = () => {
-      // lights
       const lights = {};
       lights.key_light = new THREE.PointLight( 0xffffff, 2, 100) // color, intensity, decay
       lights.back_light = new THREE.PointLight( 0xffaaff, 3, 100 ) // color, intensity, decay
@@ -207,7 +206,6 @@ export default function Threejs() {
     const renderer = new THREE.WebGLRenderer({canvas, antialias: true});
     renderer.setSize(window.innerWidth, window.innerHeight-0.5);
     renderer.setPixelRatio(window.devicePixelRatio);
-    // scene.background = new THREE.Color(0x10101a);
     renderer.setClearColor( 0x000000, 0 );
     document.getElementById("canvas_div").appendChild(renderer.domElement);
   
