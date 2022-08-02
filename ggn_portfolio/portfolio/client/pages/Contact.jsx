@@ -1,5 +1,5 @@
 import React, { useEffect } from 'react'
-import ContactForm from '../components/ContactForm';
+import ContactForm from '../components/ContactForm'
 
 export default function Contact() {
 
