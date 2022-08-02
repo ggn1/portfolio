@@ -10,6 +10,8 @@ import Preloader from "../components/Preloader"
 
 function App() {
 
+  const [loading, set_loading] = useState(false);
+
   let location = useLocation();
 
   useEffect(() => {
@@ -26,8 +28,9 @@ function App() {
         <Route path="/" element={<Home />} exact></Route>
         <Route path="/contact" element={<Contact />} exact></Route>
         <Route path="/about" element={<About />} exact></Route>
-        <Route path="/projects" element={<Projects />} exact></Route>
+        <Route path="/projects" element={<Projects set_loading={set_loading}/>} exact></Route>
       </Routes>
+      { loading ? <Preloader /> : null }
     </>
   );
 }

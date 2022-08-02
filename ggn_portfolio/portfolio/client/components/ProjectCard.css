@@ -13,21 +13,11 @@
     transition: scale 0.5s;
 }
 
-.card_body {
+.project_card > div {
     border-radius: 20px;
     padding: 10px;
-    background-color: rgba(0, 0, 0, 0.6);
-    backdrop-filter: blur(2px);
+    background-color: rgba(0, 0, 0, 0.8);
     color: var(--light);
-}
-
-/* .project_card img {
-    margin: 10px 20px 0px;
-} */
-
-.card_body > div {
-    display: flex;
-    justify-content: space-evenly;
 }
 
 @media only screen and (max-width: 800px) {
