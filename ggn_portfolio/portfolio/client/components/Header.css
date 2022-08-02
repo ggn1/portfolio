@@ -2,7 +2,7 @@
     width: 100%;
     display: flex;
     justify-content: space-around;
-    padding: 25px 0px 0px 0px;
+    margin-top:25px;
     font-size: 23px;
     text-align: center;
 }
@@ -31,8 +31,7 @@
 
 #nav_bar li {
     display: inline;
-    padding: 0px 10px;
-    vertical-align: middle;
+    padding: 10px;
     float: left;
 }
 

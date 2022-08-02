@@ -165,7 +165,7 @@ export default function AboutContent() {
                     </div>
                 </div>
                 <div id="about_overview">
-                    <div>I am a BSc. Honours Computer Science recent graduate (graduated on 05/07/2022) from Heriot-Watt University where, over the last 4 years, I've had a blast in acquiring lot's of technical / non-technical know-how that I'm now, more than ever, excited to apply to the work front for <i>your</i> benefit and that of society at large!</div>
+                    <div>I am a BSc. Honours Computer Science graduate (graduated on 05/07/2022) from Heriot-Watt University where, over the last 4 years, I've had a blast in acquiring lot's of technical / non-technical know-how that I'm now, more than ever, excited to apply to the work front for <i>your</i> benefit and that of society at large!</div>
                 </div>
                 <div id="about_gallary">
                     <AboutCard title="Education" content={education_details} color="#383278"/>

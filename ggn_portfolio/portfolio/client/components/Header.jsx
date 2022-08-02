@@ -6,7 +6,7 @@ import "./Header.css"
 export default function Header() {
   return (
     <div id="nav_bar" className="overlay">
-      <p className='code'>C:\Users\<span>Gayathri Girish Nair</span>{">"}</p>
+      <p className='code'>C:\Users\Gayathri_Girish_Nair{">"}</p>
       <ul>
         <li><Link to="/" id="home_link"><Navbutton source="../assets/home.png" text="Home" id="home_button"/></Link></li>
         <li><Link to="/projects" id="projects_link"><Navbutton source="../assets/gear.png" text="Projects" id="projects_button"/></Link></li>
