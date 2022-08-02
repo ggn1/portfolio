@@ -12,32 +12,22 @@ function App() {
 
   let location = useLocation();
 
-  const [preloader, set_preloader] = useState(true);
-
   useEffect(() => {
-    // console.log(location);
-    if (!preloader) {
-      document.getElementById("home_button").className = "no_highlight";
-      document.getElementById("about_button").className = "no_highlight";
-      document.getElementById("contact_button").className = "no_highlight";
-      document.getElementById("projects_button").className = "no_highlight";
-    }
-  }, [location, preloader]);
+    document.getElementById("home_button").className = "no_highlight";
+    document.getElementById("about_button").className = "no_highlight";
+    document.getElementById("contact_button").className = "no_highlight";
+    document.getElementById("projects_button").className = "no_highlight";
+  }, [location]);
 
   return (
     <>
-      {
-        preloader ? <Preloader /> :
-        <>
-          <Header />
-          <Routes>
-            <Route path="/" element={<Home />} exact></Route>
-            <Route path="/contact" element={<Contact />} exact></Route>
-            <Route path="/about" element={<About />} exact></Route>
-            <Route path="/projects" element={<Projects />} exact></Route>
-          </Routes>
-        </>
-      }
+      <Header />
+      <Routes>
+        <Route path="/" element={<Home />} exact></Route>
+        <Route path="/contact" element={<Contact />} exact></Route>
+        <Route path="/about" element={<About />} exact></Route>
+        <Route path="/projects" element={<Projects />} exact></Route>
+      </Routes>
     </>
   );
 }
