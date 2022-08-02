@@ -12,7 +12,7 @@ function App() {
 
   let location = useLocation();
 
-  const [preloader, set_preloader] = useState(false);
+  const [preloader, set_preloader] = useState(true);
 
   useEffect(() => {
     // console.log(location);
@@ -22,7 +22,7 @@ function App() {
       document.getElementById("contact_button").className = "no_highlight";
       document.getElementById("projects_button").className = "no_highlight";
     }
-  }, [location]);
+  }, [location, preloader]);
 
   return (
     <>
