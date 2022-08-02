@@ -20,6 +20,10 @@
     color: var(--light);
 }
 
+.project_card .button_image {
+    margin: 0px 10px;
+}
+
 @media only screen and (max-width: 800px) {
     .project_card {
         margin: 0px 0px 25px;
