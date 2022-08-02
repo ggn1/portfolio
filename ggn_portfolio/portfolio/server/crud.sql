@@ -33,14 +33,16 @@ INSERT INTO contacts (name, email, message) VALUES (
 -- ) ENGINE=InnoDB;
 
 INSERT INTO projects (title, brief, skills, thumbnail, github) VALUES (
-	"Tennis Racquet Data Dashboard",
-	"Interactive data dashboard displaying 'tennis racquet specifications' data and data story discovered using the same.",
-    "HTML5, CSS3, JavaScript, D3.js, Python, Jupyter Notebook, Pandas, NumPy, Matplotlib, Scikit-Learn"
+	"Forest Cover Data ML and Data Science Portfolio",
+	"A project that employs various data science tools and machine learning algorithms to conduct data analysis of publically available US forest cover data to gain insights from it. ",
+    "Python, Pandas, NumPy, Matplotlib, SciPy, Jupyter Notebook",
+    "https://i.postimg.cc/pLt5Tr5B/thumbnail.png",
+    "https://github.com/ggn1/Forest-Cover-Data-ML-and-Data-Science-Portfolio"
 );
 
-UPDATE projects
-SET thumbnail="https://i.postimg.cc/wM93sdYH/thumbnail.png" 
-WHERE id=1;
+-- UPDATE projects
+-- SET thumbnail="https://i.postimg.cc/wM93sdYH/thumbnail.png" 
+-- WHERE id=1;
 
 -- FILES
 
@@ -56,9 +58,9 @@ WHERE id=1;
 -- ) ENGINE=InnoDB;
 
 INSERT INTO files (src, priority, project_id) VALUES (
-	"https://drive.google.com/uc?export=view&id=17D2MO732T_zgc5SJ_wVlHvrWWY3BLqD5",
-    6, -- priority
-    2  -- project_id
+	"https://i.postimg.cc/RVjGppzP/Slide8.png",
+    8, -- priority
+    3  -- project_id
 );
 
 INSERT INTO files (embed_link, priority, project_id) VALUES (

@@ -11,11 +11,16 @@
     width: 80%;
 }
 
-.project_details_files * {
+.project_details_files img, .project_details_files iframe {
     border-radius: 10px;
     margin-top: 50px;
-    box-shadow: 2px 2px 2px 3px rgba(0, 0, 0, 0.5);
+    box-shadow: 2px 2px 2px 3px rgba(0, 0, 0, 0.2);
     width: 100%;
+    transition: scale 0.5s;
+}
+
+.project_details_files img:hover, .project_details_files iframe:hover {
+    scale: 1.05;
 }
 
 .project_details_files {
