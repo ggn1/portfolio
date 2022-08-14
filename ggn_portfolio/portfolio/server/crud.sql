@@ -40,9 +40,15 @@ INSERT INTO projects (title, brief, skills, thumbnail, github) VALUES (
     "https://github.com/ggn1/Forest-Cover-Data-ML-and-Data-Science-Portfolio"
 );
 
--- UPDATE projects
--- SET thumbnail="https://i.postimg.cc/wM93sdYH/thumbnail.png" 
--- WHERE id=1;
+-- ALTER TABLE
+-- ALTER TABLE projects
+-- ADD priority INT NOT NULL; 
+
+UPDATE projects
+SET priority = 4 
+WHERE id = 2;
+
+SELECT id, title, priority FROM projects;
 
 -- FILES
 
@@ -69,7 +75,7 @@ INSERT INTO files (embed_link, priority, project_id) VALUES (
     1  -- project_id
 );
 
-UPDATE files SET src="https://drive.google.com/file/d/1_ry0-iPjZ68usMAOTnIAuPR-MUETxnnh/preview" WHERE (project_id = 2 AND priority = 6);
+UPDATE files SET src="https://i.postimg.cc/yx2h5x2J/Slide2.png" WHERE (project_id = 3 AND priority = 2);
 
 SELECT src FROM projects WHERE (title = "Tennis Racquet Data Dashboard");
 
