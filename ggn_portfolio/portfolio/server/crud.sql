@@ -45,8 +45,8 @@ INSERT INTO projects (title, brief, skills, thumbnail, github) VALUES (
 -- ADD priority INT NOT NULL; 
 
 UPDATE projects
-SET priority = 4 
-WHERE id = 2;
+SET title = "Forest Cover Data Science and ML Portfolio" 
+WHERE id = 3;
 
 SELECT id, title, priority FROM projects;
 

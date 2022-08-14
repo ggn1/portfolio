@@ -21,7 +21,7 @@ export default function ProjectGallary({set_loading}) {
             url += "/get";
             let selection = [];
             Axios.get(url).then(response => {
-                response.data.map(project => {
+                response.data.sort((a, b) => (a.priority > b.priority ? 1 : -1)).forEach(project => {
                     selection.push(<ProjectCard key={project.id} project={project} handle_project_select={set_project_id}/>);
                 });
                 set_projects(selection);
