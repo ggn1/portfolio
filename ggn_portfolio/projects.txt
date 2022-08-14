@@ -1,0 +1,18 @@
+Projects to Display
+============
+# COVID-19 Data Dashboard (3)
+# Tennis Racquets Data Dashboard (4)
+# Forest Cover Data Science and ML Portfolio (2)
+# Interactive Animated Diorama (7)
+# Gaze Estimation using Machine Learning (1)
+# Twitter Sentiment Analysis (5)
+# Amazon Food Review Classification (6)
+# Aperture (10)
+# Intelligent Robot Controller (8)
+# Data Communications and Networking Experiments (11)
+# PillBot (12)
+# Steganography (13)
+# Mastermind on Raspberry Pie (14)
+# Air Traffic Control System Design (9)
+# O2 Simple Web Based MMO Game (15)
+# Webpage Renovation (16)
