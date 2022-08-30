@@ -1,11 +1,17 @@
-.gallery .project_gallery_row {
+.gallery_spotlight {
+    display: flex;
+    padding: 0% 2% 1%;
+    justify-content: center;
+}
+
+.gallery_row {
     display: flex;
     padding: 0% 2% 1%;
     justify-content: center;
 }
 
 @media only screen and (max-width: 800px) {
-    .gallery .project_gallery_row {
+    .gallery_row {
         flex-direction: column;
         align-items: center;
     }

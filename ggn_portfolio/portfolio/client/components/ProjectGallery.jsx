@@ -18,7 +18,7 @@ export default function ProjectGallary({set_loading}) {
         project_data.forEach(p => {
             project_cards.push(<ProjectCard key={p.id} project={p} handle_project_select={set_project_id}/>);
         });
-        return <div className="project_gallery_row" key={`row${row_num}`}>{project_cards}</div>;
+        return <div className="gallery_row" key={`row${row_num}`}>{project_cards}</div>;
     }
 
     useEffect(() => {
@@ -31,9 +31,6 @@ export default function ProjectGallary({set_loading}) {
             url += "/get";
             let selection = [];
             Axios.get(url).then(response => {
-                // response.data.sort((a, b) => (a.priority > b.priority ? 1 : -1)).forEach(project => {
-                //     selection.push(<ProjectCard key={project.id} project={project} handle_project_select={set_project_id}/>);
-                // });
                 response.data.sort((a, b) => (a.priority > b.priority ? 1 : -1))
 
                 let row_num = 0;
@@ -61,8 +58,9 @@ export default function ProjectGallary({set_loading}) {
     }, [project_id]);
 
     return (
-        <div className="gallery">
-            {project_id == 0 ? projects : project}
-        </div>
+        <>
+            {project_id == 0 ? projects : null}
+            <div className="gallery_spotlight">{project_id != 0 ? project:null}</div>
+        </>
     );
 }
