@@ -32,12 +32,13 @@ INSERT INTO contacts (name, email, message) VALUES (
 --     github VARCHAR(128) NOT NULL
 -- ) ENGINE=InnoDB;
 
-INSERT INTO projects (title, brief, skills, thumbnail, github) VALUES (
-	"Forest Cover Data ML and Data Science Portfolio",
-	"A project that employs various data science tools and machine learning algorithms to conduct data analysis of publically available US forest cover data to gain insights from it. ",
-    "Python, Pandas, NumPy, Matplotlib, SciPy, Jupyter Notebook",
-    "https://i.postimg.cc/pLt5Tr5B/thumbnail.png",
-    "https://github.com/ggn1/Forest-Cover-Data-ML-and-Data-Science-Portfolio"
+INSERT INTO projects (title, brief, skills, thumbnail, github, priority) VALUES (
+	"Amazon Food Review Analysis and Classification",
+	"A project that employs various data science tools and machine learning algorithms to conduct data analysis and perform classification of reviews given to edible products on Amazon. ",
+    "Python, Pandas, NumPy, Matplotlib, Jupyter Notebook, NLTK, spaCy, Gensim, scikit-learn, imblearn",
+    "https://i.postimg.cc/PfQx9sJn/thumbnail.png",
+    "https://github.com/ggn1/Amazon-Food-Review-Classification-Group-Work",
+    4
 );
 
 -- ALTER TABLE
@@ -45,8 +46,8 @@ INSERT INTO projects (title, brief, skills, thumbnail, github) VALUES (
 -- ADD priority INT NOT NULL; 
 
 UPDATE projects
-SET title = "Forest Cover Data Science and ML Portfolio" 
-WHERE id = 3;
+SET thumbnail = "https://i.postimg.cc/pX5GMj48/thumbnail.png" 
+WHERE id = 4;
 
 SELECT id, title, priority FROM projects;
 
@@ -64,18 +65,18 @@ SELECT id, title, priority FROM projects;
 -- ) ENGINE=InnoDB;
 
 INSERT INTO files (src, priority, project_id) VALUES (
-	"https://i.postimg.cc/RVjGppzP/Slide8.png",
-    8, -- priority
-    3  -- project_id
+	"https://i.postimg.cc/nc4d25rW/Slide11.png",
+    11, -- priority
+    4  -- project_id
 );
 
-INSERT INTO files (embed_link, priority, project_id) VALUES (
-	"https://drive.google.com/file/d/1b5blCrQjf_OCuuxIX12lCSqADsn00DHI/preview",
-    3, -- priority
-    1  -- project_id
-);
+-- INSERT INTO files (embed_link, priority, project_id) VALUES (
+-- 	"https://drive.google.com/file/d/1b5blCrQjf_OCuuxIX12lCSqADsn00DHI/preview",
+--     3, -- priority
+--     1  -- project_id
+-- );
 
-UPDATE files SET src="https://i.postimg.cc/yx2h5x2J/Slide2.png" WHERE (project_id = 3 AND priority = 2);
+UPDATE files SET src="https://i.postimg.cc/dtY6hB6j/Slide11.png" WHERE (project_id = 4 AND priority = 11);
 
 SELECT src FROM projects WHERE (title = "Tennis Racquet Data Dashboard");
 
