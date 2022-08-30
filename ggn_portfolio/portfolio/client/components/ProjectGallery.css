@@ -1,11 +1,11 @@
-.gallery {
+.gallery .project_gallery_row {
     display: flex;
-    padding: 0 2%;
+    padding: 0% 2% 1%;
     justify-content: center;
 }
 
 @media only screen and (max-width: 800px) {
-    .gallery {
+    .gallery .project_gallery_row {
         flex-direction: column;
         align-items: center;
     }

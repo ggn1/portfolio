@@ -7,9 +7,19 @@ import ProjectDetails from './ProjectDetails';
 
 export default function ProjectGallary({set_loading}) {
 
+    const max_row_items = 3;
+
     const [projects, set_projects] = useState([]);
     const [project_id, set_project_id] = useState(0);
     const [project, set_project] = useState(null);
+
+    let get_gallery_row = ({project_data, row_num}) => {
+        let project_cards = [];
+        project_data.forEach(p => {
+            project_cards.push(<ProjectCard key={p.id} project={p} handle_project_select={set_project_id}/>);
+        });
+        return <div className="project_gallery_row" key={`row${row_num}`}>{project_cards}</div>;
+    }
 
     useEffect(() => {
 
@@ -21,9 +31,20 @@ export default function ProjectGallary({set_loading}) {
             url += "/get";
             let selection = [];
             Axios.get(url).then(response => {
-                response.data.sort((a, b) => (a.priority > b.priority ? 1 : -1)).forEach(project => {
-                    selection.push(<ProjectCard key={project.id} project={project} handle_project_select={set_project_id}/>);
-                });
+                // response.data.sort((a, b) => (a.priority > b.priority ? 1 : -1)).forEach(project => {
+                //     selection.push(<ProjectCard key={project.id} project={project} handle_project_select={set_project_id}/>);
+                // });
+                response.data.sort((a, b) => (a.priority > b.priority ? 1 : -1))
+
+                let row_num = 0;
+                for (let i=0; i<response.data.length; i+=max_row_items) {
+                    selection.push(get_gallery_row({
+                        "project_data": response.data.slice(i, i+max_row_items),
+                        "row_num": row_num
+                    }));
+                    row_num += 1;
+                }
+
                 set_projects(selection);
                 setTimeout(() => set_loading(false), 2000);
             }).catch(error => console.error("ERROR:", error));
