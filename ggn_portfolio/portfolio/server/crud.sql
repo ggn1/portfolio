@@ -33,12 +33,12 @@ INSERT INTO contacts (name, email, message) VALUES (
 -- ) ENGINE=InnoDB;
 
 INSERT INTO projects (title, brief, skills, thumbnail, github, priority) VALUES (
-	"Amazon Food Review Analysis and Classification",
-	"A project that employs various data science tools and machine learning algorithms to conduct data analysis and perform classification of reviews given to edible products on Amazon. ",
-    "Python, Pandas, NumPy, Matplotlib, Jupyter Notebook, NLTK, spaCy, Gensim, scikit-learn, imblearn",
-    "https://i.postimg.cc/PfQx9sJn/thumbnail.png",
-    "https://github.com/ggn1/Amazon-Food-Review-Classification-Group-Work",
-    4
+	"Twitter Sentiment Analysis",
+	"A project that employs various data science tools and machine learning algorithms to conduct analysis of Tweets associated with Expo 2020 and classify them as per sentiment polarity.",
+    "Python, Tweepy API, Pandas, NumPy, Matplotlib, Jupyter Notebook, NLTK, spaCy, Gensim, scikit-learn, imblearn",
+    "https://i.postimg.cc/BvztCZRs/thumbnail.png",
+    "https://github.com/ggn1/Twitter_Sentiment_Analysis_Group_Work",
+    5
 );
 
 -- ALTER TABLE
@@ -46,8 +46,8 @@ INSERT INTO projects (title, brief, skills, thumbnail, github, priority) VALUES 
 -- ADD priority INT NOT NULL; 
 
 UPDATE projects
-SET thumbnail = "https://i.postimg.cc/pX5GMj48/thumbnail.png" 
-WHERE id = 4;
+SET priority = 6 
+WHERE id = 5;
 
 SELECT id, title, priority FROM projects;
 
@@ -65,9 +65,9 @@ SELECT id, title, priority FROM projects;
 -- ) ENGINE=InnoDB;
 
 INSERT INTO files (src, priority, project_id) VALUES (
-	"https://i.postimg.cc/nc4d25rW/Slide11.png",
-    11, -- priority
-    4  -- project_id
+	"https://i.postimg.cc/nVR6Q7VL/Slide10.png",
+    10, -- priority
+    5  -- project_id
 );
 
 -- INSERT INTO files (embed_link, priority, project_id) VALUES (
@@ -80,7 +80,7 @@ UPDATE files SET src="https://i.postimg.cc/dtY6hB6j/Slide11.png" WHERE (project_
 
 SELECT src FROM projects WHERE (title = "Tennis Racquet Data Dashboard");
 
-SELECT * FROM files;
+SELECT * FROM projects;
 TRUNCATE TABLE contacts;
 
 -- DELETE FROM files WHERE id=11;
