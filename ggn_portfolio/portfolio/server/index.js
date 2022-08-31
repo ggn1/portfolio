@@ -48,6 +48,12 @@ app.get("/projects/get", (req, res) => {
     }
 });
 
-app.listen(3001, () => {
-    console.log("running on port 3001");
+// For Local
+// app.listen(3001, () => {
+//     console.log("server running on port 3001");
+// });
+
+// For Heroku
+app.listen(process.env.PORT || 3001, function() {
+    console.log(`server running on port ${this.address().port}`);
 });
