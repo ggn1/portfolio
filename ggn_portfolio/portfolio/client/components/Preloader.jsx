@@ -33,7 +33,7 @@ export default function Preloader() {
                 "height": gif_size[1],
                 "marginTop": (window.innerHeight/2)-(gif_size[0]/1.2)
             }}/>
-            <p>Brewing {loading_dots}</p>
+            <p className="code">Brewing {loading_dots}</p>
         </div>
     )
 }
