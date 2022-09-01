@@ -7,9 +7,9 @@ export default function ProjectDetails({project, handle_back2gallery}) {
 
   const files = [];
   project.files.sort((a, b) => (a.priority > b.priority ? 1 : -1)).forEach(file => {
-    if (file.src) files.push(<img src={file.src} width="100%" crossorigin="anonymous"/>);
+    if (file.src) files.push(<img key={file.src} src={file.src} width="100%" crossOrigin="anonymous"/>);
     else if (file.embed_link) files.push(
-      <iframe width="560" height="315" src={file.embed_link} frameborder="0" allow="autoplay; accelerometer; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+      <iframe key={file.embed_link} width="560" height="315" src={file.embed_link} frameborder="0" allow="autoplay; accelerometer; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
     );
   });
 

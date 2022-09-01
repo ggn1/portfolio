@@ -49,7 +49,8 @@ export default function ProjectGallary({set_loading}) {
                 }
 
                 set_projects(selection);
-                setTimeout(() => set_loading(false), 2000);
+                set_loading(false);
+                // setTimeout(() => set_loading(false), 2000);
             }).catch(error => console.error("ERROR:", error));
         
         // get selected project details
@@ -58,7 +59,8 @@ export default function ProjectGallary({set_loading}) {
             Axios.get(url).then(response => {
                 // console.log("SUCCESS:", response);
                 set_project(<ProjectDetails project={response.data} handle_back2gallery={() => set_project_id(0)}/>);
-                setTimeout(() => set_loading(false), 2000);
+                // setTimeout(() => set_loading(false), 2000);
+                set_loading(false);
             }).catch(error => console.error("ERROR:", error));
         }
     }, [project_id]);
