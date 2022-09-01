@@ -4,23 +4,32 @@ const app = express();
 const mysql = require('mysql');
 const cors = require('cors');
 
+// Local Server
+// const db = mysql.createPool({
+//     host: 'localhost',
+//     user: 'root',
+//     password: 'password',
+//     database: 'portfolio'
+// });
+
+// Heroku Server
 const db = mysql.createPool({
-    host: 'localhost',
-    user: 'root',
-    password: 'password',
-    database: 'portfolio'
+    host: 'eu-cdbr-west-03.cleardb.net',
+    user: 'be34cde083dcfd',
+    password: '4dcd711e',
+    database: 'heroku_539b1297eb14a84'
 });
 
 app.use(cors());
 app.use(express.json());
 app.use(body_parser.urlencoded({ extended:true }));
 
-app.post("/contact/put", (req, res) => {
+app.post("/contact/interested", (req, res) => {
     const [name, email, message] = [req.body.name, req.body.email, req.body.message]; 
     const sql_insert = "INSERT INTO contacts (name, email, message) VALUES (?,?,?);";
     db.query(sql_insert, [name, email, message], (err, result) => {
-        if (err) console.log("ERROR:", err);
-        else console.log("SUCCESS:", result);
+        if (err) res.send("eoi failed");
+        else res.send("eoi successful");
     });
 });
 
@@ -48,12 +57,10 @@ app.get("/projects/get", (req, res) => {
     }
 });
 
-// For Local
-// app.listen(3001, () => {
+// app.listen(3001, () => { // local
 //     console.log("server running on port 3001");
 // });
 
-// For Heroku
-app.listen(process.env.PORT || 3001, function() {
+app.listen(process.env.PORT || 3001, function() { // heroku
     console.log(`server running on port ${this.address().port}`);
 });

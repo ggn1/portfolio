@@ -26,7 +26,13 @@ export default function ProjectGallary({set_loading}) {
         set_loading(true);
 
         // get all project briefs
-        let url = window.location.href.replace("3000","3001");
+        let window_location = window.location.href;
+        // let url = window_location.replace("3000","3001"); // local server
+        let url = window_location.replace( // heroku
+            window_location.slice(0, window_location.lastIndexOf("/")),
+            "https://ggn-portfolio-website.herokuapp.com"
+        );
+        
         if (project_id == 0) {
             url += "/get";
             let selection = [];

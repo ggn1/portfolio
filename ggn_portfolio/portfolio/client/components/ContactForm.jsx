@@ -62,27 +62,35 @@ export default function ContactForm() {
     }
   }
 
+  let window_location = window.location.href;
+  // let url = window_location.replace("3000","3001") // local
+  let url = window_location.replace( // heroku
+      window_location.slice(0, window_location.lastIndexOf("/")),
+      "https://ggn-portfolio-website.herokuapp.com"
+  );
+  console.log(url);
+
   const on_submit = () => {
     on_name_change("name"); 
     on_email_change("email"); 
     on_message_change("message");
 
     if (form_validity.name && form_validity.email && form_validity.message) {
-      Axios.post(window.location.href.replace("3000","3001")+"/put", {
-        name:input_name.current.value,
+      Axios.post(url+"/interested", {
+        name: input_name.current.value,
         email: input_email.current.value,
         message: input_message.current.value
       }).then((response) => {
-        // console.log(response);
+        console.log(response);
+        input_name.current.value = "";
+        input_email.current.value = "";
+        input_message.current.value = "";
+        set_message_chars(0);
+        set_success_popup(true);
+        set_fail_popup(false);
       }).catch((error) => {
         console.log(error);
       });
-      input_name.current.value = "";
-      input_email.current.value = "";
-      input_message.current.value = "";
-      set_message_chars(0);
-      set_success_popup(true);
-      set_fail_popup(false);
     } else {
       set_success_popup(false);
       set_fail_popup(true);
