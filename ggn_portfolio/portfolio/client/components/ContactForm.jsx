@@ -68,7 +68,6 @@ export default function ContactForm() {
       window_location.slice(0, window_location.lastIndexOf("/")),
       "https://ggn-portfolio-website.herokuapp.com"
   );
-  console.log(url);
 
   const on_submit = () => {
     on_name_change("name"); 
