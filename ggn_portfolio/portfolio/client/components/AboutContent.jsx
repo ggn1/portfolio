@@ -6,6 +6,14 @@ import Button from './Button'
 
 export default function AboutContent() {
 
+    const work_experience_details = <div style={{textAlign:"left"}}>
+        <b>September 2022 to Present:</b> Machine Learning Engineer at <a 
+            href="https://commtelnetworks.com/"
+            target="_blank" 
+            style={{"color":"yellow"}}
+        >Commtel Networks</a>.       
+    </div>;
+
     const education_details = <div style={{textAlign:"left"}}>
         <b>Bachelors (Honours) in Computer Science [2018-22]:</b>
         <br/>◉ Heriot-Watt University.
@@ -168,12 +176,13 @@ export default function AboutContent() {
                     <div>I am a BSc. Honours Computer Science graduate (graduated on 05/07/2022) from Heriot-Watt University where, over the last 4 years, I've had a blast in acquiring lot's of technical / non-technical know-how that I'm now, more than ever, excited to apply to the work front for <i>your</i> benefit and that of society at large!</div>
                 </div>
                 <div id="about_gallary">
-                    <AboutCard title="Education" content={education_details} color="#383278"/>
-                    <AboutCard title="Languages" content={language_details} color="#4C57A6"/>
-                    <AboutCard title="Hard Skills" content={hard_skill_details} color="#6087B8"/>
-                    <AboutCard title="Soft Skills" content={soft_skill_details} color="#6DA9A3"/>
-                    <AboutCard title="Hobbies and Interests" content={interests_details} color="#4B8A8F"/>
-                    <AboutCard title="Recognitions" content={recognition_details} color="#3C6979"/>
+                    <AboutCard title="Work Experience" content={work_experience_details} color="#2b2b90"/>
+                    <AboutCard title="Education" content={education_details} color="#d26f03"/>
+                    <AboutCard title="Languages" content={language_details} color="#a00014"/>
+                    <AboutCard title="Hard Skills" content={hard_skill_details} color="#219efe"/>
+                    <AboutCard title="Soft Skills" content={soft_skill_details} color="#59873b"/>
+                    <AboutCard title="Hobbies And Interests" content={interests_details} color="#795548"/>
+                    <AboutCard title="Recognitions" content={recognition_details} color="#47474d"/>
                 </div>
             </div>
         </>
