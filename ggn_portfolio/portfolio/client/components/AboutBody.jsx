@@ -14,14 +14,16 @@ export default function AboutBody() {
     </div>
 
     const work_experience = <div>
+        <h3>Work Experience</h3>
         <b>September 2022 to Present:</b> Machine Learning Engineer at <a 
             href="https://commtelnetworks.com/"
             target="_blank" 
-            style={{"color":"yellow"}}
+            style={{"color":"blue"}}
         >Commtel Networks</a>.       
     </div>;
 
     const education = <div>
+        <h3>Education</h3>
         <b>Bachelors (Honours) in Computer Science [2018-22]:</b>
         <br/>◉ Heriot-Watt University.
         <br/>◉ First Class, GPA 4.0/4.0.
@@ -40,65 +42,74 @@ export default function AboutBody() {
     </div>;
 
     const skills = <div>
-        <div>
+        <h3>Skills</h3>
+        <div className="about_tag_container">
             <div>
-                <p>Hard Skills</p>
-                <p>
+                <div style={{textAlign: "center"}}><b>Hard</b></div>
+                <div>
                     <Tag text="Artificial Intelligence"/>
                     <Tag text="Machine Learning"/>
                     <Tag text="Deep Neural Networks"/>
                     <Tag text="Convolutional Neural Networks"/>
-                    <Tag text="Natural Landguage Processing"/>
+                    <Tag text="Natural Language Processing"/>
                     <Tag text="Data Science" />
                     <Tag text="Explorative Data Analysis"/>
                     <Tag text="Data Visualization"/>
                     <Tag text="Python" />
-                    <Tag text="PyTorch" /><Tag text="TensorFlow" />
-                    <Tag text="NumPy" /><Tag text="Pandas" /><Tag text="Scikit-Learn" />
-                    <Tag text="OpenCV" /><Tag text="PIL" />
+                    <Tag text="PyTorch" />
+                    <Tag text="TensorFlow" />
+                    <Tag text="NumPy" />
+                    <Tag text="Pandas" />
+                    <Tag text="Scikit-Learn" />
+                    <Tag text="OpenCV" />
+                    <Tag text="PIL" />
                     <Tag text="Jupyter Notebook" />
-                    <Tag text="Git" /><Tag text="GitHub" /><Tag text="GitLab" />
+                    <Tag text="Git" />
+                    <Tag text="GitHub" />
+                    <Tag text="GitLab" />
                     <Tag text="Google Collaboratory" />
-                    <Tag text="MSExcel" /><Tag text="MSPowerPoint" /><Tag text="MSWord" />
+                    <Tag text="MSExcel" />
+                    <Tag text="MSPowerPoint" />
+                    <Tag text="MSWord" />
                     <Tag text="Java" />
-                    <Tag text="C" /><Tag text="C++" />
-                    <Tag text="SQL" /><Tag text="Database Schema Design" />
-                    <Tag text="Maya" /><Tag text="Blender" /><Tag text="Unreal Engine 4" /><Tag text="OpenGL" />
+                    <Tag text="C++" />
+                    <Tag text="SQL" />
+                    <Tag text="Database Schema Design" />
+                    <Tag text="Maya" />
+                    <Tag text="Blender" />
+                    <Tag text="Unreal Engine 4" />
                     <Tag text="HTML" /><Tag text="CSS" /><Tag text="JS" />
-                    <Tag text="D3.js" /><Tag text="ReactJS" /><Tag text="JQuery" />
+                    <Tag text="D3.js" /><Tag text="ReactJS" />
                     <Tag text="WeBots Robot Simulator" />
                     <Tag text="Design patterns (like MVC)" />
                     <Tag text="Object Oriented Programming" />
                     <Tag text="UML" />
                     <Tag text="ER diagrams" />
-                    <Tag text="Project Management" />
-                    <Tag text="Professional Writing" />
                     <Tag text="Google FireBase" />
-                    <Tag text="Prolog" />
-                    <Tag text="OCaml" />
-                    <Tag text="PDDL" />
-                    <Tag text="Linux" />
-                </p>
+                </div>
             </div>
             <div>
-                <p>Soft Skills</p>
-                <p>
-                    <Tag text="Communication" />
-                    <Tag text="Collaboration" />
-                    <Tag text="Adaptability" />
-                    <Tag text="Leadership" />
-                    <Tag text="Self Motivation" />
-                    <Tag text="Time Management" />
-                    <Tag text="Empathy" />
-                    <Tag text="Growth Mindset" />
-                    <Tag text="Ability and Desire to Learn" />
-                    <Tag text="Diligence" />
-                </p>
+            <div style={{textAlign: "center"}}><b>Soft</b></div>
+            <div>
+                <Tag text="Communication" />
+                <Tag text="Collaboration" />
+                <Tag text="Adaptability" />
+                <Tag text="Leadership" />
+                <Tag text="Self Motivation" />
+                <Tag text="Time Management" />
+                <Tag text="Empathy" />
+                <Tag text="Growth Mindset" />
+                <Tag text="Ability and Desire to Learn" />
+                <Tag text="Diligence" />
+                <Tag text="Project Management" />
+                <Tag text="Professional Writing" />
             </div>
+        </div>
         </div>
     </div>
 
     const recognitions = <div>
+        <h3>Recognitions</h3>
         <b>[ 2018 - 2022 ]</b> 
         <br/>◉ Graduated ( 05 July 2022 ) Heriot-Watt University's "Bachelors in Computer Science Honours (4 years) program with 1st Class and GPA 4.0/4.0 (A grade for all subjects across all 4 years).
         <br/><br/>
@@ -152,21 +163,24 @@ export default function AboutBody() {
             <br/>◉ Participated in several stage shows, film endeavors, sports, speaking/debate competitions, English writing and art competitions.
     </div>
 
-    const hobbies_interests = <div>
-        <Tag text="Acting" />
-        <Tag text="Dance" />
-        <Tag text="Animal Care" />
-        <Tag text="Art and Craft" />
-        <Tag text="Filmmaking" />
-        <Tag text="Video Editing" />
-        <Tag text="Digital Art" />
-        <Tag text="Cooking" />
-        <Tag text="Reading" />
-        <Tag text="Watching TV / Movies" />
-        <Tag text="Animation" />
-        <Tag text="Roller Blading" />
-        <Tag text="Swimming" />
-        <Tag text="Meeting People" />
+    const hobbies_interests = <div className='about_tag_container'>
+        <h3>Hobbies & Interests</h3>
+        <div>
+            <Tag text="Acting" />
+            <Tag text="Dance" />
+            <Tag text="Animal Care" />
+            <Tag text="Art and Craft" />
+            <Tag text="Filmmaking" />
+            <Tag text="Video Editing" />
+            <Tag text="Digital Art" />
+            <Tag text="Cooking" />
+            <Tag text="Reading" />
+            <Tag text="Watching TV / Movies" />
+            <Tag text="Animation" />
+            <Tag text="Roller Blading" />
+            <Tag text="Swimming" />
+            <Tag text="Meeting People" />
+        </div>
     </div>
 
     const [display_content, set_display_content] = useState(personal_details);
@@ -182,23 +196,16 @@ export default function AboutBody() {
                     <a href="../assets/ggn_cv.pdf" download="cv_gayathri_girish_nair"><Button img_src={"../assets/download.png"}/></a>
                 </div>
             </div>
-            <div id="about_content">
-                {display_content}
-            </div>
             <div id="about_icon_box">
                 <Button img_src="../assets/personal_details.png" on_click={() => set_display_content(personal_details)} />
-                {/* <Button img_src="../assets/work_experience.png" on_click={() => set_display_content(work_experience)} />
+                <Button img_src="../assets/work_experience.png" on_click={() => set_display_content(work_experience)} />
                 <Button img_src="../assets/education.png" on_click={() => set_display_content(education)} />
                 <Button img_src="../assets/skills.png" on_click={() => set_display_content(skills)} />
                 <Button img_src="../assets/hobbies_interests.png" on_click={() => set_display_content(hobbies_interests)} />
-                <Button img_src="../assets/recognitions.png" on_click={() => set_display_content(recognitions)} /> */}
-
-                {/* <AboutIcon src="" title="personal_details" is_default={true} set_content={set_display_content} content={personal_details}/>
-                <AboutIcon src="" title="Work Experience" toggled={false} set_content={set_display_content} content={work_experience}/>
-                <AboutIcon src="" title="Education" toggled={false} set_content={set_display_content} content={education}/>
-                <AboutIcon src="" title="Skills" toggled={false} set_content={set_display_content} content={skills}/>
-                <AboutIcon src="" title="Hobbies & Interests" toggled={false} set_content={set_display_content} content={hobbies_interests}/>
-                <AboutIcon src="" title="Recognitions" toggled={false} set_content={set_display_content} content={recognitions}/> */}
+                <Button img_src="../assets/recognitions.png" on_click={() => set_display_content(recognitions)} />
+            </div>
+            <div id="about_content">
+                {display_content}
             </div>
         </div>
     )

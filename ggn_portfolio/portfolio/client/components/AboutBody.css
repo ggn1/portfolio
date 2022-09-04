@@ -1,26 +1,34 @@
-#about_salutation {
-    width: 40%;
-    margin: auto;
-}
-
 #about_body {
     width: 90%;
     margin: auto;
     text-align: center;
 }
 
+#about_salutation {
+    width: 50%;
+    margin: auto;
+}
+
+#about_buttons {
+    display: flex;
+    justify-content: center;
+}
+
 #about_buttons img {
-    scale: 1.5;
-    margin: 10px 25px 50px;
+    scale: 1.8;
+    margin: 30px 20px 50px 20px;
 }
 
 #about_icon_box {
-    width: 40%;
-    margin: 0px auto 150px;
     display: grid;
-    grid-template-columns: repeat(3, 1fr);
-    grid-template-rows: repeat(2, 1fr);
-    gap: 1em;
+    grid-template-columns: repeat(6, 1fr);
+    gap: 50px;
+    margin: 50px 0;
+    place-items: center;
+}
+
+#about_icon_box img {
+    scale: 1.8;
 }
 
 #about_content {
@@ -29,16 +37,22 @@
     border: 2px solid black;
     border-radius: 25px;
     padding: 50px;
-    background-color: #eee;
+    background-color: rgb(255, 255, 255);
     text-align: left;
 }
 
-#about_icon_box img {
-    scale: 2.3;
+.about_tag_container {
+    display: grid;
 }
 
 @media only screen and (max-width: 800px) {
     #about_salutation { width: 60% }
-    #about_icon_box { width: 80%; }
-    #about_content { width: 90%; }
+    #about_icon_box {
+        grid-template-columns: repeat(3, 1fr); 
+        grid-template-rows: repeat(2, 1fr);
+    }
+    #about_content { 
+        width: 90%; 
+        padding: 20px;
+    }
 }
