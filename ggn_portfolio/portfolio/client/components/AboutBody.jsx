@@ -6,7 +6,7 @@ import "./AboutBody.css"
 export default function AboutBody() {
 
     const personal_details = <div>
-        <h3>Personal Details</h3>
+        <h1>Personal Details</h1>
         <p>
             I am a BSc. Honours Computer Science graduate (graduated on 05/07/2022) from Heriot-Watt University where, over the last 4 years, I've had a blast in acquiring lot's of technical / non-technical know-how that I'm now, more than ever, excited to apply to the work front for <i>your</i> benefit and that of society at large!
         </p>
@@ -14,7 +14,7 @@ export default function AboutBody() {
     </div>
 
     const work_experience = <div>
-        <h3>Work Experience</h3>
+        <h1>Work Experience</h1>
         <b>September 2022 to Present:</b> Machine Learning Engineer at <a 
             href="https://commtelnetworks.com/"
             target="_blank" 
@@ -23,7 +23,7 @@ export default function AboutBody() {
     </div>;
 
     const education = <div>
-        <h3>Education</h3>
+        <h1>Education</h1>
         <b>Bachelors (Honours) in Computer Science [2018-22]:</b>
         <br/>◉ Heriot-Watt University.
         <br/>◉ First Class, GPA 4.0/4.0.
@@ -42,7 +42,7 @@ export default function AboutBody() {
     </div>;
 
     const skills = <div>
-        <h3>Skills</h3>
+        <h1>Skills</h1>
         <div className="about_tag_container">
             <div>
                 <div style={{textAlign: "center"}}><b>Hard</b></div>
@@ -109,7 +109,7 @@ export default function AboutBody() {
     </div>
 
     const recognitions = <div>
-        <h3>Recognitions</h3>
+        <h1>Recognitions</h1>
         <b>[ 2018 - 2022 ]</b> 
         <br/>◉ Graduated ( 05 July 2022 ) Heriot-Watt University's "Bachelors in Computer Science Honours (4 years) program with 1st Class and GPA 4.0/4.0 (A grade for all subjects across all 4 years).
         <br/><br/>
@@ -164,7 +164,7 @@ export default function AboutBody() {
     </div>
 
     const hobbies_interests = <div className='about_tag_container'>
-        <h3>Hobbies & Interests</h3>
+        <h1>Hobbies & Interests</h1>
         <div>
             <Tag text="Acting" />
             <Tag text="Dance" />
