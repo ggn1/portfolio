@@ -206,7 +206,7 @@ export default function Threejs() {
     const renderer = new THREE.WebGLRenderer({canvas, antialias: true});
     renderer.setSize(window.innerWidth, window.innerHeight-0.5);
     renderer.setPixelRatio(window.devicePixelRatio);
-    renderer.setClearColor(0x111111, 1);
+    renderer.setClearColor(0x111222, 1);
     document.getElementById("canvas_div").appendChild(renderer.domElement);
   
     // lights

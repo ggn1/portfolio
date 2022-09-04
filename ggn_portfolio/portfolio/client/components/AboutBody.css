@@ -1,0 +1,44 @@
+#about_salutation {
+    width: 40%;
+    margin: auto;
+}
+
+#about_body {
+    width: 90%;
+    margin: auto;
+    text-align: center;
+}
+
+#about_buttons img {
+    scale: 1.5;
+    margin: 10px 25px 50px;
+}
+
+#about_icon_box {
+    width: 40%;
+    margin: 0px auto 150px;
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    grid-template-rows: repeat(2, 1fr);
+    gap: 1em;
+}
+
+#about_content {
+    margin: 0px auto 50px;
+    width: 60%;
+    border: 2px solid black;
+    border-radius: 25px;
+    padding: 50px;
+    background-color: #eee;
+    text-align: left;
+}
+
+#about_icon_box img {
+    scale: 2.3;
+}
+
+@media only screen and (max-width: 800px) {
+    #about_salutation { width: 60% }
+    #about_icon_box { width: 80%; }
+    #about_content { width: 90%; }
+}
