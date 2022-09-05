@@ -1,27 +1,30 @@
-import React, { useEffect, useState } from 'react'
-import "./ProjectCard.css"
-import "./Button"
+import React, { useContext } from 'react'
 import Button from './Button'
-import Popup from './Popup';
+import Tag from './Tag'
+import { alert_context } from "../src/Context"
+import "./ProjectCard.css"
 
 export default function ProjectCard({project, handle_project_select}) {
 
-  const [popup, set_popup] = useState(false);
+  const {alert, set_alert} = useContext(alert_context);
 
-  const show_popup = () => { set_popup(true); }
-  const close_popup = () => { set_popup(false); }
+  const get_skill_tags = (skills_csv) => {
+    let skills = [];
+    skills_csv.split(",").forEach(skill => { skills.push(<Tag key={skill} text={skill} />); });
+    return skills;
+  }
 
   return (
     <>
       <div className='project_card' style={{ "backgroundImage": "url("+project.thumbnail+")" }}>
         <div>
           <h5>{project.title}</h5>
-          <Button img_src="../assets/spanner.png" on_click={show_popup}></Button>
+          <Button img_src="../assets/spanner.png" on_click={() => set_alert({heading:"Skills Applied", body: get_skill_tags(project.skills)})}></Button>
+          {/* <Button img_src="../assets/spanner.png" on_click={() => console.log(project.skills)}></Button> */}
           <Button img_src="../assets/github.png" on_click={() => window.open(project.github)}></Button>
           <Button img_src="../assets/eye.png" on_click={() => handle_project_select(project.id)}></Button>
         </div>
     </div>
-    { popup ? <Popup title="Skills Applied" body={project.skills} handle_close={close_popup}/> : null }
     </>
   )
 }

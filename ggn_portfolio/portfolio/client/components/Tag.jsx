@@ -3,6 +3,6 @@ import "./Tag.css"
 
 export default function Tag({ text }) {
   return (
-    <p className='tag'>{ text }</p>
+    <div className='tag'>{ text }</div>
   )
 }

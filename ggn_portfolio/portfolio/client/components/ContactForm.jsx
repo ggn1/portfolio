@@ -1,22 +1,22 @@
-import React, { useState, useRef } from 'react'
-import './ContactForm.css'
-import Button from "./Button"
+import React, { useState, useRef, useContext } from 'react'
 import Axios from "axios"
-import Popup from "./Popup"
+import Alert from "./Alert"
+import { alert_context } from "../src/Context"
+import './ContactForm.css'
 
 export default function ContactForm() {
   const message_char_limit = 500;
   const valid_input = new RegExp('[a-z0-9.,!?\'\"@_ ]', "ig");
 
   const [message_chars, set_message_chars] = useState(0);
-  const [success_popup, set_success_popup] = useState(false);
-  const [fail_popup, set_fail_popup] = useState(false);
-  
+
   const input_name = useRef();
   const input_email = useRef();
   const input_message = useRef();
 
   let form_validity = {name:false, email:false, message:false};
+
+  const {alert, set_alert} = useContext(alert_context);
 
   const sanity_check = (text, field) => {
     if(text && text.match(valid_input) && (text.match(valid_input).length == text.length)) {
@@ -81,18 +81,17 @@ export default function ContactForm() {
         message: input_message.current.value
       }).then((response) => {
         console.log(response);
+        set_message_chars(0);
+        const name = input_name.current.value.split(" ")[0];
         input_name.current.value = "";
         input_email.current.value = "";
         input_message.current.value = "";
-        set_message_chars(0);
-        set_success_popup(true);
-        set_fail_popup(false);
+        set_alert({ heading:"Dear " + name + ",", body: "Thank you for reaching out! I'll get back to you ASAP." });
       }).catch((error) => {
-        console.log(error);
+        set_alert({ heading:"Sorry ...", body: "Something went wrong. Your message has not reached me. Please try again or simply drop me a mail at ggnair2000@gmail.com." });
       });
     } else {
-      set_success_popup(false);
-      set_fail_popup(true);
+      set_alert({ heading: "Empty / Invalid Fields", body:"Please try again."});
     };
   }
 
@@ -109,8 +108,6 @@ export default function ContactForm() {
             <div id="char_count">({ (message_char_limit - message_chars) >= 0 ? message_char_limit - message_chars : 0 } characters left)</div>
             <input type="submit" id="submit" value="Submit" onClick={on_submit}/>
           </div>
-          { success_popup ? <Popup title="Thank you for reaching out!" body="I'll get back to you asap." handle_close={() => set_success_popup(false)}/> : null }
-          { fail_popup ? <Popup title="Empty or invalid fields." body="Please try again." handle_close={() => set_fail_popup(false)}/> : null }
       </div>
     </>
   )

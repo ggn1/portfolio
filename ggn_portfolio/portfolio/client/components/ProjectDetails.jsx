@@ -23,9 +23,9 @@ export default function ProjectDetails({project, handle_back2gallery}) {
           <Button img_src="../assets/back.png" on_click={handle_back2gallery}/>
         </div>
         <div>{project.brief}</div>
-        <div className='project_details_skills'>{skills?skills:null}</div>
+        <div className='project_details_skills'>{skills ? skills : null}</div>
         <div style = {{ "display": "flex", "justifyContent": "center", "width": "100%"}}>
-          <div className='project_details_files'>{files?files:null}</div>
+          <div className='project_details_files'>{files ? files : null}</div>
         </div>
     </div>
   )
