@@ -108,8 +108,8 @@ export default function AboutBody() {
         </div>
     </div>
 
-    const recognitions = <div>
-        <h1>Recognitions</h1>
+    const achievements = <div>
+        <h1>Achievements</h1>
         <b>[ 2018 - 2022 ]</b> 
         <br/>◉ Graduated ( 05 July 2022 ) Heriot-Watt University's "Bachelors in Computer Science Honours (4 years) program with 1st Class and GPA 4.0/4.0 (A grade for all subjects across all 4 years).
         <br/><br/>
@@ -202,7 +202,7 @@ export default function AboutBody() {
                 <Button img_src="../assets/education.png" on_click={() => set_display_content(education)} />
                 <Button img_src="../assets/skills.png" on_click={() => set_display_content(skills)} />
                 <Button img_src="../assets/hobbies_interests.png" on_click={() => set_display_content(hobbies_interests)} />
-                <Button img_src="../assets/recognitions.png" on_click={() => set_display_content(recognitions)} />
+                <Button img_src="../assets/achievements.png" on_click={() => set_display_content(achievements)} />
             </div>
             <div id="about_content">
                 {display_content}
