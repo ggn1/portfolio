@@ -46,7 +46,7 @@ export default function Gallery({data}) {
   const get_all_items = () => {
       let tags = [];
       data.forEach(d => {
-        tags.push(<Tag text={d.caption} on_click={() => set_display_content(get_display_item(d.id))}/>);
+        tags.push(<Tag key={d.id} text={d.caption} on_click={() => set_display_content(get_display_item(d.id))}/>);
       });
 
       return (

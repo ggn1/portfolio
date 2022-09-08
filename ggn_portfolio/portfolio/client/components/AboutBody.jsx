@@ -15,9 +15,7 @@ export default function AboutBody() {
             "https://ggn-portfolio-website.herokuapp.com"
         );
         url += "/gallery/get?category=" + category;
-        console.log(url);
         Axios.get(url).then(response => {
-            console.log(response.data);
             set_gallery({data: response.data});
         }).catch(error => console.error("ERROR:", error));
     }
