@@ -8,7 +8,7 @@ export default function AboutBody() {
     const personal_details = <div>
         <h1>Personal Details</h1>
         <p>
-            I am a BSc. Honours Computer Science graduate (graduated on 05/07/2022) from Heriot-Watt University where, over the last 4 years, I've had a blast in acquiring lot's of technical / non-technical know-how that I'm now, more than ever, excited to apply to the work front for <i>your</i> benefit and that of society at large!
+            I'm a Computer Scientist with special interest in Artificial Intelligence and Data Science. I've had a blast in honing technical and non-technical know-how from experience gained at both my current workplace, as well as 4 years under Heriot-Watt University's BSc. Honours in Computer Science program. I'm excited as ever, to apply my skills at work front for <i>your</i> benefit and that of society at large!
         </p>
         <p>Hailing from <b>India</b>, languages I've acquired include, <b>Malayalam</b> (Native), <b>English</b> (Full Fluency), <b>Hindi</b> (Fluent) and French (Elementary)</p>
     </div>
