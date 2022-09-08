@@ -61,6 +61,14 @@ app.get("/projects/get", (req, res) => {
 //     console.log("server running on port 3001");
 // });
 
+app.get("/about/gallery/get", (req, res) => {
+    let q = "SELECT * FROM gallery WHERE category = '" + req.query.category + "';";
+    db.query(q, (err1, res1) => {
+        if (err1) console.log("SELECT ERROR1:", err1);
+        else res.send(res1);
+    });
+});
+
 app.listen(process.env.PORT || 3001, function() { // heroku
     console.log(`server running on port ${this.address().port}`);
 });

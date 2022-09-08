@@ -2,13 +2,23 @@ import React, { useState, useContext } from 'react'
 import Button from './Button'
 import Tag from "./Tag"
 import Gallery from "./Gallery"
+import Axios from "axios"
 import { gallery_context } from "../src/Context"
 import "./AboutBody.css"
 
 export default function AboutBody() {
 
-    const get_education_items = () => {
-        return ['a', 'b', 'c', 'd']
+    const get_gallery_items = (category) => {
+        let window_location = window.location.href;
+        let url = window_location.replace( // heroku
+            window_location.slice(0, window_location.lastIndexOf("/")),
+            "https://ggn-portfolio-website.herokuapp.com"
+        );
+        url += "/gallery/get?category=" + category;
+        console.log(url);
+        Axios.get(url).then(response => {
+            console.log("SUCCESS:", response);
+        }).catch(error => console.error("ERROR:", error));
     }
 
     const personal_details = <div>
@@ -31,7 +41,7 @@ export default function AboutBody() {
     const education = <div>
         <div className='about_plus'>
             <h1>Education</h1>
-            <Button img_src="../assets/plus.png" on_click={() => set_gallery({items: get_education_items()})}/>
+            <Button img_src="../assets/plus.png" on_click={() => set_gallery({items: get_gallery_items("education")})}/>
         </div>
         <b>Bachelors (Honours) in Computer Science [2018-22]:</b>
         <br/>◉ Heriot-Watt University.
