@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react'
+import React from 'react'
 import "./ProjectDetails.css"
 import Button from './Button'
 import Tag from './Tag'

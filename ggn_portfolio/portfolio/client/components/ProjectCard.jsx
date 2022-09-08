@@ -6,7 +6,7 @@ import "./ProjectCard.css"
 
 export default function ProjectCard({project, handle_project_select}) {
 
-  const {alert, set_alert} = useContext(alert_context);
+  const { set_alert } = useContext(alert_context);
 
   const get_skill_tags = (skills_csv) => {
     let skills = [];

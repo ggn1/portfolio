@@ -1,6 +1,5 @@
 import React, { useState, useRef, useContext } from 'react'
 import Axios from "axios"
-import Alert from "./Alert"
 import { alert_context } from "../src/Context"
 import './ContactForm.css'
 
@@ -16,7 +15,7 @@ export default function ContactForm() {
 
   let form_validity = {name:false, email:false, message:false};
 
-  const {alert, set_alert} = useContext(alert_context);
+  const { set_alert } = useContext(alert_context);
 
   const sanity_check = (text, field) => {
     if(text && text.match(valid_input) && (text.match(valid_input).length == text.length)) {

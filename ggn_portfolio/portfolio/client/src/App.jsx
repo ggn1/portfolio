@@ -7,14 +7,13 @@ import Contact from '../pages/Contact'
 import Projects from '../pages/Projects'
 import Alert from '../components/Alert'
 import Preloader from "../components/Preloader"
-import { alert_context } from "./Context";
+import { alert_context } from "./Context"
 import './App.css'
 
 function App() {
 
   const [loading, set_loading] = useState(false);
   const [alert, set_alert] = useState(null);
-  // const [alert, set_alert] = useState({heading: "Hello Check ...", body: "Mike Testing. Mike Testing."});
 
   useEffect(() => {
     document.getElementById("home_button").className = "no_highlight";
@@ -24,7 +23,7 @@ function App() {
   }, [location]);
 
   return (
-    <alert_context.Provider value={{alert, set_alert}}>
+    <alert_context.Provider value={{set_alert}}>
       <Header />
       <Routes>
         <Route path="/" element={<Home />} exact></Route>

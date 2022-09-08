@@ -1,15 +1,21 @@
-import React, { useState, useEffect, useRef } from 'react'
+import React, { useState, useContext } from 'react'
 import Button from './Button'
 import Tag from "./Tag"
+import Gallery from "./Gallery"
+import { gallery_context } from "../src/Context"
 import "./AboutBody.css"
 
 export default function AboutBody() {
+
+    const get_education_items = () => {
+        return ['a', 'b', 'c', 'd']
+    }
 
     const personal_details = <div>
         <h1>Personal Details</h1>
         <p>
             I'm a Computer Scientist with special interest in Artificial Intelligence and Data Science. I've had a blast in honing technical and non-technical know-how from experience gained at both my current workplace, as well as 4 years under Heriot-Watt University's BSc. Honours in Computer Science program. I'm excited as ever, to apply my skills at work front for <i>your</i> benefit and that of society at large!
-        </p>
+        </p><br/>
         <p>Hailing from <b>India</b>, languages I've acquired include, <b>Malayalam</b> (Native), <b>English</b> (Full Fluency), <b>Hindi</b> (Fluent) and French (Elementary)</p>
     </div>
 
@@ -23,7 +29,10 @@ export default function AboutBody() {
     </div>;
 
     const education = <div>
-        <h1>Education</h1>
+        <div className='about_plus'>
+            <h1>Education</h1>
+            <Button img_src="../assets/plus.png" on_click={() => set_gallery({items: get_education_items()})}/>
+        </div>
         <b>Bachelors (Honours) in Computer Science [2018-22]:</b>
         <br/>◉ Heriot-Watt University.
         <br/>◉ First Class, GPA 4.0/4.0.
@@ -109,7 +118,10 @@ export default function AboutBody() {
     </div>
 
     const achievements = <div>
-        <h1>Achievements</h1>
+        <div className='about_plus'>
+            <h1>Achievements</h1>
+            <Button img_src="../assets/plus.png" on_click={() => console.log("achievements plus clicked!")}/>
+        </div>
         <b>[ 2018 - 2022 ]</b> 
         <br/>◉ Graduated ( 05 July 2022 ) Heriot-Watt University's "Bachelors in Computer Science Honours (4 years) program with 1st Class and GPA 4.0/4.0 (A grade for all subjects across all 4 years).
         <br/><br/>
@@ -164,7 +176,10 @@ export default function AboutBody() {
     </div>
 
     const hobbies_interests = <div className='about_tag_container'>
-        <h1>Hobbies & Interests</h1>
+        <div className='about_plus'>
+            <h1>Hobbies & Interests</h1>
+            <Button img_src="../assets/plus.png" on_click={() => console.log("hobbies & interests plus clicked!")}/>
+        </div>
         <div>
             <Tag text="Acting" />
             <Tag text="Dance" />
@@ -184,6 +199,7 @@ export default function AboutBody() {
     </div>
 
     const [display_content, set_display_content] = useState(personal_details);
+    const [gallery, set_gallery] = useState(null);
 
     return (
         <div id="about_body">
@@ -204,9 +220,11 @@ export default function AboutBody() {
                 <Button img_src="../assets/hobbies_interests.png" on_click={() => set_display_content(hobbies_interests)} />
                 <Button img_src="../assets/achievements.png" on_click={() => set_display_content(achievements)} />
             </div>
-            <div id="about_content">
-                {display_content}
-            </div>
+            <gallery_context.Provider value={{set_gallery}}>
+                <div id="about_content">
+                    {gallery ? <Gallery items={gallery.items} /> : display_content}
+                </div>
+            </gallery_context.Provider>
         </div>
     )
 }

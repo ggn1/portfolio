@@ -1,0 +1,9 @@
+#gallery {
+    height: 100%;
+    width: 100%;
+    border-radius: 10px;
+    background-color: rgba(0,0,0,0.6);
+    display: grid;
+    grid-template-columns: 1fr;
+    place-items: center;
+}

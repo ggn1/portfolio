@@ -1,6 +1,6 @@
 #about_body {
     width: 90%;
-    margin: auto;
+    margin: 50px auto;
     text-align: center;
 }
 
@@ -14,8 +14,8 @@
     justify-content: center;
 }
 
-#about_buttons img {
-    scale: 1.8;
+#about_buttons img{
+    scale: 1.5;
     margin: 30px 20px 50px 20px;
 }
 
@@ -43,6 +43,19 @@
 
 .about_tag_container {
     display: grid;
+}
+
+.about_plus {
+    display: flex;
+    justify-content: space-between;
+}
+
+.about_plus > img {
+    scale: 1.5;
+}
+
+#about_content h1 {
+    margin-bottom: 10px;
 }
 
 @media only screen and (max-width: 800px) {
