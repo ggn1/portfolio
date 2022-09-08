@@ -66,9 +66,9 @@ export default function ProjectGallary({set_loading}) {
     }, [project_id]);
 
     return (
-        <>
+        <div style={{marginTop:'50px'}}>
             {project_id == 0 ? projects : null}
             <div className="gallery_spotlight">{project_id != 0 ? project:null}</div>
-        </>
+        </div>
     );
 }
