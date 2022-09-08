@@ -8,3 +8,15 @@
     box-shadow: 1px 1px 1px 1px rgba(0, 0, 0, 0.4);
     float: left;
 }
+
+.clickable_tag {
+    font-weight: 700;
+    border: 2px solid rgb(212, 212, 212);;
+    transition: border 0.5s;
+    color: blue;
+    text-decoration: underline;
+}
+
+.clickable_tag:hover, .clickable_tag:focus {
+    border: 2px solid var(--blue);
+}

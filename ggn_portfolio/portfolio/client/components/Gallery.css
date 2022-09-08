@@ -1,9 +1,21 @@
 #gallery {
     height: 100%;
-    width: 100%;
-    border-radius: 10px;
-    background-color: rgba(0,0,0,0.6);
     display: grid;
     grid-template-columns: 1fr;
     place-items: center;
+}
+
+#gallery .button_image {
+    scale: 1.2;
+    margin-left: 20px;
+}
+
+.gallery_item_container {
+    display: flex;
+    justify-content: center;
+    max-height: 400px;
+}
+
+.gallery_item_container > img {
+    object-fit: contain;
 }

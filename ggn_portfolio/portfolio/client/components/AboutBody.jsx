@@ -8,7 +8,7 @@ import "./AboutBody.css"
 
 export default function AboutBody() {
 
-    const get_gallery_items = (category) => {
+    const fetch_gallery_items = async (category) => {
         let window_location = window.location.href;
         let url = window_location.replace( // heroku
             window_location.slice(0, window_location.lastIndexOf("/")),
@@ -17,7 +17,8 @@ export default function AboutBody() {
         url += "/gallery/get?category=" + category;
         console.log(url);
         Axios.get(url).then(response => {
-            console.log("SUCCESS:", response);
+            console.log(response.data);
+            set_gallery({data: response.data});
         }).catch(error => console.error("ERROR:", error));
     }
 
@@ -41,7 +42,7 @@ export default function AboutBody() {
     const education = <div>
         <div className='about_plus'>
             <h1>Education</h1>
-            <Button img_src="../assets/plus.png" on_click={() => set_gallery({items: get_gallery_items("education")})}/>
+            <Button img_src="../assets/plus.png" on_click={() => fetch_gallery_items("education")}/>
         </div>
         <b>Bachelors (Honours) in Computer Science [2018-22]:</b>
         <br/>◉ Heriot-Watt University.
@@ -130,7 +131,7 @@ export default function AboutBody() {
     const achievements = <div>
         <div className='about_plus'>
             <h1>Achievements</h1>
-            <Button img_src="../assets/plus.png" on_click={() => console.log("achievements plus clicked!")}/>
+            <Button img_src="../assets/plus.png" on_click={() => fetch_gallery_items("achievements")}/>
         </div>
         <b>[ 2018 - 2022 ]</b> 
         <br/>◉ Graduated ( 05 July 2022 ) Heriot-Watt University's "Bachelors in Computer Science Honours (4 years) program with 1st Class and GPA 4.0/4.0 (A grade for all subjects across all 4 years).
@@ -188,7 +189,7 @@ export default function AboutBody() {
     const hobbies_interests = <div className='about_tag_container'>
         <div className='about_plus'>
             <h1>Hobbies & Interests</h1>
-            <Button img_src="../assets/plus.png" on_click={() => console.log("hobbies & interests plus clicked!")}/>
+            <Button img_src="../assets/plus.png" on_click={() => fetch_gallery_items("hobbies_interests")}/>
         </div>
         <div>
             <Tag text="Acting" />
@@ -223,16 +224,34 @@ export default function AboutBody() {
                 </div>
             </div>
             <div id="about_icon_box">
-                <Button img_src="../assets/personal_details.png" on_click={() => set_display_content(personal_details)} />
-                <Button img_src="../assets/work_experience.png" on_click={() => set_display_content(work_experience)} />
-                <Button img_src="../assets/education.png" on_click={() => set_display_content(education)} />
-                <Button img_src="../assets/skills.png" on_click={() => set_display_content(skills)} />
-                <Button img_src="../assets/hobbies_interests.png" on_click={() => set_display_content(hobbies_interests)} />
-                <Button img_src="../assets/achievements.png" on_click={() => set_display_content(achievements)} />
+                <Button img_src="../assets/personal_details.png" on_click={() => {
+                    set_display_content(personal_details);
+                    set_gallery(null);
+                }} />
+                <Button img_src="../assets/work_experience.png" on_click={() => {
+                    set_display_content(work_experience);
+                    set_gallery(null);
+                }} />
+                <Button img_src="../assets/education.png" on_click={() => {
+                    set_display_content(education);
+                    set_gallery(null);
+                 }} />
+                <Button img_src="../assets/skills.png" on_click={() => {
+                    set_display_content(skills);
+                    set_gallery(null);
+                }} />
+                <Button img_src="../assets/hobbies_interests.png" on_click={() => {
+                    set_display_content(hobbies_interests);
+                    set_gallery(null);
+                }} />
+                <Button img_src="../assets/achievements.png" on_click={() => {
+                    set_display_content(achievements);
+                    set_gallery(null);
+                }} />
             </div>
             <gallery_context.Provider value={{set_gallery}}>
                 <div id="about_content">
-                    {gallery ? <Gallery items={gallery.items} /> : display_content}
+                    {gallery ? <Gallery data={gallery.data} /> : display_content}
                 </div>
             </gallery_context.Provider>
         </div>

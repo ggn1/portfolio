@@ -16,14 +16,14 @@
 
 #about_buttons img{
     scale: 1.5;
-    margin: 30px 20px 50px 20px;
+    margin: 30px 20px 80px 20px;
 }
 
 #about_icon_box {
     display: grid;
     grid-template-columns: repeat(6, 1fr);
     gap: 50px;
-    margin: 50px 0;
+    margin-bottom: 50px;
     place-items: center;
 }
 
@@ -51,7 +51,7 @@
 }
 
 .about_plus > img {
-    scale: 1.5;
+    scale: 1.4;
 }
 
 #about_content h1 {
