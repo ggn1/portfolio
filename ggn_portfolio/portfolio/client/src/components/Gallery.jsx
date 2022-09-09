@@ -1,7 +1,7 @@
 import React, { useState, useContext, useEffect } from 'react'
 import Button from './Button';
 import Tag from './Tag';
-import { gallery_context } from "../src/Context"
+import { gallery_context } from "../Context"
 
 import "./Gallery.css"
 

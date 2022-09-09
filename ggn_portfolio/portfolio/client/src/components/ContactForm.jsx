@@ -1,6 +1,6 @@
 import React, { useState, useRef, useContext } from 'react'
 import Axios from "axios"
-import { alert_context } from "../src/Context"
+import { alert_context } from "../Context"
 import './ContactForm.css'
 
 export default function ContactForm() {

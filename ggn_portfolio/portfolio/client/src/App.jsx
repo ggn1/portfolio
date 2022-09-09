@@ -1,12 +1,12 @@
 import React, { useEffect, useState } from 'react'
 import { Routes, Route } from 'react-router-dom'
-import Header from "../components/Header"
-import Home from '../pages/Home'
-import About from '../pages/About'
-import Contact from '../pages/Contact'
-import Projects from '../pages/Projects'
-import Alert from '../components/Alert'
-import Preloader from "../components/Preloader"
+import Header from "./components/Header"
+import Home from './pages/Home'
+import About from './pages/About'
+import Contact from './pages/Contact'
+import Projects from './pages/Projects'
+import Alert from './components/Alert'
+import Preloader from "./components/Preloader"
 import { alert_context } from "./Context"
 import './App.css'
 

@@ -3,7 +3,7 @@ import Button from './Button'
 import Tag from "./Tag"
 import Gallery from "./Gallery"
 import Axios from "axios"
-import { gallery_context } from "../src/Context"
+import { gallery_context } from "../Context"
 import "./AboutBody.css"
 
 export default function AboutBody() {

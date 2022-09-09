@@ -1,7 +1,7 @@
 import React, { useContext } from 'react'
 import Button from './Button'
 import Tag from './Tag'
-import { alert_context } from "../src/Context"
+import { alert_context } from "../Context"
 import "./ProjectCard.css"
 
 export default function ProjectCard({project, handle_project_select}) {
