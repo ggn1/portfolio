@@ -8,7 +8,6 @@ import Projects from './pages/Projects'
 import Alert from './components/Alert'
 import Preloader from "./components/Preloader"
 import { alert_context } from "./Context"
-import './App.css'
 
 function App() {
 

@@ -189,7 +189,10 @@ export default function Threejs() {
     }
 
     const on_model_click = () => {
-      selected_option && document.getElementById(selected_option.replace("button", "link")).click();
+      if (selected_option) {
+        document.getElementById(selected_option).className = "no_highlight";
+        document.getElementById(selected_option.replace("button", "link")).click();
+      }
     }
 
     window.addEventListener('resize', on_window_resize);
