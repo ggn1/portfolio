@@ -20,7 +20,7 @@ export default function ProjectDetails({project, handle_back2gallery}) {
     <div className="project_details">
         <div className='project_details_header'>
           <h3>{project.title}</h3>
-          <Button img_src="../assets/back.png" on_click={handle_back2gallery}/>
+          <Button img_src="../public/back.png" on_click={handle_back2gallery}/>
         </div>
         <div>{project.brief}</div>
         <div className='project_details_skills'>{skills ? skills : null}</div>

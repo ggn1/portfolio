@@ -40,7 +40,7 @@ export default function AboutBody() {
     const education = <div>
         <div className='about_plus'>
             <h1>Education</h1>
-            <Button img_src="../assets/plus.png" on_click={() => fetch_gallery_items("education")}/>
+            <Button img_src="../public/plus.png" on_click={() => fetch_gallery_items("education")}/>
         </div>
         <b>Bachelors (Honours) in Computer Science [2018-22]:</b>
         <br/>◉ Heriot-Watt University.
@@ -129,7 +129,7 @@ export default function AboutBody() {
     const achievements = <div>
         <div className='about_plus'>
             <h1>Achievements</h1>
-            <Button img_src="../assets/plus.png" on_click={() => fetch_gallery_items("achievements")}/>
+            <Button img_src="../public/plus.png" on_click={() => fetch_gallery_items("achievements")}/>
         </div>
         <b>[ 2018 - 2022 ]</b> 
         <br/>◉ Graduated ( 05 July 2022 ) Heriot-Watt University's "Bachelors in Computer Science Honours (4 years) program with 1st Class and GPA 4.0/4.0 (A grade for all subjects across all 4 years).
@@ -187,7 +187,7 @@ export default function AboutBody() {
     const hobbies_interests = <div className='about_tag_container'>
         <div className='about_plus'>
             <h1>Hobbies & Interests</h1>
-            <Button img_src="../assets/plus.png" on_click={() => fetch_gallery_items("hobbies_interests")}/>
+            <Button img_src="../public/plus.png" on_click={() => fetch_gallery_items("hobbies_interests")}/>
         </div>
         <div>
             <Tag text="Acting" />
@@ -216,33 +216,33 @@ export default function AboutBody() {
                 <h1>Hi! I'm Gayathri!</h1>
                 <p><b>Since</b> 15 Feb 2000. <b>Until</b> you've forgotten me.</p>
                 <div id="about_buttons">
-                    <Button img_src={"../assets/linkedin.png"} on_click={() => window.open("//www.linkedin.com/in/gayathrigirishnair")}/>
-                    <Button img_src={"../assets/instagram.png"} on_click={() => window.open("https://www.instagram.com/gayathri_girish_nair/")}/>
-                    <a href="../assets/ggn_cv.pdf" download="cv_gayathri_girish_nair"><Button img_src={"../assets/download.png"}/></a>
+                    <Button img_src={"../public/linkedin.png"} on_click={() => window.open("//www.linkedin.com/in/gayathrigirishnair")}/>
+                    <Button img_src={"../public/instagram.png"} on_click={() => window.open("https://www.instagram.com/gayathri_girish_nair/")}/>
+                    <a href="../public/ggn_cv.pdf" download="cv_gayathri_girish_nair"><Button img_src={"../public/download.png"}/></a>
                 </div>
             </div>
             <div id="about_icon_box">
-                <Button img_src="../assets/personal_details.png" on_click={() => {
+                <Button img_src="../public/personal_details.png" on_click={() => {
                     set_display_content(personal_details);
                     set_gallery(null);
                 }} />
-                <Button img_src="../assets/work_experience.png" on_click={() => {
+                <Button img_src="../public/work_experience.png" on_click={() => {
                     set_display_content(work_experience);
                     set_gallery(null);
                 }} />
-                <Button img_src="../assets/education.png" on_click={() => {
+                <Button img_src="../public/education.png" on_click={() => {
                     set_display_content(education);
                     set_gallery(null);
                  }} />
-                <Button img_src="../assets/skills.png" on_click={() => {
+                <Button img_src="../public/skills.png" on_click={() => {
                     set_display_content(skills);
                     set_gallery(null);
                 }} />
-                <Button img_src="../assets/hobbies_interests.png" on_click={() => {
+                <Button img_src="../public/hobbies_interests.png" on_click={() => {
                     set_display_content(hobbies_interests);
                     set_gallery(null);
                 }} />
-                <Button img_src="../assets/achievements.png" on_click={() => {
+                <Button img_src="../public/achievements.png" on_click={() => {
                     set_display_content(achievements);
                     set_gallery(null);
                 }} />

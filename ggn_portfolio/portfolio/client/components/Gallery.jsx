@@ -21,7 +21,7 @@ export default function Gallery({data}) {
         <div>
           <div style={{display:'flex', justifyContent:"space-between", marginBottom:"10px"}}>
             <h4>{item.caption}</h4>
-            <Button img_src='../assets/back.png' on_click={() => set_display_content(get_all_items())} />
+            <Button img_src='../public/back.png' on_click={() => set_display_content(get_all_items())} />
           </div>
           <p style={{marginBottom:"10px"}}>{item.description}</p>
           <div className="gallery_item_container"style={{display:"flex", justifyContent:"center"}}>
@@ -33,7 +33,7 @@ export default function Gallery({data}) {
       <div>
         <div style={{display:'flex', justifyContent:"space-between", marginBottom:"10px"}}>
           <h4>{item.caption}</h4>
-          <Button img_src='../assets/back.png' on_click={() => set_display_content(get_all_items())} />
+          <Button img_src='../public/back.png' on_click={() => set_display_content(get_all_items())} />
         </div>
         <p style={{marginBottom:"10px"}}>{item.description}</p>
         <div className="gallery_item_container">
@@ -53,7 +53,7 @@ export default function Gallery({data}) {
         <div style={{display:'grid'}}>
           <div style={{display: 'flex', justifyContent: 'space-between'}}>
             <h1>Gallery</h1>
-            <Button img_src="../assets/cross.png" on_click={() => set_gallery(null)} />
+            <Button img_src="../public/cross.png" on_click={() => set_gallery(null)} />
           </div>
           <div>{tags}</div>
           <div style={{marginTop: '10px', textAlign:'center', color:'gray'}}>
