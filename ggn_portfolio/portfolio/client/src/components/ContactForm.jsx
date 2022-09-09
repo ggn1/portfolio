@@ -79,7 +79,6 @@ export default function ContactForm() {
         email: input_email.current.value,
         message: input_message.current.value
       }).then((response) => {
-        console.log(response);
         set_message_chars(0);
         const name = input_name.current.value.split(" ")[0];
         input_name.current.value = "";
