@@ -22,3 +22,6 @@ node_modules
 *.njsproj
 *.sln
 *.sw?
+
+# Config Files
+heroku_config.json

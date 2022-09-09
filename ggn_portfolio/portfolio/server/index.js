@@ -13,12 +13,8 @@ const cors = require('cors');
 // });
 
 // Heroku Server
-const db = mysql.createPool({
-    host: 'eu-cdbr-west-03.cleardb.net',
-    user: 'be34cde083dcfd',
-    password: '4dcd711e',
-    database: 'heroku_539b1297eb14a84'
-});
+const heroku_config = require('./heroku_config.json')
+const db = mysql.createPool(heroku_config);
 
 app.use(cors());
 app.use(express.json());
