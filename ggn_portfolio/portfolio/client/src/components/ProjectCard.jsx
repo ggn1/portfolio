@@ -19,9 +19,9 @@ export default function ProjectCard({project, handle_project_select}) {
       <div className='project_card' style={{ "backgroundImage": "url("+project.thumbnail+")" }}>
         <div>
           <h5>{project.title}</h5>
-          <Button img_src="../public/spanner.png" on_click={() => set_alert({heading:"Skills Applied", body: get_skill_tags(project.skills)})}></Button>
-          <Button img_src="../public/github.png" on_click={() => window.open(project.github)}></Button>
-          <Button img_src="../public/eye.png" on_click={() => handle_project_select(project.id)}></Button>
+          <Button img_src="../../spanner.png" on_click={() => set_alert({heading:"Skills Applied", body: get_skill_tags(project.skills)})}></Button>
+          <Button img_src="../../github.png" on_click={() => window.open(project.github)}></Button>
+          <Button img_src="../../eye.png" on_click={() => handle_project_select(project.id)}></Button>
         </div>
     </div>
     </>

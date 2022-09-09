@@ -7,8 +7,8 @@ export default function Preloader() {
     const [loading_dots, set_loading_dots] = useState("");
 
     const frames = [
-        "../public/coffee_mug_1.png", "../public/coffee_mug_2.png", "../public/coffee_mug_3.png",
-        "../public/coffee_mug_4.png", "../public/coffee_mug_5.png", "../public/coffee_mug_6.png"
+        "../../coffee_mug_1.png", "../../coffee_mug_2.png", "../../coffee_mug_3.png",
+        "../../coffee_mug_4.png", "../../coffee_mug_5.png", "../../coffee_mug_6.png"
     ];
 
     const gif_size = [100, 100];

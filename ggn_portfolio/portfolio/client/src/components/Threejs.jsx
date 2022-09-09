@@ -44,12 +44,12 @@ export default function Threejs() {
           human_data, heart_data, phone_data, 
           gear_big_data, gear_medium_data, gear_small_data
       ] = await Promise.all([
-          loader.loadAsync('../../public/human.glb'),
-          loader.loadAsync('../../public/heart.glb'),
-          loader.loadAsync('../../public/phone.glb'),
-          loader.loadAsync('../../public/gear_big.glb'),
-          loader.loadAsync('../../public/gear_medium.glb'),
-          loader.loadAsync('../../public/gear_small.glb')
+          loader.loadAsync('../../human.glb'),
+          loader.loadAsync('../../heart.glb'),
+          loader.loadAsync('../../phone.glb'),
+          loader.loadAsync('../../gear_big.glb'),
+          loader.loadAsync('../../gear_medium.glb'),
+          loader.loadAsync('../../gear_small.glb')
       ]);
 
       objects = {};
