@@ -22,7 +22,6 @@ export default function ProjectGallary({set_loading}) {
     }
 
     useEffect(() => {
-
         set_loading(true);
 
         // get all project briefs
@@ -36,6 +35,7 @@ export default function ProjectGallary({set_loading}) {
         if (project_id == 0) {
             url += "/get";
             let selection = [];
+            console.log("URL ="+url)
             Axios.get(url).then(response => {
                 response.data.sort((a, b) => (a.priority > b.priority ? 1 : -1))
 

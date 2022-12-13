@@ -20,6 +20,10 @@ app.use(cors());
 app.use(express.json());
 app.use(body_parser.urlencoded({ extended:true }));
 
+app.get('/', (req, res) => {
+    res.send("Server Up");
+});
+
 app.post("/contact/interested", (req, res) => {
     const [name, email, message] = [req.body.name, req.body.email, req.body.message]; 
     const sql_insert = "INSERT INTO contacts (name, email, message) VALUES (?,?,?);";
@@ -51,10 +55,6 @@ app.get("/projects/get", (req, res) => {
         });
     }
 });
-
-// app.listen(3001, () => { // local
-//     console.log("server running on port 3001");
-// });
 
 app.get("/about/gallery/get", (req, res) => {
     let q = "SELECT * FROM gallery WHERE category = '" + req.query.category + "';";
