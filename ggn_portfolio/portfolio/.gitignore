@@ -24,4 +24,4 @@ node_modules
 *.sw?
 
 # Config Files
-heroku_config.json
+
