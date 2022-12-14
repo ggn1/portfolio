@@ -21,7 +21,7 @@ app.use(express.json());
 app.use(body_parser.urlencoded({ extended:true }));
 
 app.get('/', (req, res) => {
-    res.send("Server Up");
+    res.send("Server up.")
 });
 
 app.post("/contact/interested", (req, res) => {

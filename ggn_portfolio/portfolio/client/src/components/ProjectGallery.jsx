@@ -31,7 +31,7 @@ export default function ProjectGallary({set_loading}) {
             window_location.slice(0, window_location.lastIndexOf("/")),
             "https://ggn-portfolio-website.herokuapp.com"
         );
-        
+
         if (project_id == 0) {
             url += "/get";
             let selection = [];
