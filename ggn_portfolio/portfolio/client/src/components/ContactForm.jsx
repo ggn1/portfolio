@@ -84,8 +84,10 @@ export default function ContactForm() {
         input_name.current.value = "";
         input_email.current.value = "";
         input_message.current.value = "";
+        console.log(response);
         set_alert({ heading:"Dear " + name + ",", body: "Thank you for reaching out! I'll get back to you ASAP." });
       }).catch((error) => {
+        console.log(error);
         set_alert({ heading:"Sorry ...", body: "Something went wrong. Your message has not reached me. Please try again or simply drop me a mail at ggnair2000@gmail.com." });
       });
     } else {

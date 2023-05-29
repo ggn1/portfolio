@@ -29,6 +29,7 @@ app.post("/contact/interested", (req, res) => {
     const sql_insert = "INSERT INTO contacts (name, email, message) VALUES (?,?,?);";
     db.query(sql_insert, [name, email, message], (err, result) => {
         if (err) res.send("eoi failed");
+        else res.send(result);
     });
 });
 
