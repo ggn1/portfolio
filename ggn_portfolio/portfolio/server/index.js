@@ -3,6 +3,7 @@ const body_parser = require('body-parser');
 const app = express();
 const mysql = require('mysql');
 const cors = require('cors');
+const nodemailer = require('nodemailer');
 
 // Local Server
 // const db = mysql.createPool({
@@ -28,8 +29,26 @@ app.post("/contact/interested", (req, res) => {
     const [name, email, message] = [req.body.name, req.body.email, req.body.message]; 
     const sql_insert = "INSERT INTO contacts (name, email, message) VALUES (?,?,?);";
     db.query(sql_insert, [name, email, message], (err, result) => {
-        if (err) res.send("eoi failed");
-        else res.send(result);
+        if (err) console.log(err);
+        else {
+            let transporter = nodemailer.createTransport({
+                service:"gmail",
+                auth: {
+                    user: 'ggnair2000@gmail.com',
+                    pass: 'sqilyxwvynvoxehc'
+                }
+            });
+            let mail_options = {
+                from: 'ggnair2000@gmail.com',
+                to: 'ggnair2000@gmail.com',
+                subject: 'Portfolio Website: New contact attempt by "' + name + '"!',
+                text: message + ' Email: ' + email + "."
+            }
+            transporter.sendMail(mail_options, function(err2, info){
+                if (err2) console.log(err2);
+                else res.send(info);
+            })
+        }
     });
 });
 
