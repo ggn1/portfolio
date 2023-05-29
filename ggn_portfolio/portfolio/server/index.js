@@ -5,7 +5,7 @@ const mysql = require('mysql');
 const cors = require('cors');
 const nodemailer = require('nodemailer');
 
-// Local Server
+// // Local Server
 // const db = mysql.createPool({
 //     host: 'localhost',
 //     user: 'root',
@@ -41,13 +41,13 @@ app.post("/contact/interested", (req, res) => {
             let mail_options = {
                 from: 'ggnair2000@gmail.com',
                 to: 'ggnair2000@gmail.com',
-                subject: 'Portfolio Website: New contact attempt by "' + name + '"!',
-                text: message + ' Email: ' + email + "."
+                subject: 'Portfolio Website: Contact attempt by "' + name + '"!',
+                text: "Message: " + message + '\nFrom: ' + name + " (" + email + ")"
             }
-            transporter.sendMail(mail_options, function(err2, info){
+            transporter.sendMail(mail_options, (err2, info) => {
                 if (err2) console.log(err2);
                 else res.send(info);
-            })
+            });
         }
     });
 });
